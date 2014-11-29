@@ -22,7 +22,7 @@ console.log("Connected correctly to server");
 
 var  totalupscore = function(i){
     for (x = 0; x < docs.lengthitem; x++){
-	if (docs[x].team  == "Rorschach")}
+	if (docs[x].team  == "Rorschach"){
     
         } else if (docs[x].team == "Meitner"){
 
