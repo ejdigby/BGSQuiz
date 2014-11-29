@@ -1,0 +1,67 @@
+html,
+body {
+    height: 100%;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+a {
+    text-decoration: none;
+    }
+
+.main {
+    height: 100%;
+    text-align: center;
+    font-size: 0;
+    }
+
+.main:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    }
+#scores {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+    width: 800px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+#scores span {
+    font-weight: bold;
+    }
+
+header {
+    border-bottom: solid 3px .efefef;
+    position: absolute;
+    height: 80px;
+    width: 100%;
+    top: 0;
+    }
+
+.behn h2 , .meitner h2 , .rorschach h2 , .tinbergen h2  {
+    /*margin: 28px;*/
+    display:inline-block;
+    font-family: 'Lilita One';
+    color: .000;
+    font-size: 60px;
+    vertical-align: top;
+    margin-left:5px;
+    }
+.behn img , .meitner img , .rorschach img , .tinbergen img {
+    width: 60px;
+    height: 60px;
+    display:inline-block;
+    
+    }
+.behn  , .meitner  , .rorschach  , .tinbergen  {
+    height: 80px;
+    width:150px;
+    margin:10px 20px 10px 20px;
+display:inline-block;
+}

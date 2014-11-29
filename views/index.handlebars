@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Singing Competition Vote</title>
+    <link href='css/style.css' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lilita+One' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+         io = io.connect()
+
+         io.emit('ready')
+    </script>
+</head>
+<body>
+        <div id="main">
+                <header id="school">                        
+                <div id="scores">
+                    
+                        <div class="behn">
+                                <img src="images/behn.png">
+                                <h2 class="BehnScore"></h2>
+                        </div>
+                        <div class="meitner">
+                                <img src="images/meitner.png">
+                                <h2 class="MeitnerScore"><h2>
+                        </div>
+                        <div class="rorschach">
+                                <img src="images/rorschach.png">
+                                <h2 class="RorschachScore"><h2>
+                        </div>
+                        <div class="tinbergen">
+                                <img src="images/tinbergen.png">
+                                <h2 class="TinbergenScore"><h2>
+                        </div>
+                </div>
+                </header>
+                
+        </div>  
+  <script>
+        behnscore = parseInt("{{Behn}}");
+        meitnerscore = parseInt("{{Meitner}}");
+        rorschachscore = parseInt("{{Rorschach}}");
+        tinbergenscore  = parseInt("{{Tinbergen}}");
+
+        $('.BehnScore').text(behnscore) 
+        $('.MeitnerScore').text(meitnerscore) 
+        $('.RorschachScore').text(rorschachscore) 
+        $('.TinbergenScore').text(tinbergenscore) 
+
+         io = io.connect()
+
+         io.emit('connection')
+
+     
+            io.on('ScoreUpdate',function(data) {
+            // do something with data
+               console.log("Score Updated!")
+	       var House = data.House;
+               var Score = data.Score;
+                console.log(House);
+	        console.log(Score);
+                if (House == "Behn") {
+                    $(".BehnScore").innerHTML = "";
+                    $('.BehnScore').text(Score);
+                } else if (House == "Rorschach") {
+                    $(".RorschachScore").innerHTML = "";
+                    $('.RorschachScore').text(Score);
+                } else if (House == "Meitner") {
+                    $(".MeitnerScore").innerHTML = "";
+                    $('.MeitnerScore').text(Score);
+                } else {
+                    $(".TinbergenScore").innerHTML = "";
+                    $('.TinbergenScore').text(Score);
+
+                }
+               
+           
+         });
+         
+        </script>
+</html>
