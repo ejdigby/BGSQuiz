@@ -24,6 +24,7 @@ a {
     height: 100%;
     vertical-align: middle;
     }
+
 #scores {
     display: inline-block;
     vertical-align: middle;
@@ -32,6 +33,7 @@ a {
     margin-right: auto;
     margin-left: auto;
     }
+
 #scores span {
     font-weight: bold;
     }
@@ -53,15 +55,16 @@ header {
     vertical-align: top;
     margin-left:5px;
     }
+
 .behn img , .meitner img , .rorschach img , .tinbergen img {
     width: 60px;
     height: 60px;
-    display:inline-block;
-    
+    display:inline-block;    
     }
-.behn  , .meitner  , .rorschach  , .tinbergen  {
+
+.behn, .meitner, .rorschach, .tinbergen  {
     height: 80px;
-    width:150px;
-    margin:10px 20px 10px 20px;
-display:inline-block;
+    width: 150px;
+    margin: 10px 20px 10px 20px;
+    display:inline-block;
 }
