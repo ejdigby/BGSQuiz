@@ -20,23 +20,6 @@ a {
     float: right;
     }
 
-.first {
-	background-color: #CBA135;
-	color: #ffffff;
-}
-
-.second {
-	background-color: #C6C6C6 !important;
-        color: #ffffff;
-
-}
-
-.third {
-        background-color: #CD7F32;
-        color: #ffffff;
-
-}
-
 .behn h2 , .meitner h2 , .rorschach h2 , .tinbergen h2  {
     display: inline-block;
     font-family: sans-serif;
