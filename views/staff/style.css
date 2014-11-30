@@ -23,12 +23,14 @@ body:before {
       	height: 100%;
       	vertical-align: middle;
       	margin-right: -0.25em;
+	font-size: 0
 }
 
 #container {
       	display: inline-block;
       	vertical-align: middle;
       	font-size: 18pt;
+	width: 100%;
       	padding: 50px 0px;
       	background-color: white;
 }
