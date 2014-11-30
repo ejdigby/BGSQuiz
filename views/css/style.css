@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    overflow-y: hidden;
     }
 
 * {
@@ -26,45 +27,72 @@ a {
     }
 
 #scores {
-    display: inline-block;
-    vertical-align: middle;
-    float: none;
-    width: 800px;
-    margin-right: auto;
-    margin-left: auto;
+    width: 70%;
+    height: 10%;
+    font-size: 0;
+    float: right;
     }
 
 #scores span {
     font-weight: bold;
     }
 
-header {
-    border-bottom: solid 3px .efefef;
-    position: absolute;
-    height: 80px;
-    width: 100%;
-    top: 0;
-    }
-
 .behn h2 , .meitner h2 , .rorschach h2 , .tinbergen h2  {
-    /*margin: 28px;*/
-    display:inline-block;
-    font-family: 'Lilita One';
-    color: .000;
-    font-size: 60px;
-    vertical-align: top;
-    margin-left:5px;
+    display: inline-block;
+    font-family: sans-serif;
+    color: #000000;
+    font-size: 30px;
+    margin-left: 10px;
     }
 
 .behn img , .meitner img , .rorschach img , .tinbergen img {
-    width: 60px;
-    height: 60px;
-    display:inline-block;    
+    height: 80%;
+    display: inline-block;    
     }
 
 .behn, .meitner, .rorschach, .tinbergen  {
-    height: 80px;
-    width: 150px;
-    margin: 10px 20px 10px 20px;
-    display:inline-block;
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+}
+
+.behn {
+    background-color: #9C27B0;
+}
+
+.meitner {
+    background-color: #EF6C00;
+}
+
+.rorschach {
+    background-color: #4CAF50;
+}
+
+.tinbergen {
+    background-color: #1565C0;
+}
+
+#leaderboard {
+	width: 30%;
+	height: 100%;
+	background: #efefef;
+	position: absolute;
+	left: 0;
+}
+
+#leaderboard ul {
+	overflow-y: scroll;
+}
+
+#video {
+	width: 70%;
+	height: 90%;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+
+#video iframe {
+	width: 100%;
+	height: 100%;
 }

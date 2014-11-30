@@ -1,43 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Singing Competition Vote</title>
+    <title>Bourne Grammar School Quiz</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Lilita+One' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300' rel='stylesheet' type='text/css'>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="socket.io/socket.io.js"></script>
     <script>
          io = io.connect()
-
          io.emit('ready')
     </script>
 </head>
-<body>
-        <div id="main">
-                <header id="school">                        
-                <div id="scores">
-                    
-                        <div class="behn">
-                                <img src="images/behn.png">
-                                <h2 class="BehnScore"></h2>
-                        </div>
-                        <div class="meitner">
-                                <img src="images/meitner.png">
-                                <h2 class="MeitnerScore"><h2>
-                        </div>
-                        <div class="rorschach">
-                                <img src="images/rorschach.png">
-                                <h2 class="RorschachScore"><h2>
-                        </div>
-                        <div class="tinbergen">
-                                <img src="images/tinbergen.png">
-                                <h2 class="TinbergenScore"><h2>
-                        </div>
+<body>                        
+	<div id="scores">         
+		<div class="behn">
+                	<img src="images/behn.png">
+                        <h2 class="BehnScore"></h2>
                 </div>
-                </header>
-                
-        </div>  
+     		<div class="meitner">
+                  	<img src="images/meitner.png">
+                        <h2 class="MeitnerScore"><h2>
+             	</div>
+                <div class="rorschach">
+                      	<img src="images/rorschach.png">
+                       	<h2 class="RorschachScore"><h2>
+                </div>
+                <div class="tinbergen">
+                    	<img src="images/tinbergen.png">
+                       	<h2 class="TinbergenScore"><h2>
+                </div>
+     	</div> 
   <script>
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
@@ -49,13 +41,13 @@
         $('.RorschachScore').text(rorschachscore) 
         $('.TinbergenScore').text(tinbergenscore) 
 
-         io = io.connect()
+        io = io.connect()
 
-         io.emit('connection')
+        io.emit('connection')
 
      
-            io.on('ScoreUpdate',function(data) {
-            // do something with data
+        io.on('ScoreUpdate',function(data) {
+        	// do something with data
                console.log("Score Updated!")
 	       var House = data.House;
                var Score = data.Score;
@@ -73,11 +65,7 @@
                 } else {
                     $(".TinbergenScore").innerHTML = "";
                     $('.TinbergenScore').text(Score);
-
                 }
-               
-           
-         });
-         
+         }); 
         </script>
 </html>
