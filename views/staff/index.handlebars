@@ -1,27 +1,46 @@
 <html>
 <head>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Points Dashboard</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
-<h1>Staff Input Page</h1>
 
-<form action="/staffinput" method="get">
-  <input type="hidden" name="_csrf"  value="bgsquiztoken"/>
-Team: <input type="text" id="teamname" name="teamname"/>
-Score: <input type="text" id="score" name="score"/>
-House: <input type="text" id="house" name="house"/>
-Room: <input type="text" id="room" name="room"/>
-<input type="submit" value="Submit" id="Submit"/>
-
-
-
-</form>
-
-
-
-
-
-
+<div id="container">
+    <form action="/staffinput" method="get" >
+      <input type="hidden" name="_csrf"  value="bgsquiztoken"/>
+      <select id="teamname" name="teamname">
+        <option>Team Name</option>
+      </select>
+      <span> have scored </span>
+      <input type="text" id="score" name="score" maxlength="2" placeholder="8">
+      <span> points for </span>
+      <select id="house" name="house">
+        <option value="house">their house</option>
+        <option value="behn">Behn</option>
+        <option value="meitner">Meitner</option>
+        <option value="rorschach">Rorschach</option>
+        <option value="tinbergen">Tinbergen</option>
+      </select>
+      <span> in round </span>
+      <select id="round" name="round">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+      </select>
+      <span> in the </span>
+      <select id="room" name="room">
+        <option>Main Hall</option>
+        <option>Sports Hall</option>
+        <option>Drama Studio</option>
+      </select>
+      <button id="submit">Submit</button>
+    </form>
+  </div>
 </body>
 <script>
 $("form").submit(function(e) {
