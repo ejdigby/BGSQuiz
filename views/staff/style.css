@@ -15,14 +15,7 @@ body {
       	-webkit-transition: all 2s;
       	font-family: sans-serif;
       	width: 100%;
-}
-
-body:before {
-	content: '';
-      	display: inline-block;
-      	height: 100%;
-      	vertical-align: middle;
-      	margin-right: -0.25em;
+	height: 100%;
 }
 
 #container {
@@ -32,6 +25,7 @@ body:before {
       	padding: 50px 0px;
       	width: 100%;
       	background-color: white;
+	margin-top:22%;
 }
 
 select {
