@@ -1,5 +1,5 @@
 {
-  "name": "Bourne Grammar School Quiz",
+  "name": "BGS-Quiz",
   "version": "0.0.1",
   "description": "Application for managing the points at the annual Bourne Grammar School House Quiz competition",
   "dependencies": {
