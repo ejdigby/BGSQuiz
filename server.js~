@@ -27,7 +27,7 @@ var hbs = exphbs.create({
         Meitner: function () { return Meitner; },
         Tinbergen: function () { return Tinbergen; },
  }
-e});
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
