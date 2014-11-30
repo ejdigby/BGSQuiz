@@ -79,7 +79,6 @@ app.get('/staffinput', function (req, res){
             ,{$set:{"score" : newscore}},
 			  function(err, updated) {
 			      if( err || !updated ) console.log("User not updated");
-			      else console.log("User updated");
 			      });
 		res.send('<script>window.location.href = "http://quiz.ejdigby.com/staff"</script>');
     }
@@ -93,97 +92,68 @@ console.log("Listening at port %s", port)
 
 io.sockets.on('connection', function (socket) {
     console.log("NEW USER")
-    var collection = db.collection('Scores');
-
-    var checkscore = function(num){
+    var scorescollection = db.collection('Scores');
+	var teamcsollection = db.collection('Teams');
+   
+   var checkscore = function(num){
         var housenames = ['Behn' , 'Meitner' , 'Rorschach' , 'Tinbergen'];
         var housescores = [Behn , Meitner, Rorschach, Tinbergen];
 
         var housename = housenames[num];
-	var housescore = housescores[num];
+		var housescore = housescores[num];
 
-        collection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
-	            if (doc.length == 0){
-			//           console.log('No Data Found!');
-			        } else {
-				                  var dbscore = doc[0].score;
-				    //            console.log("Data Found!")
-				                  if (dbscore != housescore){
-						      housescore = dbscore;
-						        
-} else {
-							        //          console.log(housename, "is right");
-							      }     
-				            }
-	    
-
-	    var teamcollection = db.collection('Teams')
-	    teamcollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
-		if (doc.length == 0){
-		    console.log('No Data Found!');
-		    } else {
-			            console.log("Data Found")
-			console.log(doc)
-			housescore = 27
-
-			for (x = 0; x < doc.length; x++){
-			    console.log(doc[0].house);
-			    console.log("House is after for ", doc[x].house)
-					if (doc[x].house  == "Rorschach"){
-					                console.log(doc[x]);
-					                        Rorschach = Rorschach + doc[x].score;
-					                        housescore = Rorschach;
-					                        console.log("NEW HOUSE SCORE IS", housescore);
-					            } else if (doc[x].house == "Meitner"){
-                        console.log(doc[x]);
-							            Meitner = Meitner + doc[x].score;
-							            housescore = Meitner
-							} else if (doc[x].house == "Tinbergan"){
-							                console.log(doc[x]);
-							                Tinbergan = Tinbergan + doc[x].score;
-							                housescore = Tinbergan
-							    } else if (doc[x].house == "Behn"){
-								            console.log(doc[x]);
-								            Behn = Behn + doc[x].score;
-								            housescore = Behn;
-								}
-					}
-
+        scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
+            if (doc.length != 0){
+                var dbscore = doc[0].score;
+			    if (dbscore != housescore){
+					housescore = dbscore;
+				}     
 			}
- 
-		            socket.emit('ScoreUpdate', {'House' : housename, 'Score' : housescore});
+	    });
 
-
-		console.log("At update");
-console.log("House Name Is:", housename);
-console.log("House Score Is:", housescore);
+	    teamscollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
+			if (doc.length != 0){
+	 			for (x = 0; x < doc.lengthitem; x++){
+					if (doc[x].house  == "Rorschach"){
+				        Rorschach = Rorschach + docs[x].score;
+				        housescore = Rorschach;
+				    } else if (doc[x].house == "Meitner"){
+						Meitner = Meitner + doc[x].score;
+						housescore = Meitner
+					} else if (doc[x].house == "Tinbergan"){
+		                Tinbergan = Tinbergan + doc[x].score;
+		                housescore = Tinbergan
+				    } else if (doc[x].house == "Behn"){ 
+			            Behn = Behn + doc[x].score;
+			            housescore = Behn;
+					}
+				}
+			}
 		
-		var newcollection = db.collection('Scores');
-//		newcollection.findAndModify({ query: {"name": housename} , sort: {}, update: { $set : { "score" : housescore } },  upsert: true })
-		newcollection.findAndModify(
-  {name: housename}, // query
-  [],  // sort order
-  {$set: {score: housescore}}, // replacement, replaces only the field "hi"
-  {upsert: true}, // options
-  function(err, object) {
-      if (err){
-          console.warn(err.message);  // returns error if no matching object found
-      }else{
-          console.dir(object);
-      }
-  });
-
-
+		
+		scorescollection.findAndModify(
+		    {"house": housename}, // query
+		    {$set: {"score": housescore}}, // replacement, replaces only the field "hi"
+		    {}, // optionas
+		    function(err, object) {
+				if (err){
+				    console.warn(err.message);  // returns error if no matching object found
+				}else{
+					console.dir(object);
+				}
 		});
-	});
-}
- var i = -1;
+            socket.emit('ScoreUpdate', {'House' : housename, 'Score' : housescore});
+		});
+	}		
+
+var i = -1;
 setInterval(function(){
     i++;  
     if (i > 3){
       i = 0;
     } 
 checkscore(i);
-},3000); 
+},500);
+
 });
 });
