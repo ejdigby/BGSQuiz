@@ -11,7 +11,35 @@
          io.emit('ready')
     </script>
 </head>
-<body>                        
+<body>
+	<div id="leaderboard">
+                <select id="leaderboard-room-select">
+                        <option>Main Hall</option>
+                        <option>Sports Hall</option>
+                        <option>Drama Studio</option>
+                </select>
+                <!-- insert room filter dropdown here -->
+                <ul id="teams">
+                        <!-- dynamically load teams here -->
+                        <li class="first"><h3>1</h3></li>
+                        <li class="second"><h3>2</h3></li>
+                        <li class="third"><h3>3</h3></li>
+			<li><h3>4</h3></li>
+                        <li><h3>5</h3></li>
+                        <li><h3>6</h3></li>
+                        <li><h3>7</h3></li>
+                        <li><h3>8</h3></li>
+                        <li><h3>9</h3></li>
+                        <li><h3>10</h3></li>
+                        <li><h3>11</h3></li>
+                        <li><h3>12</h3></li>
+                        <li><h3>13</h3></li>
+                        <li><h3>14</h3></li>
+                        <li><h3>15</h3></li>
+                        <li><h3>16</h3></li>
+                        <li><h3>17</h3></li>
+                </ul>
+        </div>
 	<div id="scores">         
 		<div class="behn">
                 	<img src="images/behn.png">
@@ -29,7 +57,10 @@
                     	<img src="images/tinbergen.png">
                        	<h2 class="TinbergenScore"><h2>
                 </div>
-     	</div> 
+     	</div>
+	<div id="video">
+                <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>   
+        </div> 
   <script>
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
