@@ -12,20 +12,22 @@ Our school house system is as follows:
 ### Structure
 ```	
   ├── .gitignore
-	├── README.md
-	├── server.js
-	├── package.json
-	└── views
-	    ├── index.handlebars
-	    ├── css
-	    |    └── style.css
-	    └── images
-	    |    ├── behn.png	
-	    |    ├── meitner.png
-	    |    ├── rorschach.png
-	    |    └── tinbergen.png
-	    └── staff
-	         └── index.handlebars
+  ├── README.md
+  ├── server.js
+  ├── package.json
+  └── views
+	├── index.handlebars
+	├── css
+	|    └── style.css
+	└── images
+	|    ├── behn.png	
+	|    ├── meitner.png
+   	|    ├── rorschach.png
+	|    └── tinbergen.png
+	└── staff
+	     ├── index.handlebars
+	     ├── style.css
+	     └── client.js
 
-1 directory, 3 sub-directories,  11 files
+1 directory, 3 sub-directories,  13 files
 ```
