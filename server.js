@@ -110,11 +110,12 @@ io.sockets.on('connection', function (socket) {
 				    //            console.log("Data Found!")
 				                  if (dbscore != housescore){
 						      housescore = dbscore;
-						        } else {
+						        
+} else {
 							        //          console.log(housename, "is right");
 							      }     
 				            }
-	        });
+	    
 
 	    var teamcollection = db.collection('Teams')
 	    teamcollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
@@ -122,10 +123,15 @@ io.sockets.on('connection', function (socket) {
 		    console.log('No Data Found!');
 		    } else {
 			            console.log("Data Found")
-			            for (x = 0; x < doc.lengthitem; x++){
+			console.log(doc)
+			housescore = 27
+
+			for (x = 0; x < doc.length; x++){
+			    console.log(doc[0].house);
+			    console.log("House is after for ", doc[x].house)
 					if (doc[x].house  == "Rorschach"){
 					                console.log(doc[x]);
-					                        Rorschach = Rorschach + docs[x].score;
+					                        Rorschach = Rorschach + doc[x].score;
 					                        housescore = Rorschach;
 					                        console.log("NEW HOUSE SCORE IS", housescore);
 					            } else if (doc[x].house == "Meitner"){
@@ -142,8 +148,10 @@ io.sockets.on('connection', function (socket) {
 								            housescore = Behn;
 								}
 					}
+
 			}
  
+		            socket.emit('ScoreUpdate', {'House' : housename, 'Score' : housescore});
 
 
 		console.log("At update");
@@ -151,19 +159,23 @@ console.log("House Name Is:", housename);
 console.log("House Score Is:", housescore);
 		
 		var newcollection = db.collection('Scores');
+//		newcollection.findAndModify({ query: {"name": housename} , sort: {}, update: { $set : { "score" : housescore } },  upsert: true })
 		newcollection.findAndModify(
-		    {"house": housename}, // query
-		    {$set: {"score": housescore}}, // replacement, replaces only the field "hi"
-		    {}, // optionas
-		    function(err, object) {
-			if (err){
-			    console.warn(err.message);  // returns error if no matching object found
-			    }else{
-				console.dir(object);
-				}
-			});
-            socket.emit('ScoreUpdate', {'House' : housename, 'Score' : housescore});
+  {name: housename}, // query
+  [],  // sort order
+  {$set: {score: housescore}}, // replacement, replaces only the field "hi"
+  {upsert: true}, // options
+  function(err, object) {
+      if (err){
+          console.warn(err.message);  // returns error if no matching object found
+      }else{
+          console.dir(object);
+      }
+  });
+
+
 		});
+	});
 }
  var i = -1;
 setInterval(function(){
