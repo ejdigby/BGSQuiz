@@ -21,15 +21,16 @@ a {
     }
 
 .behn h2 , .meitner h2 , .rorschach h2 , .tinbergen h2  {
-    display: inline-block;
+    display: block;
     font-family: sans-serif;
     color: #000000;
     font-size: 30px;
-    margin-left: 10px;
+    line-height: 100%;
     }
 
 .behn img , .meitner img , .rorschach img , .tinbergen img {
     height: 80%;
+    margin: 5px;
     display: inline-block;    
     }
 
@@ -37,6 +38,7 @@ a {
     height: 100%;
     width: 25%;
     display: inline-block;
+    text-align: center;
 }
 
 .behn {
@@ -63,14 +65,8 @@ a {
 	left: 0;
 }
 
-#leaderboard-room-select {
-	width: 100%;
-	height: 10%;
-	font-size: 18pt;
-}
-
 #teams {
-	height: 90%;
+	height: 100%;
 	overflow-y: scroll;
 }
 
