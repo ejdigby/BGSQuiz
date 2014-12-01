@@ -172,6 +172,6 @@ var  oldhousescore = dbscore;
 		i = 0;
 		} 
 		checkscore(i);
-	},3000); 
+	},100); 
 });
 });
