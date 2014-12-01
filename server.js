@@ -62,6 +62,13 @@ app.get('/staff', function(req, res){
     });
 });
 
+app.get('/raffle', function(req, res){
+    console.log("Request for /raffle");
+    res.render('raffle/index', {
+        showTitle: true,
+    });
+});
+
 
 app.get('/staffinput', function (req, res){
     console.log("Request for /staffinput");
