@@ -122,20 +122,24 @@ var  oldhousescore = dbscore;
 				
 	    
 			teamscollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
-					if (doc.length != 0){          
+			    var newhousescore = 0;
+			    if (doc.length != 0){          
 						for (x = 0; x < doc.length; x++){
 							if (doc[x].house  == "Rorschach"){
-							    Rorschach = Rorschach + doc[x].score;
-							    var newhousescore = Rorschach;
+							    Rorschach = 0;
+							    newhousescore = newhousescore + doc[x].score;
 						
 							} else if (doc[x].house == "Meitner"){
-					            Meitner = Meitner + doc[x].score;
+							    Meitner = 0;
+							    Meitner = Meitner + doc[x].score;
 							    var newhousescore = Meitner
 							} else if (doc[x].house == "Tinbergan"){
-				                Tinbergan = Tinbergan + doc[x].score;
+							    Tinbergan = 0;
+							    Tinbergan = Tinbergan + doc[x].score;
 							    var newhousescore = Tinbergan
 							} else if (doc[x].house == "Behn"){	     
-					            Behn = Behn + doc[x].score;
+							    Behn = 0;
+							    Behn = Behn + doc[x].score;
 							    var newhousescore = Behn;
 							}
 						}
@@ -149,7 +153,7 @@ var  oldhousescore = dbscore;
 						    } else{
 			    console.log("DB SCORE IS", dbscore);
 			    console.log("OLD HOUSE SCORE IS", oldhousescore);
-			    
+			    console.log("SCORE TO ADD = ", newhousescore);
 					socket.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
 
 
