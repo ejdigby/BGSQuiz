@@ -27,7 +27,7 @@ var hbs = exphbs.create({
         Meitner: function () { return Meitner; },
         Tinbergen: function () { return Tinbergen; },
  }
-e});
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -108,10 +108,11 @@ io.sockets.on('connection', function (socket) {
         scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
 	            if (doc.length != 0){
 		            var dbscore = doc[0].score;
+var  oldhousescore = dbscore;
+					
 				    if (dbscore != housescore){
 						housescore = dbscore;
-					       var  oldhousescore = dbscore;
-					
+					       
 	}
 	} 			
 				
