@@ -125,23 +125,8 @@ var  oldhousescore = dbscore;
 			    var newhousescore = 0;
 			    if (doc.length != 0){          
 						for (x = 0; x < doc.length; x++){
-							if (doc[x].house  == "Rorschach"){
-							    Rorschach = 0;
-							    newhousescore = newhousescore + doc[x].score;
+						    newhousescore = newhousescore + doc[x].score;
 						
-							} else if (doc[x].house == "Meitner"){
-							    Meitner = 0;
-							    Meitner = Meitner + doc[x].score;
-							    var newhousescore = Meitner
-							} else if (doc[x].house == "Tinbergan"){
-							    Tinbergan = 0;
-							    Tinbergan = Tinbergan + doc[x].score;
-							    var newhousescore = Tinbergan
-							} else if (doc[x].house == "Behn"){	     
-							    Behn = 0;
-							    Behn = Behn + doc[x].score;
-							    var newhousescore = Behn;
-							}
 						}
 			 		            console.log("Checking Scoes Start")
 					            console.log("old: ", housescore)
