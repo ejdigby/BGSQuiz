@@ -14,7 +14,7 @@ a {
     }
 
 #scores {
-    width: 70%;
+    width: 75%;
     height: 10%;
     font-size: 0;
     float: right;
@@ -56,7 +56,7 @@ a {
 }
 
 #leaderboard {
-	width: 30%;
+	width: 25%;
 	height: 100%;
 	background: #efefef;
 	position: absolute;
@@ -94,7 +94,7 @@ a {
 }
 
 #video {
-	width: 70%;
+	width: 75%;
 	height: 90%;
 	position: absolute;
 	right: 0;
