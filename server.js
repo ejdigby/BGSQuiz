@@ -95,23 +95,25 @@ console.log("Listening at port %s", port)
 
 io.sockets.on('connection', function (socket) {
     console.log("NEW USER")
-    var scorescollection = db.collection('Scores');
-	var teamscollection = db.collection('Teams')
    
     var checkscore = function(num){
+
+
+    var scorescollection = db.collection('Scores');
+	var teamscollection = db.collection('Teams')
+
         var housenames = ['Behn' , 'Meitner' , 'Rorschach' , 'Tinbergen'];
         var housescores = [Behn , Meitner, Rorschach, Tinbergen];
 
         var housename = housenames[num];
 		var housescore = housescores[num];
 
-	console.log("CHECKING IF SCORE IS THE SAME");
-	console.log("House Score Is ", housescore);
+
 	
         scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
 	            if (doc.length != 0){
 		            var dbscore = doc[0].score;
-			console.log("DB SCORE IS", dbscore);
+
 var  oldhousescore = dbscore;
 					
 				    if (dbscore != housescore){
@@ -128,17 +130,12 @@ var  oldhousescore = dbscore;
 						    newhousescore = newhousescore + doc[x].score;
 						
 						}
-			 		            console.log("Checking Scoes Start")
-					            console.log("old: ", housescore)
-					            console.log("new ", newhousescore)
-					            console.log("END CHECKING SCORES")
+
 						    if (newhousescore == housescore){
 						        
 							return
 						    } else{
-			    console.log("DB SCORE IS", dbscore);
-			    console.log("OLD HOUSE SCORE IS", oldhousescore);
-			    console.log("SCORE TO ADD = ", newhousescore);
+
 					socket.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
 						if (housename == 'Rorschach'){
 						    Rorschach = newhousescore;
@@ -166,8 +163,8 @@ var  oldhousescore = dbscore;
 					);
  }}
 			});
-		});
-				}
+
+});				}
  	var i = -1;
 	setInterval(function(){
 		i++;  
