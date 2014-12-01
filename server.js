@@ -105,9 +105,13 @@ io.sockets.on('connection', function (socket) {
         var housename = housenames[num];
 		var housescore = housescores[num];
 
+	console.log("CHECKING IF SCORE IS THE SAME");
+	console.log("House Score Is ", housescore);
+	
         scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
 	            if (doc.length != 0){
 		            var dbscore = doc[0].score;
+			console.log("DB SCORE IS", dbscore);
 var  oldhousescore = dbscore;
 					
 				    if (dbscore != housescore){
@@ -122,37 +126,38 @@ var  oldhousescore = dbscore;
 						for (x = 0; x < doc.length; x++){
 							if (doc[x].house  == "Rorschach"){
 							    Rorschach = Rorschach + doc[x].score;
-							    housescore = Rorschach;
+							    var newhousescore = Rorschach;
 						
 							} else if (doc[x].house == "Meitner"){
 					            Meitner = Meitner + doc[x].score;
-					            housescore = Meitner
+							    var newhousescore = Meitner
 							} else if (doc[x].house == "Tinbergan"){
 				                Tinbergan = Tinbergan + doc[x].score;
-				                housescore = Tinbergan
+							    var newhousescore = Tinbergan
 							} else if (doc[x].house == "Behn"){	     
 					            Behn = Behn + doc[x].score;
-					            housescore = Behn;
+							    var newhousescore = Behn;
 							}
 						}
 			 		            console.log("Checking Scoes Start")
-					            console.log("old: ", oldhousescore)
-					            console.log("new ", housescore)
+					            console.log("old: ", housescore)
+					            console.log("new ", newhousescore)
 					            console.log("END CHECKING SCORES")
-						    if (oldhousescore == housescore){
-						        return
+						    if (newhousescore == housescore){
+						        
+							return
 						    } else{
 			    console.log("DB SCORE IS", dbscore);
 			    console.log("OLD HOUSE SCORE IS", oldhousescore);
-			    if (housescore != oldhousescore){
-					socket.emit('ScoreUpdate', {'House' : housename, 'Score' : housescore});
+			    
+					socket.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
 
 
 
 					scorescollection.findAndModify(
 						{name: housename}, // query
 						[],  // sort order
-						{$set: {score: housescore}}, // replacement, replaces only the field "hi"
+						{$set: {score: newhousescore}}, // replacement, replaces only the field "hi"
 						{upsert: true}, // options
 						function(err, object) {
 						    if (err){
@@ -162,7 +167,7 @@ var  oldhousescore = dbscore;
 						    }
 						}
 					);
- }}}
+ }}
 			});
 		});
 				}
