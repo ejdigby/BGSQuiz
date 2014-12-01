@@ -140,7 +140,15 @@ var  oldhousescore = dbscore;
 			    console.log("OLD HOUSE SCORE IS", oldhousescore);
 			    console.log("SCORE TO ADD = ", newhousescore);
 					socket.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
-
+						if (housename == 'Rorschach'){
+						    Rorschach = newhousescore;
+						}else if (housename == 'Meitner'){
+						    Meitner = newhousescore;
+						} else if (housename == 'Behn'){
+						    Behn = newhousescore;
+						} else if (housename == 'Tinbergan'){
+						    Tinbergan = newhousescore;
+						}
 
 
 					scorescollection.findAndModify(
