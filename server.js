@@ -33,6 +33,18 @@ db.collection('Scores').update(
 
 
 
+var teamlist = [];
+
+  db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
+	for (x = 0; x < doc.length; x++){
+	  teamlist.push(doc[x].teamname);
+	}
+  });	
+console.log(teamlist)
+//teamlist = ['Team 1', 'Team 2', 'Team 3'];
+
+// scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
+
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
@@ -40,8 +52,9 @@ var hbs = exphbs.create({
         Behn: function () { return Behn; },
         Meitner: function () { return Meitner; },
         Tinbergen: function () { return Tinbergen; },
- }
-});
+	Team: function() { return teamlist },
+	}});
+
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
