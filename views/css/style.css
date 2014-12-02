@@ -17,22 +17,33 @@ a {
     width: 75%;
     height: 10%;
     font-size: 0;
-    float: right;
-    }
+    float:right;
+  }
 
-.behn h2 , .meitner h2 , .rorschach h2 , .tinbergen h2  {
-    display: block;
-    font-family: sans-serif;
-    color: #000000;
-    font-size: 30px;
-    line-height: 100%;
-    }
+.score-container {
+	text-align: center;
+	height: 100%;
+	margin: 0 auto;
+	display: inline-block;
+}
 
-.behn img , .meitner img , .rorschach img , .tinbergen img {
+.score-container img {
     height: 80%;
     margin: 5px;
-    display: inline-block;    
+    display: inline;
+    float: left;
     }
+
+.behn h2, .meitner h2, .rorschach h2, .tinbergen h2 {
+	font-size: 28pt;
+	margin-left: 10px;
+	top: 50%;
+	position: relative;
+	transform: translateY(-50%);
+	float: right;
+	font-family: sans-serif;
+	font-weight: normal; 
+}
 
 .behn, .meitner, .rorschach, .tinbergen  {
     height: 100%;
