@@ -16,5 +16,12 @@ $(document).ready(function() {
     else {
       $('body').css("background-color", "white");
     }
-  })
+  });
+  
+  $('#teamname').change(function() {
+  if ($(this).val() == "+") {
+     var newTeam = alert('What is the name of the team that you would like to add?')
+     $('#teamname').append('<option selected>' + newTeam + '</option>')
+  }
+}) 
 });
