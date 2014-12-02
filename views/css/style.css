@@ -21,28 +21,30 @@ a {
   }
 
 .score-container {
-	text-align: center;
-	height: 100%;
-	margin: 0 auto;
-	display: inline-block;
+    text-align: center;
+    height: 100%;
+    margin: 0 auto;
+    display: inline-block;
 }
 
 .score-container img {
     height: 80%;
-    margin: 5px;
     display: inline;
     float: left;
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
 }
 
 .behn h2, .meitner h2, .rorschach h2, .tinbergen h2 {
-	font-size: 28pt;
-	margin-left: 10px;
-	top: 50%;
-	position: relative;
-	transform: translateY(-50%);
-	float: right;
-	font-family: sans-serif;
-	font-weight: normal; 
+    font-size: 6vh;
+    margin-left: 10px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    float: right;
+    font-family: sans-serif; 
+    font-weight: normal;
 }
 
 .behn, .meitner, .rorschach, .tinbergen  {
