@@ -46,7 +46,7 @@ var hbs = exphbs.create({
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(bodyParser.json()); // Automatically parses form data
+app.use(bodyParser()); // Automatically parses form data
 
 app.get('/', function (req, res, next) {
     console.log("Request for /");
@@ -70,13 +70,17 @@ app.get('/raffle', function(req, res){
 });
 
 
-app.get('/staffinput', function (req, res){
+app.post('/staffinput', function (req, res){
     console.log("Request for /staffinput");
-    var teamname = req.query['teamname'];
-    var score = parseInt(req.query['score']);
-    var house = req.query['house'];
-    var room = req.query['room'];
-   
+    var teamname = req.body.teamname;
+    var score = parseInt(req.body.score);
+    var house = req.body.house;
+    var room = req.body.room;
+    
+    console.log(req.body.teamname)
+    console.log(score)
+    console.log(house)
+    console.log(room)
     var collection = db.collection('Teams');
 
 

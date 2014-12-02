@@ -10,7 +10,7 @@
 <body>
 
 <div id="container">
-    <form action="/staffinput" method="get" >
+    <form action="/staffinput" method="post" >
       <input type="hidden" name="_csrf"  value="bgsquiztoken"/>
       <select id="teamname" name="teamname">
         <option>Team Name</option>
@@ -49,11 +49,11 @@
 $("form").submit(function(e) {
     e.preventDefault(); // Prevents the page from refreshing
     var $this = $(this); // `this` refers to the current form element
-    $.get(
+    $.post(
         $this.attr("action"), // Gets the URL to sent the post to
        $this.serialize(), // Serializes form data in standard format
-        //function(data) { /** code to handle response **/ },
-        //"json" // The format the response should be in
+        function(data) { /** code to handle response **/ },
+        "json" // The format the response should be in
     );
 });
 </script>
