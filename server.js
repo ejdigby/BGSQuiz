@@ -131,8 +131,15 @@ app.use(express.static('views'));
 server.listen(port);
 console.log("Listening at port %s", port)
 
+
 io.sockets.on('connection', function (socket) {
+
     console.log("NEW USER")
+
+  socket.on('disconnect', function () {
+      console.log("USER DISCONECTED")
+  });
+
    
     var checkscore = function(num){
 
