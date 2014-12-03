@@ -1,11 +1,13 @@
 <html>
-<head>
+0<head>
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Points Dashboard</title>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="staff/style.css">
-<script src="staff/client.js"></script>
+	<script src="staff/handlebars-v2.0.0.js"></script>
+	<link rel="stylesheet" type="text/css" href="staff/style.css">
+	<script src="staff/client.js"></script>
+	
 </head>
 <body>
 
@@ -46,6 +48,12 @@
 <script>
   console.log({{Team}})
 </script>
+<ul>
+   {{#each Team}}
+      <li>{{this}}</li>
+   {{/each}}
+</ul>
+
   </div>
 
 
@@ -53,6 +61,19 @@
 
 
 <script>
+
+	string = "{{Team}}"
+	console.log(string)
+	var array = string.split(',');
+	console.log(array)
+	var letter = "";
+	for (i=0; i < array.length; i++){
+	    console.log(array[i]);
+            letter += "<option value='" + array[i] + "'>" + array[i] + "</option>";
+}
+	letter += "<option value='+'>+</option>";
+	document.getElementById("teamname").innerHTML = letter;
+
 $("form").submit(function(e) {
     e.preventDefault(); // Prevents the page from refreshing
     var $this = $(this); // `this` refers to the current form element
@@ -63,5 +84,6 @@ $("form").submit(function(e) {
         "json" // The format the response should be in
     );
 });
+
 </script>
 </html>
