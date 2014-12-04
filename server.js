@@ -75,12 +75,20 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
-    grabteams()
-    console.log("Request for /staff");
-    res.render('staff/index', {
-        showTitle: true,
-    });
-    
+   if (!req.query.token){
+       res.redirect("http://quiz.ejdigby.com/login")
+       return;
+   }
+    if (req.query.token == config.logintoken){
+	grabteams()
+	console.log("Request for /staff");
+	res.render('staff/index', {
+            showTitle: true,
+	});
+    } else {
+	res.redirect("http://quiz.ejdigby.com/login")
+	return;
+    }
 });
 
 app.get('/raffle', function(req, res){
@@ -90,6 +98,34 @@ app.get('/raffle', function(req, res){
     });
 });
 
+app.get('/login', function(req, res){
+    console.log("Request for /login");
+    res.render('login/index', {
+	showTitle: true,
+    });
+});
+
+app.post('/logininput', function(req, res){
+    console.log("Request for /logininput");
+
+
+    var password = req.body.password
+    var csrf = req.body._csrf;
+
+    if (csrf == privatetoken){
+	console.log("Token Is Correct!")
+	if (password == config.password){
+	    console.log("Password is correct!");
+	    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken);
+	    return;
+	} else {
+	    console.log("Password is wrong!");
+	    res.redirect("http://quiz.ejdigby.com/login");
+	}
+} else {
+    console.log("Token is wrong");
+}
+});
 
 app.post('/staffinput', function (req, res){
     console.log("Request for /staffinput");
