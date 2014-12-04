@@ -32,15 +32,16 @@ db.collection('Scores').update(
 );
 
 
-
 var teamlist = [];
-
+var grabteams = function(){
   db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
-	for (x = 0; x < doc.length; x++){
+      teamlist = [];
+      for (x = 0; x < doc.length; x++){
 	  teamlist.push(doc[x].teamname);
 	}
   });	
 console.log(teamlist)
+}
 //teamlist = ['Team 1', 'Team 2', 'Team 3'];
 
 // scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
@@ -70,10 +71,12 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
+    grabteams()
     console.log("Request for /staff");
     res.render('staff/index', {
         showTitle: true,
     });
+    
 });
 
 app.get('/raffle', function(req, res){
