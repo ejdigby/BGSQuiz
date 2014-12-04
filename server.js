@@ -194,8 +194,8 @@ var  oldhousescore = dbscore;
 						    Meitner = newhousescore;
 						} else if (housename == 'Behn'){
 						    Behn = newhousescore;
-						} else if (housename == 'Tinbergan'){
-						    Tinbergan = newhousescore;
+						} else if (housename == 'Tinbergen'){
+						    Tinbergen = newhousescore;
 						}
 
 
