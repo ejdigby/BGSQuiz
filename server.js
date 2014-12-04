@@ -48,16 +48,6 @@ console.log("TEAM LIST IS:",teamlist)
 //teamlist = ['Team 1', 'Team 2', 'Team 3'];
 
 // scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
-var leaderboard = [];
-var setleaderboard = function(){
-     db.collection('Teams').find().sort({ score : 1}).toArray(function(err, doc){
-	 for (x = 0; x < doc.length; x++){
-	     leaderboard.push(doc[x].teamname);
-	 }
-});
-
-}
-setleaderboard()
 
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
@@ -68,7 +58,7 @@ var hbs = exphbs.create({
         Tinbergen: function () { return Tinbergen; },
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
-	Leaderboard: function() { return leaderboard }
+//	Leaderboard: function() { return leaderboard }
 	}});
 
 
@@ -158,13 +148,27 @@ console.log("Listening at port %s", port)
 io.sockets.on('connection', function (socket) {
 
     console.log("NEW USER")
-    setleaderboard()
+
   socket.on('disconnect', function () {
       console.log("USER DISCONECTED")
   });
 
+
+
+
    
     var checkscore = function(num){
+
+var leaderboard = [];
+
+     db.collection('Teams').find().sort({ score : 1}).toArray(function(err, doc){
+	 for (x = 0; x < doc.length; x++){
+	     leaderboard.push(doc[x].teamname);
+	 }
+
+ io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard});
+
+});
 
 
     var scorescollection = db.collection('Scores');

@@ -96,13 +96,18 @@
                 }
          }); 
 
+	io.on('LeaderboardUpdate',function(data) {
+	     leaderboard = data.LeaderBoard;
+	     
 
-	string = "{{Leaderboard}}"
-	var leaderboard = string.split(',');
 	var letter = "";
 	for (i=0; i < leaderboard.length; i++){
             letter += "<li><h3>" + (i+1) + ") " + leaderboard[i] + "</h3></li>";
 	}
 	document.getElementById("teams").innerHTML = letter;
+
+	});
+
+
         </script>
 </html>
