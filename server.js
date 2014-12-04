@@ -7,7 +7,7 @@ var MongoClient = require('mongodb').MongoClient;
 var format = require('util').format;
 var port = 84;
 var exphbs  = require('express-handlebars');
-
+var privatetoken = "KWbqcWL57s";
 // Define Scores
 var Rorschach = 0;
 var Behn = 0;
@@ -53,6 +53,7 @@ var hbs = exphbs.create({
         Meitner: function () { return Meitner; },
         Tinbergen: function () { return Tinbergen; },
 	Team: function() { return teamlist },
+	Token: function() { return privatetoken },
 	}});
 
 
@@ -89,13 +90,15 @@ app.post('/staffinput', function (req, res){
     var score = parseInt(req.body.score);
     var house = req.body.house;
     var room = req.body.room;
-    
+    var csrf = req.body._csrf;
+
     console.log(req.body.teamname)
     console.log(score)
     console.log(house)
     console.log(room)
+    console.log(csrf);
     var collection = db.collection('Teams');
-
+    if (csrf == privatetoken){
 
     teamname = teamname.trim(); 
     collection.find({"teamname" : teamname}).toArray(function(err, doc){
@@ -124,6 +127,9 @@ app.post('/staffinput', function (req, res){
 		res.send('<script>window.location.href = "http://quiz.ejdigby.com/staff"</script>');
     }
 	});
+}else {
+    console.log("Token Is Wrong")
+}
 });
 
 app.use(express.static('views'));

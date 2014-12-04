@@ -7,12 +7,13 @@
 	<script src="staff/handlebars-v2.0.0.js"></script>
 	<link rel="stylesheet" type="text/css" href="staff/style.css">
 	
+	console.log("{{Token}}")
 </head>
 <body>
 
 <div id="container">
     <form action="/staffinput" method="post" >
-      <input type="hidden" name="_csrf"  value="bgsquiztoken"/>
+      <input type="hidden" name="_csrf"  value="{{Token}}"/>
       <select id="teamname" name="teamname">
         <option>Team Name</option>
 	<option value="add">+</option>
