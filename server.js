@@ -158,7 +158,7 @@ console.log("Listening at port %s", port)
 io.sockets.on('connection', function (socket) {
 
     console.log("NEW USER")
-
+    setleaderboard()
   socket.on('disconnect', function () {
       console.log("USER DISCONECTED")
   });
