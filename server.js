@@ -48,16 +48,6 @@ console.log("TEAM LIST IS:",teamlist)
 //teamlist = ['Team 1', 'Team 2', 'Team 3'];
 
 // scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
-var leaderboard = [];
-var setleaderboard = function(){
-     db.collection('Teams').find().sort({ score : 1}).toArray(function(err, doc){
-	 for (x = 0; x < doc.length; x++){
-	     leaderboard.push(doc[x].teamname);
-	 }
-});
-
-}
-setleaderboard()
 
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
@@ -68,7 +58,7 @@ var hbs = exphbs.create({
         Tinbergen: function () { return Tinbergen; },
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
-	Leaderboard: function() { return leaderboard }
+//	Leaderboard: function() { return leaderboard }
 	}});
 
 
@@ -85,12 +75,20 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
-    grabteams()
-    console.log("Request for /staff");
-    res.render('staff/index', {
-        showTitle: true,
-    });
-    
+   if (!req.query.token){
+       res.redirect("http://quiz.ejdigby.com/login")
+       return;
+   }
+    if (req.query.token == config.logintoken){
+	grabteams()
+	console.log("Request for /staff");
+	res.render('staff/index', {
+            showTitle: true,
+	});
+    } else {
+	res.redirect("http://quiz.ejdigby.com/login")
+	return;
+    }
 });
 
 app.get('/raffle', function(req, res){
@@ -100,6 +98,34 @@ app.get('/raffle', function(req, res){
     });
 });
 
+app.get('/login', function(req, res){
+    console.log("Request for /login");
+    res.render('login/index', {
+	showTitle: true,
+    });
+});
+
+app.post('/logininput', function(req, res){
+    console.log("Request for /logininput");
+
+
+    var password = req.body.password
+    var csrf = req.body._csrf;
+
+    if (csrf == privatetoken){
+	console.log("Token Is Correct!")
+	if (password == config.password){
+	    console.log("Password is correct!");
+	    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken);
+	    return;
+	} else {
+	    console.log("Password is wrong!");
+	    res.redirect("http://quiz.ejdigby.com/login");
+	}
+} else {
+    console.log("Token is wrong");
+}
+});
 
 app.post('/staffinput', function (req, res){
     console.log("Request for /staffinput");
@@ -158,13 +184,28 @@ console.log("Listening at port %s", port)
 io.sockets.on('connection', function (socket) {
 
     console.log("NEW USER")
-    setleaderboard()
+
   socket.on('disconnect', function () {
       console.log("USER DISCONECTED")
   });
 
+
+
+
    
     var checkscore = function(num){
+
+var leaderboard = [];
+
+     db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
+	 leaderboard = [];
+	 for (x = 0; x < doc.length; x++){
+	     leaderboard.push(doc[x].teamname);
+	 }
+
+ io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard});
+
+});
 
 
     var scorescollection = db.collection('Scores');
