@@ -7,7 +7,9 @@ var MongoClient = require('mongodb').MongoClient;
 var format = require('util').format;
 var port = 84;
 var exphbs  = require('express-handlebars');
-var privatetoken = "KWbqcWL57s";
+var config = require('./config.json');
+var privatetoken = config.token;
+
 // Define Scores
 var Rorschach = 0;
 var Behn = 0;
