@@ -161,7 +161,8 @@ io.sockets.on('connection', function (socket) {
 
 var leaderboard = [];
 
-     db.collection('Teams').find().sort({ score : 1}).toArray(function(err, doc){
+     db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
+	 leaderboard = [];
 	 for (x = 0; x < doc.length; x++){
 	     leaderboard.push(doc[x].teamname);
 	 }
