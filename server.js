@@ -170,11 +170,7 @@ app.post('/staff', function (req, res){
 				      });
 	//		res.send('http://google.com');
 			res.send('<script>window.location.href = "http://google.com"</script>');
-	io.scokets.on('connectiontostaff', function(scoket){
-     if (userupdated != "null"){
-	 socket.emit('UpdateError', {'Error' : userupdated});
-      }		
-    });
+
 	}		
 
 });
