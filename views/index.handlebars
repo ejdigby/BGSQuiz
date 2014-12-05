@@ -21,16 +21,6 @@
 	<div id="leaderboard">
                 <ul id="teams">
                         <!-- dynamically load teams here -->
-                        <li><h3>1</h3></li>
-                        <li><h3>2</h3></li>
-                        <li><h3>3</h3></li>
-			<li><h3>4</h3></li>
-                        <li><h3>5</h3></li>
-			<li><h3>6</h3></li>
-			<li><h3>7</h3></li>
-                        <li><h3>8</h3></li>
-                        <li><h3>9</h3></li>
-                        <li><h3>10</h3></li>
 		</ul>
         </div>
 	<div id="scores">         
@@ -106,7 +96,7 @@
 
 	var letter = "";
 	for (i=0; i < leaderboard.length; i++){
-            letter += "<li><h3>" + (i+1) + ") " + leaderboard[i] + "</h3></li>";
+            letter += "<li><h3>" + (i+1) + ". " + leaderboard[i] + "</h3></li>";
 	}
 	document.getElementById("teams").innerHTML = letter;
 
