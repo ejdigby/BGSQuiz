@@ -138,49 +138,51 @@ app.post('/staff', function (req, res){
     var collection = db.collection('Teams');
     if (csrf == privatetoken){
 
-    teamname = teamname.trim(); 
-    collection.find({"teamname" : teamname}).toArray(function(err, doc){
-	if (doc.length == 0){
-        db.collection('Teams',{safe:true}, function(err, collection) {    
-	        collection.insert({
-		            "teamname" : teamname,
-		            "score" : score, 
-		            "house" : house, 
-		            "room" : room
-		    }, function(err, doc) {
-			        if(err){ console.log("Error on document insert"); }
-			        else{ console.log("Document saved succesfuly"); }
-			    });
-	    });
-	    } else {
-        var dbscore = parseInt(doc[0].score);
-        var newscore = dbscore + score;
+	    teamname = teamname.trim(); 
+	    collection.find({"teamname" : teamname}).toArray(function(err, doc){
+		if (doc.length == 0){
+	        db.collection('Teams',{safe:true}, function(err, collection) {    
+		        collection.insert({
+			            "teamname" : teamname,
+			            "score" : score, 
+			            "house" : house, 
+			            "room" : room
+			    }, function(err, doc) {
+				        if(err) console.log("Error on document insert"); 
+				        else console.log("Document saved succesfuly"); 
+				    });
+		    });
+		    } else {
+	        var dbscore = parseInt(doc[0].score);
+	        var newscore = dbscore + score;
 
-		var userupdated = "null";
-        collection.update({"teamname" : teamname, "house" : house, "room" : room}
-            ,{$set:{"score" : newscore}},
-			  function(err, updated) {
-			      if( err || !updated ) {
-				  console.log("User not updated");
-				  userupdated = false;
-			      }else{
-				  console.log("User updated");
-				  userupdated = true;
-	      }
-			      });
-//		res.send('http://google.com');
-		res.send('<script>window.location.href = "http://google.com"</script>');
-}		
-io.scokets.on('connectiontostaff', function(scoket){
+			var userupdated = "null";
+	        collection.update({"teamname" : teamname, "house" : house, "room" : room}
+	            ,{$set:{"score" : newscore}},
+				  function(err, updated) {
+				      if( err || !updated ) {
+					  console.log("User not updated");
+					  userupdated = false;
+				      }else{
+					  console.log("User updated");
+					  userupdated = true;
+		      }
+				      });
+	//		res.send('http://google.com');
+			res.send('<script>window.location.href = "http://google.com"</script>');
+	io.scokets.on('connectiontostaff', function(scoket){
      if (userupdated != "null"){
 	 socket.emit('UpdateError', {'Error' : userupdated});
       }		
     });
-else {
+	}		
+
+});
+}else {
     console.log("Token Is Wrong")
 }
 });
-}});
+
 app.use(express.static('views'));
 
 server.listen(port);
