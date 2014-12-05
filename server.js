@@ -135,11 +135,6 @@ app.post('/staffinput', function (req, res){
     var room = req.body.room;
     var csrf = req.body._csrf;
 
-    console.log(req.body.teamname)
-    console.log(score)
-    console.log(house)
-    console.log(room)
-    console.log(csrf);
     var collection = db.collection('Teams');
     if (csrf == privatetoken){
 
