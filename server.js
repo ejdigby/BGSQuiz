@@ -105,7 +105,7 @@ app.get('/login', function(req, res){
     });
 });
 
-app.post('/logininput', function(req, res){
+app.post('/login', function(req, res){
     console.log("Request for /logininput");
 
 
@@ -127,7 +127,7 @@ app.post('/logininput', function(req, res){
 }
 });
 
-app.post('/staffinput', function (req, res){
+app.post('/staff', function (req, res){
     console.log("Request for /staffinput");
     var teamname = req.body.teamname;
     var score = parseInt(req.body.score);
