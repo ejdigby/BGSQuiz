@@ -156,20 +156,31 @@ app.post('/staff', function (req, res){
         var dbscore = parseInt(doc[0].score);
         var newscore = dbscore + score;
 
+		var userupdated = "null";
         collection.update({"teamname" : teamname, "house" : house, "room" : room}
             ,{$set:{"score" : newscore}},
 			  function(err, updated) {
-			      if( err || !updated ) console.log("User not updated");
-			      else console.log("User updated");
+			      if( err || !updated ) {
+				  console.log("User not updated");
+				  userupdated = false;
+			      }else{
+				  console.log("User updated");
+				  userupdated = true;
+	      }
 			      });
-		res.send('<script>window.location.href = "http://quiz.ejdigby.com/staff"</script>');
-    }
-	});
-}else {
+//		res.send('http://google.com');
+		res.send('<script>window.location.href = "http://google.com"</script>');
+}		
+io.scokets.on('connectiontostaff', function(scoket){
+     if (userupdated != "null"){
+	 socket.emit('UpdateError', {'Error' : userupdated});
+      }		
+    });
+else {
     console.log("Token Is Wrong")
 }
 });
-
+}});
 app.use(express.static('views'));
 
 server.listen(port);
@@ -180,6 +191,7 @@ io.sockets.on('connection', function (socket) {
 
     console.log("NEW USER")
 
+    
   socket.on('disconnect', function () {
       console.log("USER DISCONECTED")
   });
