@@ -2,14 +2,15 @@
 <head>
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Points Dashboard</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<form method="post" action="/logininput">
- <input type="hidden" name="_csrf" value="{{Token}}"/>
-Staff Password:<input type="text" name="password"/>
-<input type="submit" value="Submit"/>
+<form method="post" action="/logininput" id="login">
+ 	<h1>This page is password protected.</h1>
+	<input type="hidden" name="_csrf" value="{{Token}}"/>
+	<input id="passwordBox" type="password" name="password"/>
+	<input id="enterButton" type="submit" value="Enter"/>
 </form>
 </body>
 </html>
