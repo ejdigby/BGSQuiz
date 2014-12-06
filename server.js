@@ -111,6 +111,7 @@ module.exports = {
 	    });
     }else {
 	console.log("Token Is Wrong")
+	res.redirect("http://google.com");
     }
 
 }

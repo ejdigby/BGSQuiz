@@ -65,6 +65,7 @@ app.post('/login', function(req, res){
 	}
 } else {
     console.log("Token is wrong");
+    res.redirect("http://google.com");
 }
 });
 
