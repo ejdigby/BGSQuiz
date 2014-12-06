@@ -41,13 +41,9 @@ var grabteams = function(){
       teamlist = [];
       for (x = 0; x < doc.length; x++){
 	  teamlist.push(doc[x].teamname);
-
 	} 
   });	
-console.log(teamlist)
 }
-console.log("TEAM LIST IS:",teamlist)
-
 
 var rafflewinner = "";
 var raffle = function(room){
@@ -55,20 +51,16 @@ var raffle = function(room){
 	if (doc.length == 0){
 	    rafflewinner = "There Are No Teams In The " + room;
 	 } else {
-      var rafflelist = [];
-      for (x = 0; x < doc.length; x++){
-	  rafflelist.push(doc[x].teamname);
-	}
-	console.log("Raffle list : ", rafflelist)
-      var number = Math.floor((Math.random() * rafflelist.length) + 1)
-	rafflewinner = rafflelist[number];
-	console.log(rafflewinner);
-}
+	     var rafflelist = [];
+	     for (x = 0; x < doc.length; x++){
+		 rafflelist.push(doc[x].teamname);
+	     }
+	     var number = Math.floor((Math.random() * rafflelist.length) + 1)
+	     rafflewinner = rafflelist[number];
+	 }
   });	
 
-}//teamlist = ['Team 1', 'Team 2', 'Team 3'];
-
-// scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
+}
 
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
@@ -80,9 +72,8 @@ var hbs = exphbs.create({
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
 	Raffle:function() { return rafflewinner }
-//	Leaderboard: function() { return leaderboard }
-	}});
-
+    }
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -97,17 +88,20 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
+   console.log("Request for /staff);
    if (!req.query.token){
+       console.log("Request for /staff rejected")
        res.redirect("http://quiz.ejdigby.com/login")
        return;
    }
-    if (req.query.token == config.logintoken){
-	grabteams()
-	console.log("Request for /staff");
-	res.render('staff/index', {
-            showTitle: true,
-	});
+   if (req.query.token == config.logintoken){
+       grabteams()
+       console.log("Request for /staff accepted");
+       res.render('staff/index', {
+	   showTitle: true,
+       });
     } else {
+	console.log("Request for /staff rejected")
 	res.redirect("http://quiz.ejdigby.com/login")
 	return;
     }
@@ -120,22 +114,19 @@ app.get('/raffle', function(req, res){
     });
 });
 app.post('/raffle', function(req, res){
+    console.log("Post request for /raffle");
     rafflewinner = "";
     raffle(req.body.room)
     res.redirect('/raffle')
 });
-
 app.get('/login', function(req, res){
     console.log("Request for /login");
     res.render('login/index', {
 	showTitle: true,
     });
 });
-
 app.post('/login', function(req, res){
-    console.log("Request for /logininput");
-
-
+    console.log("Post request for /login");
     var password = req.body.password
     var csrf = req.body._csrf;
 
@@ -153,70 +144,58 @@ app.post('/login', function(req, res){
     console.log("Token is wrong");
 }
 });
-
 app.post('/staff', function (req, res){
-    console.log("Request for /staffinput");
+    console.log("Post request for /staff");
     var teamname = req.body.teamname;
     var score = parseInt(req.body.score);
     var house = req.body.house;
     var room = req.body.room;
+    var round = req.body.round;
     var csrf = req.body._csrf;
     
-    console.log(teamname)
-    console.log(score)
-    console.log(house)
-    console.log(room)
-    console.log(csrf)
-
-
     var collection = db.collection('Teams');
     if (csrf == privatetoken){
-
 	    teamname = teamname.trim(); 
 	    collection.find({"teamname" : teamname}).toArray(function(err, doc){
 		if (doc.length == 0){
-	        db.collection('Teams',{safe:true}, function(err, collection) {    
+	            db.collection('Teams',{safe:true}, function(err, collection) {    
 		        collection.insert({
-			            "teamname" : teamname,
-			            "score" : score, 
-			            "house" : house, 
-			            "room" : room
-			    }, function(err, doc) {
-				        if(err){
-					    console.log("Error on document insert"); 
-					    res.end("no");
-				        } else{
-					    console.log("Document saved succesfuly"); 
-					    res.end("yes");
-}
-				    });
+		            "teamname" : teamname,
+			    "score" : score, 
+			    "house" : house, 
+			    "room" : room
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
 		    });
-		    } else {
-	        var dbscore = parseInt(doc[0].score);
-	        var newscore = dbscore + score;
+		} else {
+	            var dbscore = parseInt(doc[0].score);
+	            var newscore = dbscore + score;
+		    var userupdated = "null";
 
-			var userupdated = "null";
-	        collection.update({"teamname" : teamname, "house" : house, "room" : room}
-	            ,{$set:{"score" : newscore}},
-				  function(err, updated) {
-				      if( err || !updated ) {
-					  console.log("User not updated");
-					  res.end("no");
-				      }else{
-					  console.log("User updated");
-					  userupdated = true;
-					  res.end("yes");
-		      }
+	            collection.update({"teamname" : teamname, "house" : house, "room" : room}
+				      ,{$set:{"score" : newscore}},
+				      function(err, updated) {
+					  if( err || !updated ) {
+					      console.log("User not updated");
+					      res.end("no");
+					  }else{
+					      console.log("User updated");
+					      userupdated = true;
+					      res.end("yes");
+					  }
 				      });
-	//		res.send('http://google.com');
-//			res.send('<script>window.location.href = "http://google.com"</script>');
-
-	}		
-
-});
-}else {
-    console.log("Token Is Wrong")
-}
+		}		
+	    });
+    }else {
+	console.log("Token Is Wrong")
+    }
 });
 
 app.use(express.static('views'));
@@ -224,109 +203,87 @@ app.use(express.static('views'));
 server.listen(port);
 console.log("Listening at port %s", port)
 
-
 io.sockets.on('connection', function (socket) {
-
     console.log("NEW USER")
-
-    
-  socket.on('disconnect', function () {
-      console.log("USER DISCONECTED")
-  });
-
-
-
-
+    socket.on('disconnect', function () {
+	console.log("USER DISCONECTED")
+    });
    
     var checkscore = function(num){
 
-var leaderboard = [];
-var leaderboardscores = [];
-     db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
-	 leaderboard = [];
-	 for (x = 0; x < doc.length; x++){
-	     leaderboard.push(doc[x].teamname);
-	     leaderboardscores.push(doc[x].score);
-	 }
-
- io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores});
-
-});
-
-
-    var scorescollection = db.collection('Scores');
+	var leaderboard = [];
+	var leaderboardscores = [];
+	db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
+	    leaderboard = [];
+	    for (x = 0; x < doc.length; x++){
+		leaderboard.push(doc[x].teamname);
+		leaderboardscores.push(doc[x].score);
+	    }
+	    io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores});
+	});
+	var scorescollection = db.collection('Scores');
 	var teamscollection = db.collection('Teams')
 
         var housenames = ['Behn' , 'Meitner' , 'Rorschach' , 'Tinbergen'];
         var housescores = [Behn , Meitner, Rorschach, Tinbergen];
 
         var housename = housenames[num];
-		var housescore = housescores[num];
-
-
-	
+	var housescore = housescores[num];
+		
         scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
-	            if (doc.length != 0){
-		            var dbscore = doc[0].score;
+	    if (doc.length != 0){
+		var dbscore = doc[0].score;
+		var  oldhousescore = dbscore;
+		if (dbscore != housescore){
+		    housescore = dbscore;
+		}
+	    } 			
+	    teamscollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
+		var newhousescore = 0;
+		if (doc.length != 0){          
+		    for (x = 0; x < doc.length; x++){
+			newhousescore = newhousescore + doc[x].score;
+		    }
+		    if (newhousescore == housescore){
+			return
+		    } else{
+			
+			io.sockets.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
+			
+			if (housename == 'Rorschach'){
+			    Rorschach = newhousescore;
+			}else if (housename == 'Meitner'){
+			    Meitner = newhousescore;
+			} else if (housename == 'Behn'){
+			    Behn = newhousescore;
+			} else if (housename == 'Tinbergen'){
+			    Tinbergen = newhousescore;
+			}
 
-var  oldhousescore = dbscore;
-					
-				    if (dbscore != housescore){
-						housescore = dbscore;
-					       
-	}
-	} 			
-				
-	    
-			teamscollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
-		    var newhousescore = 0;
-			    if (doc.length != 0){          
-						for (x = 0; x < doc.length; x++){
-						    newhousescore = newhousescore + doc[x].score;
-						
-						}
-
-						    if (newhousescore == housescore){
-						        
-							return
-						    } else{
-
-					io.sockets.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
-						if (housename == 'Rorschach'){
-						    Rorschach = newhousescore;
-						}else if (housename == 'Meitner'){
-						    Meitner = newhousescore;
-						} else if (housename == 'Behn'){
-						    Behn = newhousescore;
-						} else if (housename == 'Tinbergen'){
-						    Tinbergen = newhousescore;
-						}
-
-
-					scorescollection.findAndModify(
-						{name: housename}, // query
-						[],  // sort order
-						{$set: {score: newhousescore}}, // replacement, replaces only the field "hi"
-						{upsert: true}, // options
-						function(err, object) {
-						    if (err){
-						        console.warn(err.message);  // returns error if no matching object found
-						    }else{
-						        console.dir(object);
-						    }
-						}
-					);
- }}
-			});
-
-});				}
- 	var i = -1;
-	setInterval(function(){
-		i++;  
-		if (i > 3){
-		i = 0;
-		} 
-		checkscore(i);
-	},100); 
+			scorescollection.findAndModify(
+			    {name: housename}, // query
+			    [],  // sort order
+			    {$set: {score: newhousescore}}, // replacement, replaces only the field "hi"
+			    {upsert: true}, // options
+			    function(err, object) {
+				if (err){
+				    console.warn(err.message);  // returns error if no matching object found
+				}else{
+				    console.dir(object);
+				}
+			    }
+			);
+		    }}
+	    });
+	});
+    }
+    var i = -1;
+    setInterval(function(){
+	i++;  
+	if (i > 3){
+	    i = 0;
+	} 
+	checkscore(i);
+    },100); 
 });
 });
