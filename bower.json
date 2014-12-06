@@ -2,7 +2,8 @@
   "name": "quiz",
   "version": "0.0.0",
   "authors": [
-    "James Brooks <james.brooks2@btinternet.com>"
+    "James Brooks <james.brooks2@btinternet.com>",
+    "Edward Digby <me@ejdigby.com>"
   ],
   "description": "Quiz management app for Bourne Grammar School",
   "main": "server.js",
