@@ -6,6 +6,7 @@
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import"  href="components/paper-toggle-button/paper-toggle-button.html">
+    <link rel="import"  href="components/core-splitter/core-splitter.html">
     <link rel="import" href="components/font-roboto/roboto.html">
     <script src="socket.io/socket.io.js"></script>
 
@@ -17,11 +18,12 @@
 <body>
 	<div id="lightbox">
 		<div id="settings">
-			<paper-toggle-button class="behnToggle"></paper-toggle-button>
-			<paper-toggle-button class="meitnerToggle"></paper-toggle-button>
-			<paper-toggle-button class="rorschachToggle"></paper-toggle-button>
-			<paper-toggle-button class="tinbergenToggle"></paper-toggle-button>
-		</div>
+			<ul id="houseToggles">	
+				<li><h3>Behn: </h3><paper-toggle-button class="behnToggle"></paper-toggle-button></li>
+				<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle"></paper-toggle-button></li>
+				<li><h3>Rorschach</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
+				<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
+			</div>
 	</div>
 	<div id="leaderboard">
                 <ul id="teams">
@@ -56,8 +58,8 @@
      	</div>
 	<div id="video">
                 <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>   
-        </div> 
-  <script>
+        </div>   
+<script>
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
         rorschachscore = parseInt("{{Rorschach}}");
