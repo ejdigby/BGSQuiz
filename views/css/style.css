@@ -37,6 +37,7 @@ a {
     list-style: none;
     font-family: 'RobotoDraft';
     text-align: left;
+    display: flex;
 }
 
 paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
@@ -89,13 +90,14 @@ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
 
 paper-toggle-button {
     display: inline;
-    margin: 20px;
+    margin: 0px 20px;
 }
 
 .saveButton {
     font-family: 'RobotoDraft';
     background-color: #F44336;
     color: #ffffff;
+    display: block;
 }
 
 #scores {
