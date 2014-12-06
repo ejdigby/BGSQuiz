@@ -1,0 +1,25 @@
+{
+  "name": "quiz",
+  "version": "0.0.0",
+  "authors": [
+    "James Brooks <james.brooks2@btinternet.com>"
+  ],
+  "description": "Quiz management app for Bourne Grammar School",
+  "main": "server.js",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#~0.5.1",
+    "jquery": "~2.1.1"
+  }
+}
