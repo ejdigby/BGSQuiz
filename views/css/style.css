@@ -33,12 +33,24 @@ a {
     padding: 20px;
 }
 
+#settings h1 {
+    text-align: left;
+    font-family: 'RobotoDraft';
+    margin: 10px 0px;
+}
+
+#settings h2 {
+    text-align: left;
+    font-family: 'RobotoDraft';
+    margin-bottom: 10px;
+}
+
 #houseToggles li {
     list-style: none;
     font-family: 'RobotoDraft';
     text-align: left;
     display: flex;
-    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
