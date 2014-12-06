@@ -3,7 +3,8 @@
 <head>
     <title>Bourne Grammar School Quiz</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
-    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/paper-toggle-button/paper-toggle-button.html"></script>
     <script src="socket.io/socket.io.js"></script>
     <script>
          io = io.connect()
@@ -13,7 +14,10 @@
 <body>
 	<div id="lightbox">
 		<div id="settings">
-			
+			<paper-toggle-button></paper-toggle-button>
+			<paper-toggle-button></paper-toggle-button>
+			<paper-toggle-button></paper-toggle-button>
+			<paper-toggle-button></paper-toggle-button>
 		</div>
 	</div>
 	<div id="leaderboard">
