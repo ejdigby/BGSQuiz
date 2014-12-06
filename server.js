@@ -69,7 +69,8 @@ module.exports = {
 },
  addscore: function(teamname, score, house, room, round, csrf, res){
     var collection = db.collection('Teams');
-    if (csrf == privatetoken){
+
+     if (csrf == privatetoken){
 	    teamname = teamname.trim(); 
 	    collection.find({"teamname" : teamname}).toArray(function(err, doc){
 		if (doc.length == 0){
