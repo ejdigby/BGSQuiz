@@ -92,6 +92,11 @@ paper-toggle-button {
     margin: 20px;
 }
 
+.saveButton {
+    font-family: 'RobotoDraft';
+    background-color: #F44336;
+}
+
 #scores {
     width: 75%;
     height: 10%;
