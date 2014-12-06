@@ -54,3 +54,7 @@ button {
       	padding: 5px 20px;
       	margin: 5px;
 }
+#error{
+    padding-top:20px;
+    font-size:16px;
+}

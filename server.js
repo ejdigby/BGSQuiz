@@ -161,6 +161,13 @@ app.post('/staff', function (req, res){
     var house = req.body.house;
     var room = req.body.room;
     var csrf = req.body._csrf;
+    
+    console.log(teamname)
+    console.log(score)
+    console.log(house)
+    console.log(room)
+    console.log(csrf)
+
 
     var collection = db.collection('Teams');
     if (csrf == privatetoken){
@@ -175,8 +182,13 @@ app.post('/staff', function (req, res){
 			            "house" : house, 
 			            "room" : room
 			    }, function(err, doc) {
-				        if(err) console.log("Error on document insert"); 
-				        else console.log("Document saved succesfuly"); 
+				        if(err){
+					    console.log("Error on document insert"); 
+					    res.end("no");
+				        } else{
+					    console.log("Document saved succesfuly"); 
+					    res.end("yes");
+}
 				    });
 		    });
 		    } else {
@@ -189,14 +201,15 @@ app.post('/staff', function (req, res){
 				  function(err, updated) {
 				      if( err || !updated ) {
 					  console.log("User not updated");
-					  userupdated = false;
+					  res.end("no");
 				      }else{
 					  console.log("User updated");
 					  userupdated = true;
+					  res.end("yes");
 		      }
 				      });
 	//		res.send('http://google.com');
-			res.send('<script>window.location.href = "http://google.com"</script>');
+//			res.send('<script>window.location.href = "http://google.com"</script>');
 
 	}		
 
