@@ -52,14 +52,18 @@ console.log("TEAM LIST IS:",teamlist)
 var rafflewinner = "";
 var raffle = function(room){
     db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
+	if (doc.length == 0){
+	    rafflewinner = "There Are No Teams In The " + room;
+	 } else {
       var rafflelist = [];
       for (x = 0; x < doc.length; x++){
 	  rafflelist.push(doc[x].teamname);
-
 	}
+	console.log("Raffle list : ", rafflelist)
       var number = Math.floor((Math.random() * rafflelist.length) + 1)
 	rafflewinner = rafflelist[number];
 	console.log(rafflewinner);
+}
   });	
 
 }//teamlist = ['Team 1', 'Team 2', 'Team 3'];
