@@ -162,15 +162,11 @@ paper-toggle-button {
     overflow-y: auto;
 }
 
-#teams li {
-    width: 100%;
+#teams li h3 {
+    padding: 10px;
     font-size: 18pt;
     font-family: 'RobotoDraft';
     font-weight: 100;
-}
-
-#teams li h3 {
-    padding: 10px;
 }
 
 #teams li:nth-child(2n){
