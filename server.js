@@ -88,7 +88,7 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
-   console.log("Request for /staff);
+   console.log("Request for /staff");
    if (!req.query.token){
        console.log("Request for /staff rejected")
        res.redirect("http://quiz.ejdigby.com/login")
