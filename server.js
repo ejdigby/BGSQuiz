@@ -50,8 +50,8 @@ console.log("TEAM LIST IS:",teamlist)
 
 
 var rafflewinner = "";
-var raffle = function(){
-    db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
+var raffle = function(room){
+    db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
       var rafflelist = [];
       for (x = 0; x < doc.length; x++){
 	  rafflelist.push(doc[x].teamname);
@@ -117,7 +117,7 @@ app.get('/raffle', function(req, res){
 });
 app.post('/raffle', function(req, res){
     rafflewinner = "";
-    raffle()
+    raffle(req.body.room)
     res.redirect('/raffle')
 });
 
