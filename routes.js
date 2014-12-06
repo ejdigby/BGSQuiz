@@ -69,4 +69,18 @@ app.post('/login', function(req, res){
 });
 
 
+
+app.post('/staff', function (req, res){
+    console.log("Post request for /staff");
+    var teamname = req.body.teamname;
+    var score = parseInt(req.body.score);
+    var house = req.body.house;
+    var room = req.body.room;
+    var round = req.body.round;
+    var csrf = req.body._csrf;
+    serverfile.addscore(teamname, score, house, room, round, csrf, res);
+
+});
+
+
 }

@@ -66,41 +66,8 @@ module.exports = {
 	 }
   });	
 
-}
-
-}
-
-
-var hbs = exphbs.create({
-    // Specify helpers which are only registered on this instance.
-    helpers: {
-        Rorschach: function () { return Rorschach; },
-        Behn: function () { return Behn; },
-        Meitner: function () { return Meitner; },
-        Tinbergen: function () { return Tinbergen; },
-	Team: function() { return teamlist },
-	Token: function() { return privatetoken },
-	Raffle:function() { return rafflewinner }
-    }
-});
-
-
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-app.use('/components',  express.static(__dirname + '/bower_components'));
-app.use(bodyParser()); // Automatically parses form data
-
-
-
-app.post('/staff', function (req, res){
-    console.log("Post request for /staff");
-    var teamname = req.body.teamname;
-    var score = parseInt(req.body.score);
-    var house = req.body.house;
-    var room = req.body.room;
-    var round = req.body.round;
-    var csrf = req.body._csrf;
-    
+},
+ addscore: function(teamname, score, house, room, round, csrf, res){
     var collection = db.collection('Teams');
     if (csrf == privatetoken){
 	    teamname = teamname.trim(); 
@@ -144,8 +111,33 @@ app.post('/staff', function (req, res){
     }else {
 	console.log("Token Is Wrong")
     }
+
+}
+
+
+}
+
+
+var hbs = exphbs.create({
+    // Specify helpers which are only registered on this instance.
+    helpers: {
+        Rorschach: function () { return Rorschach; },
+        Behn: function () { return Behn; },
+        Meitner: function () { return Meitner; },
+        Tinbergen: function () { return Tinbergen; },
+	Team: function() { return teamlist },
+	Token: function() { return privatetoken },
+	Raffle:function() { return rafflewinner }
+    }
 });
 
+
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
+app.use('/components',  express.static(__dirname + '/bower_components'));
+app.use(bodyParser()); // Automatically parses form data
+
+    
 app.use(express.static('views'));
 
 server.listen(port);
