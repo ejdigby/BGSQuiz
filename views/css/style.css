@@ -42,15 +42,19 @@ a {
 #settings h2 {
     text-align: left;
     font-family: 'RobotoDraft';
-    margin-bottom: 10px;
+    font-size: 14pt;
 }
 
 #houseToggles li {
     list-style: none;
-    font-family: 'RobotoDraft';
     text-align: left;
     display: flex;
-    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+#houseToggles li h3 {
+    font-family: 'RobotoDraft';
+    font-weight: 400;
 }
 
 paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
@@ -123,6 +127,7 @@ paper-radio-button.roomRadio::shadow #onRadio {
     background-color: #F44336;
     color: #ffffff;
     display: block;
+    margin-top: 10px;
 }
 
 #scores {
