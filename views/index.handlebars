@@ -3,13 +3,11 @@
 <head>
     <title>Bourne Grammar School Quiz</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:700,300' rel='stylesheet' type='text/css'>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="bower_components/jquery/src/jquery.js"></script>
     <script src="socket.io/socket.io.js"></script>
     <script>
          io = io.connect()
          io.emit('ready')
-	 console.log("{{Leaderboard}}")
     </script>
 </head>
 <body>
