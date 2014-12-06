@@ -6,11 +6,7 @@
     <script src="components/jquery/dist/jquery.min.js"></script>
     <script src="components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import"  href="components/paper-toggle-button/paper-toggle-button.html">
-    <link href="components/core-collapse/core-collapse.html" rel="import">
-    <link href="components/core-menu/core-menu.html" rel="import">
-    <link href="components/paper-dropdown/paper-dropdown.html" rel="import">
-    <link href="components/paper-item/paper-item.html" rel="import">
-    <link rel="import"  href="components/paper-dropdown-menu/paper-dropdown-menu.html">
+    <link rel="import" href="components/paper-radio-button/paper-radio-button.html">
     <link rel="import"  href="components/paper-button/paper-button.html">
     <link rel="import"  href="components/core-splitter/core-splitter.html">
     <link rel="import" href="components/font-roboto/roboto.html">
@@ -30,15 +26,11 @@
 				<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
 				<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
 			</ul>
-			<paper-dropdown-menu label="Choose your room">
-				<paper-dropdown class="dropdown">
-					<core-menu class="menu">
-						<paper-item>Drama Studio</paper-item>
-						<paper-item>Main Hall</paper-item>
-						<paper-item>Sports Hall</paper-item>
-					</core-menu>
-				</paper-dropdown>
-			</paper-dropdown-menu><br><br>
+			<paper-radio-group>
+				<paper-radio-button label="Drama Studio"></paper-radio-button>
+				<paper-radio-button label="Main Hall"></paper-radio-button>
+				<paper-radio-button label="Sports Hall"></paper-radio-button>
+			</paper-radio-group>	
 			<paper-button class="saveButton" raised>Save Settings</paper-button>	
 		</div>
 	</div>
