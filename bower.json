@@ -25,6 +25,7 @@
     "core-splitter": "Polymer/core-splitter#~0.5.1",
     "paper-input": "Polymer/paper-input#~0.5.1",
     "paper-button": "Polymer/paper-button#~0.5.1",
-    "paper-radio-button": "Polymer/paper-radio-button#~0.5.1"
+    "paper-radio-button": "Polymer/paper-radio-button#~0.5.1",
+    "paper-radio-group": "Polymer/paper-radio-group#~0.5.1"
   }
 }
