@@ -11,6 +11,7 @@ var config = require('./config.json');
 var privatetoken = config.token;
 
 var teamlist = [];
+var rafflewinner = "";
 
 // Define Scores
 var Rorschach = 0;
@@ -49,13 +50,9 @@ module.exports = {
 	  teamlist.push(doc[x].teamname);
 	} 
   });	
-}
+},
 
-
-}
-
-var rafflewinner = "";
-var raffle = function(room){
+ raffle: function(room){
     db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
 	if (doc.length == 0){
 	    rafflewinner = "There Are No Teams In The " + room;
@@ -70,6 +67,9 @@ var raffle = function(room){
   });	
 
 }
+
+}
+
 
 var hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
@@ -92,43 +92,6 @@ app.use(bodyParser()); // Automatically parses form data
 
 
 
-app.get('/raffle', function(req, res){
-    console.log("Request for /raffle");
-    res.render('staff/raffle/index', {
-        showTitle: true,
-    });
-});
-app.post('/raffle', function(req, res){
-    console.log("Post request for /raffle");
-    rafflewinner = "";
-    raffle(req.body.room)
-    res.redirect('/raffle')
-});
-app.get('/login', function(req, res){
-    console.log("Request for /login");
-    res.render('login/index', {
-	showTitle: true,
-    });
-});
-app.post('/login', function(req, res){
-    console.log("Post request for /login");
-    var password = req.body.password
-    var csrf = req.body._csrf;
-
-    if (csrf == privatetoken){
-	console.log("Token Is Correct!")
-	if (password == config.password){
-	    console.log("Password is correct!");
-	    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken);
-	    return;
-	} else {
-	    console.log("Password is wrong!");
-	    res.redirect("http://quiz.ejdigby.com/login");
-	}
-} else {
-    console.log("Token is wrong");
-}
-});
 app.post('/staff', function (req, res){
     console.log("Post request for /staff");
     var teamname = req.body.teamname;

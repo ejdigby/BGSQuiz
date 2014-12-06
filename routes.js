@@ -29,5 +29,44 @@ app.get('/staff', function(req, res){
     }
 });
 
+    app.get('/raffle', function(req, res){
+    console.log("Request for /raffle");
+    res.render('staff/raffle/index', {
+        showTitle: true,
+    });
+});
+app.post('/raffle', function(req, res){
+    console.log("Post request for /raffle");
+    rafflewinner = "";
+    serverfile.raffle(req.body.room)
+    res.redirect('/raffle')
+});
+
+app.get('/login', function(req, res){
+    console.log("Request for /login");
+    res.render('login/index', {
+	showTitle: true,
+    });
+});
+app.post('/login', function(req, res){
+    console.log("Post request for /login");
+    var password = req.body.password
+    var csrf = req.body._csrf;
+
+    if (csrf == serverfile.privatetoken){
+	console.log("Token Is Correct!")
+	if (password == config.password){
+	    console.log("Password is correct!");
+	    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken);
+	    return;
+	} else {
+	    console.log("Password is wrong!");
+	    res.redirect("http://quiz.ejdigby.com/login");
+	}
+} else {
+    console.log("Token is wrong");
+}
+});
+
 
 }
