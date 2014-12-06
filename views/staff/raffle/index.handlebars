@@ -6,14 +6,16 @@
 
 <body>
 	<h1>Raffle</h1>
-	<select>
-		<option>Sports Hall</option>
-		<option>Main Hall</option>
-		<option>Drama Studio</option>
-	</select>
-	<h2>Winner: </h2><span class="winningTeam">{{Raffle}}</span>
-	<form method="post" action="/raffle">
+		<form method="post" action="/raffle">
+      <select id="room" name="room">
+        <option>Main Hall</option>
+        <option>Sports Hall</option>
+	<option>Drama Studio</option>
+      </select>
+
 	<input type="submit" value="Draw!" />
 	</form>
+	<h2>Winner: </h2><span class="winningTeam">{{Raffle}}</span>
+
 </body>
 </html>
