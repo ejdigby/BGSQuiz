@@ -47,7 +47,22 @@ var grabteams = function(){
 console.log(teamlist)
 }
 console.log("TEAM LIST IS:",teamlist)
-//teamlist = ['Team 1', 'Team 2', 'Team 3'];
+
+
+var rafflewinner = "";
+var raffle = function(){
+    db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
+      var rafflelist = [];
+      for (x = 0; x < doc.length; x++){
+	  rafflelist.push(doc[x].teamname);
+
+	}
+      var number = Math.floor((Math.random() * rafflelist.length) + 1)
+	rafflewinner = rafflelist[number];
+	console.log(rafflewinner);
+  });	
+
+}//teamlist = ['Team 1', 'Team 2', 'Team 3'];
 
 // scorescollection.find({"name":housename}, {score: 1, _id: 0}).toArray(function(err, doc) {
 
@@ -60,6 +75,7 @@ var hbs = exphbs.create({
         Tinbergen: function () { return Tinbergen; },
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
+	Raffle:function() { return rafflewinner }
 //	Leaderboard: function() { return leaderboard }
 	}});
 
@@ -98,6 +114,11 @@ app.get('/raffle', function(req, res){
     res.render('staff/raffle/index', {
         showTitle: true,
     });
+});
+app.post('/raffle', function(req, res){
+    rafflewinner = "";
+    raffle()
+    res.redirect('/raffle')
 });
 
 app.get('/login', function(req, res){
