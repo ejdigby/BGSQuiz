@@ -35,13 +35,8 @@ a {
 
 #houseToggles li {
     list-style: none;
-    text-align: left;
-}
-
-#houseToggles li h3 {
-    float: left;
     font-family: 'RobotoDraft';
-    font-weight: 100;
+    text-align: left;
 }
 
 paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
@@ -93,7 +88,8 @@ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
 }
 
 paper-toggle-button {
-    margin: 0px 20px;
+    display: inline;
+    margin: 20px;
 }
 
 #scores {
@@ -166,11 +162,15 @@ paper-toggle-button {
     overflow-y: auto;
 }
 
+#teams li {
+    width: 100%;
+    font-size: 18pt;
+    font-family: 'RobotoDraft';
+    font-weight: 100;
+}
+
 #teams li h3 {
     padding: 10px;
-    font-size: 18pt;
-    font-weight: 100;
-    font-family: 'RobotoDraft';
 }
 
 #teams li:nth-child(2n){
