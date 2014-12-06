@@ -35,11 +35,13 @@ db.collection('Scores').update(
 
 
 var teamlist = [];
+
 var grabteams = function(){
   db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
       teamlist = [];
       for (x = 0; x < doc.length; x++){
 	  teamlist.push(doc[x].teamname);
+
 	} 
   });	
 console.log(teamlist)
@@ -218,14 +220,15 @@ io.sockets.on('connection', function (socket) {
     var checkscore = function(num){
 
 var leaderboard = [];
-
+var leaderboardscores = [];
      db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
 	 leaderboard = [];
 	 for (x = 0; x < doc.length; x++){
 	     leaderboard.push(doc[x].teamname);
+	     leaderboardscores.push(doc[x].score);
 	 }
 
- io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard});
+ io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores});
 
 });
 
