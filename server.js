@@ -10,11 +10,17 @@ var exphbs  = require('express-handlebars');
 var config = require('./config.json');
 var privatetoken = config.token;
 
+var teamlist = [];
+
 // Define Scores
 var Rorschach = 0;
 var Behn = 0;
 var Meitner = 0;
 var Tinbergen = 0;
+
+var grabteams = function(){
+    console.log("hello!");
+}
 
 var url = 'mongodb://localhost:27017/bgsquiz';
 MongoClient.connect(url, function (err, db){
@@ -33,16 +39,19 @@ db.collection('Scores').update(
     }
 );
 
+module.exports = {
+    
 
-var teamlist = [];
-
-var grabteams = function(){
+ grabteams: function(){
   db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
       teamlist = [];
       for (x = 0; x < doc.length; x++){
 	  teamlist.push(doc[x].teamname);
 	} 
   });	
+}
+
+
 }
 
 var rafflewinner = "";
@@ -75,37 +84,13 @@ var hbs = exphbs.create({
     }
 });
 
+
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use('/components',  express.static(__dirname + '/bower_components'));
 app.use(bodyParser()); // Automatically parses form data
 
-app.get('/', function (req, res, next) {
-    console.log("Request for /");
-    res.render('index', {
-        showTitle: true,
-    });
-});
 
-app.get('/staff', function(req, res){
-   console.log("Request for /staff");
-   if (!req.query.token){
-       console.log("Request for /staff rejected")
-       res.redirect("http://quiz.ejdigby.com/login")
-       return;
-   }
-   if (req.query.token == config.logintoken){
-       grabteams()
-       console.log("Request for /staff accepted");
-       res.render('staff/index', {
-	   showTitle: true,
-       });
-    } else {
-	console.log("Request for /staff rejected")
-	res.redirect("http://quiz.ejdigby.com/login")
-	return;
-    }
-});
 
 app.get('/raffle', function(req, res){
     console.log("Request for /raffle");
@@ -286,4 +271,8 @@ io.sockets.on('connection', function (socket) {
 	checkscore(i);
     },100); 
 });
+
+var routes = require('./routes.js')(app, hbs);
+
 });
+
