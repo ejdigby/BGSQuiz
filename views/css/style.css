@@ -83,6 +83,7 @@ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
 
 paper-toggle-button {
     display: block;
+    margin: 10px;
 }
 
 #scores {
@@ -115,7 +116,7 @@ paper-toggle-button {
     position: relative;
     transform: translateY(-50%);
     float: right;
-    font-family: 'Roboto'; 
+    font-family: 'RobotoDraft'; 
     font-weight: normal;
 }
 
@@ -158,7 +159,7 @@ paper-toggle-button {
 #teams li {
     width: 100%;
     font-size: 18pt;
-    font-family: 'Roboto';
+    font-family: 'RobotoDraft';
     font-weight: normal;
 }
 
