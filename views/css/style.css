@@ -36,13 +36,14 @@ a {
 #settings h1 {
     text-align: left;
     font-family: 'RobotoDraft';
-    margin: 10px 0px;
+    margin-top: 10px;
 }
 
 #settings h2 {
     text-align: left;
     font-family: 'RobotoDraft';
     font-size: 14pt;
+    margin-top: 10px;
 }
 
 #houseToggles li {
