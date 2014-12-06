@@ -77,14 +77,11 @@ app.get('/', function (req, res, next) {
 });
 
 app.get('/staff', function(req, res){
-    console.log("Request for /staff")
-    console.log(req.query.error);
    if (!req.query.token){
        res.redirect("http://quiz.ejdigby.com/login")
        return;
    }
     if (req.query.token == config.logintoken){
-	console.log("Error =", req.query.error);
 	grabteams()
 	console.log("Request for /staff");
 	res.render('staff/index', {
@@ -153,16 +150,8 @@ app.post('/staff', function (req, res){
 			            "house" : house, 
 			            "room" : room
 			    }, function(err, doc) {
-				        if(err){
-					    console.log("Error on document insert"); 
-					    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken + "&error=true");
-					    return;
-				        }else{
-					    console.log("Document saved succesfuly"); 
-					    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken + "&error=true");
-					    return;
-					    }
-
+				        if(err) console.log("Error on document insert"); 
+				        else console.log("Document saved succesfuly"); 
 				    });
 		    });
 		    } else {
@@ -176,25 +165,19 @@ app.post('/staff', function (req, res){
 				      if( err || !updated ) {
 					  console.log("User not updated");
 					  userupdated = false;
-					  res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken + "&error=true");
-					  return;
-
 				      }else{
 					  console.log("User updated");
 					  userupdated = true;
-					  res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken +"&error=false");
-					  return;
-				      }
+		      }
 				      });
 	//		res.send('http://google.com');
-//			res.send('<script>window.location.href = "http://google.com"</script>');
+			res.send('<script>window.location.href = "http://google.com"</script>');
+
 	}		
 
 });
 }else {
     console.log("Token Is Wrong")
-			res.redirect('http://google.com')
-
 }
 });
 
