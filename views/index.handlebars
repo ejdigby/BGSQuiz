@@ -12,7 +12,6 @@
     <link rel="import"  href="components/core-splitter/core-splitter.html">
     <link rel="import" href="components/font-roboto/roboto.html">
     <script src="socket.io/socket.io.js"></script>
-
     <script>
          io = io.connect()
          io.emit('ready')
@@ -21,70 +20,70 @@
 <body>
 	<div id="lightbox">
 		<div id="settings">
-			<ul id="houseToggles">	
+			<ul id="houseToggles">
 				<li><h3>Behn: </h3><paper-toggle-button class="behnToggle"></paper-toggle-button></li>
 				<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle"></paper-toggle-button></li>
 				<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
 				<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
 			</ul>
 			<paper-radio-group>
-				<paper-radio-button  label="Drama Studio"></paper-radio-button>
-				<paper-radio-button label="Main Hall"></paper-radio-button>
-				<paper-radio-button label="Sports Hall"></paper-radio-button>
-			</paper-radio-group>	
-			<paper-button class="saveButton" raised>Save Settings</paper-button>	
+				<paper-radio-button class="roomRadio" label="Drama Studio"></paper-radio-button>
+				<paper-radio-button class="roomRadio" label="Main Hall"></paper-radio-button>
+				<paper-radio-button class="roomRadio" label="Sports Hall"></paper-radio-button>
+			</paper-radio-group>
+			<paper-button class="saveButton" raised>Save Settings</paper-button>
 		</div>
 	</div>
 	<div id="leaderboard">
-                <ul id="teams">
-                        <!-- dynamically load teams here -->
-		</ul>
-        </div>
-	<div id="scores">         
+      <ul id="teams">
+          <!-- dynamically load teams here -->
+		  </ul>
+  </div>
+	<div id="scores">
 		<div class="behn">
 		    <div class="score-container">
-                	<img src="images/behn.png">
-                        <h2 class="BehnScore"></h2>
+            <img src="images/behn.png">
+            <h2 class="BehnScore"></h2>
 		    </div>
-                </div>
+    </div>
      		<div class="meitner">
 		    <div class="score-container">
-                  	<img src="images/meitner.png">
-                        <h2 class="MeitnerScore"><h2>
-             	    </div>
+            <img src="images/meitner.png">
+            <h2 class="MeitnerScore"><h2>
+        </div>
 		</div>
-                <div class="rorschach">
-                    <div class="score-container">
-                      	<img src="images/rorschach.png">
-                       	<h2 class="RorschachScore"><h2>
+    <div class="rorschach">
+        <div class="score-container">
+          	<img src="images/rorschach.png">
+           	<h2 class="RorschachScore"><h2>
 		    </div>
-                </div>
-                <div class="tinbergen">
-                    <div class="score-container">	
-			<img src="images/tinbergen.png">
-                       	<h2 class="TinbergenScore"><h2>
-                    </div>
+    </div>
+    <div class="tinbergen">
+        <div class="score-container">
+			      <img src="images/tinbergen.png">
+            <h2 class="TinbergenScore"><h2>
+        </div>
 		</div>
-     	</div>
-	<div id="video">
-                <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>   
-        </div>   
+    </div>
+	  <div id="video">
+          <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
+    </div>
 <script>
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
         rorschachscore = parseInt("{{Rorschach}}");
         tinbergenscore  = parseInt("{{Tinbergen}}");
 
-        $('.BehnScore').text(behnscore) 
-        $('.MeitnerScore').text(meitnerscore) 
-        $('.RorschachScore').text(rorschachscore) 
-        $('.TinbergenScore').text(tinbergenscore) 
+        $('.BehnScore').text(behnscore)
+        $('.MeitnerScore').text(meitnerscore)
+        $('.RorschachScore').text(rorschachscore)
+        $('.TinbergenScore').text(tinbergenscore)
 
         io = io.connect()
 
         io.emit('connection')
 
-     
+
         io.on('ScoreUpdate',function(data) {
         	// do something with data
                console.log("Score Updated!")
@@ -105,12 +104,12 @@
                     $(".TinbergenScore").innerHTML = "";
                     $('.TinbergenScore').text(Score);
                 }
-         }); 
+         });
 
 	io.on('LeaderboardUpdate',function(data) {
 	     leaderboard = data.LeaderBoard;
 	     leaderboardscores = data.LeaderBoardScores;
-	
+
 	var letter = "";
 	for (i=0; i < leaderboard.length; i++){
             letter += "<li><h3>" + (i+1) + ". " + leaderboard[i] + ": " + leaderboardscores[i] + "</h3></li>";
@@ -120,5 +119,5 @@
 	});
 
 
-        </script>
+</script>
 </html>

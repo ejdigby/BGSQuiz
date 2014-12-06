@@ -38,6 +38,7 @@ a {
     font-family: 'RobotoDraft';
     text-align: left;
     display: flex;
+    margin-top: 10px;
 }
 
 paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
@@ -91,6 +92,18 @@ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
 paper-toggle-button {
     display: inline;
     margin: 0px 20px;
+}
+
+paper-radio-button.roomRadio::shadow #ink[checked] {
+    color: #F33446;
+}
+
+paper-radio-button.roomRadio::shadow #onRadio {
+    background-color: #F33446;
+}
+
+.roomRadio {
+    font-family: 'RobotoDraft';
 }
 
 .saveButton {
