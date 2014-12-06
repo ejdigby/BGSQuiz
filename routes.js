@@ -52,8 +52,8 @@ app.post('/login', function(req, res){
     console.log("Post request for /login");
     var password = req.body.password
     var csrf = req.body._csrf;
-
-    if (csrf == serverfile.privatetoken){
+    console.log(csrf);
+    if (csrf == config.token){
 	console.log("Token Is Correct!")
 	if (password == config.password){
 	    console.log("Password is correct!");
@@ -65,6 +65,7 @@ app.post('/login', function(req, res){
 	}
 } else {
     console.log("Token is wrong");
+    res.redirect("http://google.com");
 }
 });
 
