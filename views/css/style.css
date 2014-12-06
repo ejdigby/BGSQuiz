@@ -95,6 +95,7 @@ paper-toggle-button {
 .saveButton {
     font-family: 'RobotoDraft';
     background-color: #F44336;
+    color: #ffffff;
 }
 
 #scores {
