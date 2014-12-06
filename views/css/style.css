@@ -33,6 +33,57 @@ a {
     padding: 20px;
 }
 
+paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #9C27B0;
+}
+
+paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #9C27B0;
+}
+
+paper-toggle-button.behnToggle::shadow #toggleBar[checked] {
+    background-color: #9C27B0;
+}
+
+paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #EF6C00;
+}
+
+paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #EF6C00;
+}
+
+paper-toggle-button.meitnerToggle::shadow #toggleBar[checked] {
+    background-color: #EF6C00;
+}
+
+paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #4CAF50;
+}
+
+paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #4CAF50;
+}
+
+paper-toggle-button.rorschachToggle::shadow #toggleBar[checked] {
+    background-color: #4CAF50;
+}
+
+paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #1565C0;
+}
+
+paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #1565C0;
+}
+
+paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
+    background-color: #1565C0;
+}
+
+paper-toggle-button {
+    display: block;
+}
 
 #scores {
     width: 75%;
@@ -64,7 +115,7 @@ a {
     position: relative;
     transform: translateY(-50%);
     float: right;
-    font-family: sans-serif; 
+    font-family: 'Roboto'; 
     font-weight: normal;
 }
 
@@ -107,7 +158,7 @@ a {
 #teams li {
     width: 100%;
     font-size: 18pt;
-    font-family: sans-serif;
+    font-family: 'Roboto';
     font-weight: normal;
 }
 
