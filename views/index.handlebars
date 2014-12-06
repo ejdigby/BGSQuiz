@@ -4,8 +4,11 @@
     <title>Bourne Grammar School Quiz</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="components/paper-toggle-button/paper-toggle-button.html"></script>
+    <script src="components/webcomponentsjs/webcomponents.js"></script>
+    <link rel="import"  href="components/paper-toggle-button/paper-toggle-button.html">
+    <link rel="import" href="components/font-roboto/roboto.html">
     <script src="socket.io/socket.io.js"></script>
+
     <script>
          io = io.connect()
          io.emit('ready')
@@ -14,7 +17,7 @@
 <body>
 	<div id="lightbox">
 		<div id="settings">
-			<paper-toggle-button></paper-toggle-button>
+			<paper-toggle-button role="button"></paper-toggle-button>
 			<paper-toggle-button></paper-toggle-button>
 			<paper-toggle-button></paper-toggle-button>
 			<paper-toggle-button></paper-toggle-button>
