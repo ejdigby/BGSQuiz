@@ -80,12 +80,21 @@
 	var radioButtons = document.querySelector('paper-radio-group');
 	var numberOfToggles = 0
 	
-	toggles.click(function() {
-		numberOfToggles++;
-		if (numberOfToggles >= 2) {
-			console.log('DISABLE NOW');
-		}
+	behnToggle.click(function() {
+		console.log('Turn on Behn');
 	})
+
+	meitnerToggle.click(function() {
+                console.log('Turn on Meitner');
+        })
+
+	rorschachToggle.click(function() {
+                console.log('Turn on Rorschach');
+        })
+
+	tinbergenToggle.click(function() {
+                console.log('Turn on Tinbergen');
+        })
 
   	$('.saveButton').click(function() {
 		var room = radioButtons.selected;
