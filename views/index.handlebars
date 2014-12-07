@@ -72,27 +72,28 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
-	var toggles = $('paper-toggle-button')
+	var toggles = document.querySelector('paper-toggle-button')
 	var behnToggle = $('.behnToggle')
 	var meitnerToggle = $('.meitnerToggle')
 	var rorschachToggle = $('.rorschachToggle')
 	var tinbergenToggle = $('.tinbergenToggle')
-	var radioButtons = $('paper-radio-group')
+	var radioButtons = document.querySelector('paper-radio-group')
+	var numberOfToggles = 0;
 	
 	behnToggle.click(function() {
-		console.log('Behn Toggle');
+		console.log('Turn on Behn');
 	})
 
 	meitnerToggle.click(function() {
-                console.log('Meitner Toggle');
+                console.log('Turn on Meitner');
         })
 
 	rorschachToggle.click(function() {
-                console.log('Rorschach Toggle');
+                console.log('Turn on Rorschach');
         })
 
 	tinbergenToggle.click(function() {
-                console.log('Tinbergen Toggle');
+                console.log('Turn on Tinbergen');
         })
 
   	$('.saveButton').click(function() {
@@ -124,6 +125,7 @@
 
         io.emit('connection')
 
+
         io.on('ScoreUpdate',function(data) {
         	// do something with data
                console.log("Score Updated!")
@@ -132,16 +134,16 @@
                 console.log(House);
 	        console.log(Score);
                 if (House == "Behn") {
-                    $(".BehnScore").html = "";
+                    $(".BehnScore").innerHTML = "";
                     $('.BehnScore').text(Score);
                 } else if (House == "Rorschach") {
-                    $(".RorschachScore").html = "";
+                    $(".RorschachScore").innerHTML = "";
                     $('.RorschachScore').text(Score);
                 } else if (House == "Meitner") {
-                    $(".MeitnerScore").html = "";
+                    $(".MeitnerScore").innerHTML = "";
                     $('.MeitnerScore').text(Score);
                 } else {
-                    $(".TinbergenScore").html = "";
+                    $(".TinbergenScore").innerHTML = "";
                     $('.TinbergenScore').text(Score);
                 }
          });
@@ -154,7 +156,7 @@
 	for (i=0; i < leaderboard.length; i++){
             letter += "<li><h3>" + (i+1) + ". " + leaderboard[i] + ": " + leaderboardscores[i] + "</h3></li>";
 	}
-	$("#teams").html = letter;
+	document.getElementById("teams").innerHTML = letter;
 
 	});
 
