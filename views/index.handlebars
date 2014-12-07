@@ -73,18 +73,22 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
-	var toggles = $('paper-toggle-button')
-	var behnToggle = $('.behnToggle')
-	var meitnerToggle = $('.meitnerToggle')
-	var rorschachToggle = $('.rorschachToggle')
-	var tinbergenToggle = $('.tinbergenToggle')
+	var toggles = document.querySelector(paper-toggle-button);
+	var behnToggle = document.getElementsByClassName('behnToggle');
+	var meitnerToggle = document.getElementsByClassName('meitnerToggle');
+	var rorschachToggle = document.getElementsByClassName('rorschachToggle');
+	var tinbergenToggle = document.getElementsByClassName('tinbergenToggle');
 	
-	var radioButtons = $('.roomRadio')	
+	var radioButtons = document.querySelector('paper-radio-group');
 
-	radioButtons.on("core-select", function() {
+	radioButtons.addEventListener("core-select", function() {
 		var room = radioButtons.selected
                 console.log(room)
 	})
+
+  	$('.saveButton').click(function() {
+     			$('#lightbox').fadeOut();
+  	})
 
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
