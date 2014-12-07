@@ -79,11 +79,19 @@
 	var tinbergenToggle = document.getElementsByClassName('tinbergenToggle');
 	var radioButtons = document.querySelector('paper-radio-group');
 	
-	toggles.addEventListener("core-select", function() {
-		console.log('Toggle Switch clicked');
-	})
-
   	$('.saveButton').click(function() {
+		if (behnToggle.checked) {
+                        console.log("behn")
+                }
+                else if (meitnerToggle.checked) {
+                        console.log("meitner")
+                }
+                else if (rorschachToggle.checked) {
+                        console.log("rorschach")
+                }
+                else if (tinbergenToggle.checked) {
+                        console.log("tinbergen")
+                }
 		var room = radioButtons.selected;
 		if (room == 0) {
           		room = "Drama Studio"
