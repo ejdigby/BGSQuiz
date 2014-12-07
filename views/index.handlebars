@@ -77,11 +77,13 @@
 	var meitnerToggle = document.getElementsByClassName('meitnerToggle');
 	var rorschachToggle = document.getElementsByClassName('rorschachToggle');
 	var tinbergenToggle = document.getElementsByClassName('tinbergenToggle');
-	
 	var radioButtons = document.querySelector('paper-radio-group');
 
   	$('.saveButton').click(function() {
-     		var room = radioButtons.selected;
+     		if (toggles.count >= 2){
+			toggles.disabled = true;
+		}
+		var room = radioButtons.selected;
 		if (room == 0) {
           		room = "Drama Studio"
         	}
