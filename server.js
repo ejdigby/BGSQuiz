@@ -187,8 +187,7 @@ socket.on('list', function (){
 	db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
 	    leaderboard = [];
 	    for (x = 0; x < doc.length; x++){
-		leaderboard.push(doc[x].teamname);
-		leaderboardscores.push(doc[x].score);
+		leaderboard.push(doc[x]);
 	    }
 	    io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores});
 	});

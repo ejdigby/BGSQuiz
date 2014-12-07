@@ -79,7 +79,7 @@
 	var tinbergenToggle = $('.tinbergenToggle')
 	var radioButtons = document.querySelector('paper-radio-group')
 	var numberOfToggles = 0;
-
+	var leaderboardroom;
 	var HousesOn = [];
 var addhouse = function(house){
 	      if (HousesOn[0] == house){
@@ -130,12 +130,15 @@ var addhouse = function(house){
 		var room = radioButtons.selected;
 		if (room == 0) {
           		room = "Drama Studio"
-        	}
+                        leaderboardroom = room;
+                }
         	else if (room == 1) {
                 	room = "Main Hall"
+                        leaderboardroom = room;
         	}
         	else if (room == 2) {
                 	room = "Sports Hall"
+                        leaderboardroom = room;
         	}
 		console.log('You are in the ' + room);
 	        console.log("Houses On are : " + HousesOn);
@@ -148,6 +151,7 @@ var addhouse = function(house){
 		$('#lightbox').fadeOut();
   	})
 
+console.log(leaderboardroom)
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
         rorschachscore = parseInt("{{Rorschach}}");
@@ -187,11 +191,15 @@ var addhouse = function(house){
 
 	io.on('LeaderboardUpdate',function(data) {
 	     leaderboard = data.LeaderBoard;
-	     leaderboardscores = data.LeaderBoardScores;
 
 	var letter = "";
+	    var placenumber = 0;
+	
 	for (i=0; i < leaderboard.length; i++){
-            letter += "<li><h3>" + (i+1) + ". " + leaderboard[i] + ": " + leaderboardscores[i] + "</h3></li>";
+	    if (leaderboard[i].room == leaderboardroom){
+	         placenumber += 1; 
+		 letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + ": " + leaderboard[i].score + "</h3></li>";
+}
 	}
 	document.getElementById("teams").innerHTML = letter;
 
