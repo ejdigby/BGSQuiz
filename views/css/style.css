@@ -168,7 +168,7 @@ paper-radio-button.roomRadio::shadow #onRadio {
 .behn, .meitner, .rorschach, .tinbergen  {
     height: 100%;
     width: 50%;
-    display: inline-block;
+    display: none;
     text-align: center;
     visibility: hidden;
 }

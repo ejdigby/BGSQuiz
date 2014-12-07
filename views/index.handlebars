@@ -95,12 +95,24 @@
 	        console.log(HousesOn)
 	         return;
 	      }
-	      if (HousesOn[0] != "Behn" && HousesOn[1] != "Behn"){
+	      
+	      if (HousesOn[0] != "Behn" && HousesOn[1] != "Behn" && HousesOn.length < 2){
 	         console.log("Turn on Behn");
 	         HousesOn.push("Behn");
 	        console.log(HousesOn)
+                return;
 	      }
-	})
+	      if (HousesOn[0] != "Behn" && HousesOn[1] != "Behn" && HousesOn.length >= 2){
+                 console.log("To many houses removing first one");
+                 HousesOn.splice(0,1)
+                 console.log(HousesOn)
+                 console.log("Adding Behn")
+                 HousesOn.push("Behn");
+                 console.log(HousesOn)
+                 return;
+              }
+    
+})
 
 	meitnerToggle.click(function() {
 	      if (HousesOn[0] == "Meitner"){
@@ -115,12 +127,22 @@
 	        console.log(HousesOn)	      
 	         return;
 	      }
-	      if (HousesOn[0] != "Meitner" && HousesOn[1] != "Meitner"){
+	      if (HousesOn[0] != "Meitner" && HousesOn[1] != "Meitner"  && HousesOn.length < 2){
 	         console.log("Turn on Meitner");
 	         HousesOn.push("Meitner");
                  console.log(HousesOn)
+                 return;
 	      }
-
+	      if (HousesOn[0] != "Meitner" && HousesOn[1] != "Meitner" && HousesOn.length >= 2){
+                 console.log("To many houses removing first one");
+                 HousesOn.splice(0,1)
+                 console.log(HousesOn)
+                 console.log("Adding Meitner")
+                 HousesOn.push("Meitner");
+                 console.log(HousesOn)
+                 return;
+              }
+    
         })
 
 	rorschachToggle.click(function() {
@@ -136,11 +158,21 @@
 	        console.log(HousesOn)	      
 	         return;
 	      }
-	      if (HousesOn[0] != "Rorschach" && HousesOn[1] != "Rorschach"){
+	      if (HousesOn[0] != "Rorschach" && HousesOn[1] != "Rorschach"  && HousesOn.length < 2){
 	         console.log("Turn on Rorschach");
 	         HousesOn.push("Rorschach");
                  console.log(HousesOn)
-	      }
+                 return;
+              }
+              if (HousesOn[0] != "Rorschach" && HousesOn[1] != "Rorschach" && HousesOn.length >= 2){
+                 console.log("To many houses removing first one");
+                 HousesOn.splice(0,1)
+                 console.log(HousesOn)
+                 console.log("Adding Rorschach")
+                 HousesOn.push("Rorschach");
+                 console.log(HousesOn)
+                 return;
+              }
         })
 
 	tinbergenToggle.click(function() {
@@ -156,11 +188,21 @@
 	        console.log(HousesOn)	      
 	         return;
 	      }
-	      if (HousesOn[0] != "Tinbergen" && HousesOn[1] != "Tinbergen"){
+	      if (HousesOn[0] != "Tinbergen" && HousesOn[1] != "Tinbergen"  && HousesOn.length < 2){
 	         console.log("Turn on Tinbergen");
 	         HousesOn.push("Tinbergen");
                  console.log(HousesOn)
+                 return;
 	      }
+              if (HousesOn[0] != "Tinbergen" && HousesOn[1] != "Tinbergen" && HousesOn.length >= 2){
+                 console.log("To many houses removing first one");
+                 HousesOn.splice(0,1)
+                 console.log(HousesOn)
+                 console.log("Adding Tinbergen")
+                 HousesOn.push("Tinbergen");
+                 console.log(HousesOn)
+                 return;
+              }
 
         })
 
@@ -180,7 +222,8 @@
 	        for (i=0; i < HousesOn.length; i++){
 			console.log(HousesOn[i]);
 			document.getElementById(HousesOn[i]).style.visibility='visible';
-		}
+			document.getElementById(HousesOn[i]).style.display='inline-block';
+}
 
 		$('#lightbox').fadeOut();
   	})
