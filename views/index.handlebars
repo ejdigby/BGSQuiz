@@ -78,11 +78,14 @@
 	var rorschachToggle = document.getElementsByClassName('rorschachToggle');
 	var tinbergenToggle = document.getElementsByClassName('tinbergenToggle');
 	var radioButtons = document.querySelector('paper-radio-group');
+	
+	toggles.addEventListener("core-select", function() {
+		if (toggles.count >= 2){
+                        toggles.disabled = true;
+                }
+	})
 
-  	$('.saveButton').click(function() {
-     		if (toggles.count >= 2){
-			toggles.disabled = true;
-		}
+  	$('.saveButton').click(function() {}
 		var room = radioButtons.selected;
 		if (room == 0) {
           		room = "Drama Studio"
