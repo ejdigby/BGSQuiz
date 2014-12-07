@@ -80,6 +80,10 @@
 	var radioButtons = document.querySelector('paper-radio-group')
 	var numberOfToggles = 0;
 
+	behnToggle.addEventListener("core-change", function() {
+		console.log('Behn Toggle changed')
+	})
+
 	var HousesOn = [];
 var addhouse = function(house){
 	      if (HousesOn[0] == house){
