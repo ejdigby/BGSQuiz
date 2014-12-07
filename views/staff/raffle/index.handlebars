@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Team Raffle!</title>
-	<link rel="stylesheet" type="text/css" href="staff/raffle/css/style.css">
-
+  <title>Team Raffle!</title>
+  <link rel="stylesheet" type="text/css" href="staff/raffle/css/style.css">
 </head>
-
 <body>
   <div id="cont">
-		<form method="post" action="/raffle">
-		  <h1>Raffle</h1>
-		  <div id="room" style="margin-left:auto; margin-right:auto; width:270px;">
-		    <h2>Room: </h2>
-		    <select id="room" name="room">
-		        <option>Main Hall</option>
-			<option>Sports Hall</option>
-			<option>Drama Studio</option>
-		    </select><br>
-		    </div>
-		  <div id="subdiv" style="margin-left: auto;margin-right: auto;width: 90px;margin-top: 20px;">
-		  <input id="submit" type="submit" value="Draw!" />
-		  </div>
-		  <br>
-
-</form>
-<div id="winner" style="width: 260px; margin-left: auto; margin-right: auto;">
-		<h2>Winner: <span class="winningTeam">{{Raffle}}</span></h2>
-	       </div>   
-</div>
+    <form method="post" action="/raffle">
+      <h1>Raffle</h1>
+      <div id="room" style="margin-left:auto; margin-right:auto; width:270px;">
+	<h2>Room: </h2>
+	<select id="room" name="room">
+	  <option>Main Hall</option>
+	  <option>Sports Hall</option>
+	  <option>Drama Studio</option>
+	</select><br>
+      </div>
+      <div id="subdiv" style="margin-left: auto;margin-right: auto;width: 90px;margin-top: 20px;">
+	<input id="submit" type="submit" value="Draw!" />
+      </div>
+      <br>
+    </form>
+    <div id="winner" style="width: 260px; margin-left: auto; margin-right: auto;">
+      <h2>Winner: <span class="winningTeam">{{Raffle}}</span></h2>
+    </div>   
+  </div>
 </body>
 </html>

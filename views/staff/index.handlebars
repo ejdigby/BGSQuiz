@@ -3,48 +3,39 @@
 	<meta charset='utf-8'>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Points Dashboard</title>
-	<script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
-
-
 	<link rel="stylesheet" type="text/css" href="style.css">
-<script>
-$(document).ready(function(){
+	<script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
+	<script src="socket.io/socket.io.js"></script>	    
+	<script src="client.js"></script>
+	<script>
+          io = io.connect()
+          io.emit('ready')
 
-  $("#submit").click(function(){
-  var _csrf= "{{Token}}";
-  var teamname = $("#teamname").val();
-  var score = $("#score").val();
-  var house = $("#house").val();
-  var round = $("#round").val();
-  var room =  $("#room").val();
+	  $(document).ready(function(){
+	     $("#submit").click(function(){
+	          var _csrf= "{{Token}}";
+           	  var teamname = $("#teamname").val();
+	          var score = $("#score").val();
+	          var house = $("#house").val();
+	          var round = $("#round").val();
+	          var room =  $("#room").val();
 
-console.log(_csrf)
-console.log(teamname)
-console.log(score)
-console.log(house)
-console.log(round)
-console.log(room)
-
-
-  $.post("http://quiz.ejdigby.com/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
-console.log("DATA IS: "+data)
-            if(data === 'yes'){
+	    $.post("http://quiz.ejdigby.com/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
+	      console.log("DATA IS: "+data)
+              if(data === 'yes'){
                 alert("Data Added!");
                 document.getElementById("error").innerHTML = "Score sucessfully added";
-            } else {
+              } else {
                 alert("I'm Sorry There Was An Error Processing Your Request");
                 document.getElementById("error").innerHTML = "I'm Sorry There Was An Error Processing Your Request";
-            }
+              }
+           });
           });
-        });
       });
 </script>
-
 </head>
 <body>
-
 <div id="container">
-  <!--  <form action="/staff" method="post" > -->
       <input type="hidden" name="_csrf"  value="{{Token}}"/>
       <select id="teamname" name="teamname">
         <option>Team Name</option>
@@ -76,49 +67,20 @@ console.log("DATA IS: "+data)
 	<option>Drama Studio</option>
       </select>
       <button id="submit">Submit</button>
-    <!-- </form> -->
     <p id="error"></p>
   </div>
 </body>
-
-
 <script>
-//  var error = req.query['error'];
-//  if (error == true){
-//     document.getElementById("error").innerHTML = "I'm Sorry There Was An Error Processing Your Request";
-// } else if (error == false) {
-//      document.getElementById("error").innerHTML = "Score sucessfully added";
-//  }
-
-
-
 	string = "{{Team}}"
-	console.log(string)
 	var array = string.split(',');
-	console.log(array)
 	var letter = "";
 	letter += "<option>Team Name</option>"
 	for (i=0; i < array.length; i++){
 	    console.log(array[i]);
             letter += "<option value='" + array[i] + "'>" + array[i] + "</option>";
-}
+        }
 	letter += "<option value='add'>+</option>";
 	document.getElementById("teamname").innerHTML = letter;
-
-
-
-//$("form").submit(function(e) {
-//    e.preventDefault(); // Prevents the page from refreshing
-//    var $this = $(this); // `this` refers to the current form element
-//    $.post(
-//        $this.attr("action"), // Gets the URL to sent the post to
-//       $this.serialize(), // Serializes form data in standard format
-//        function(data) { /** code to handle response **/ },
-//        "json" // The format the response should be in
-//    );
-//}/);
-
 </script>
-	<script src="client.js"></script>
 
 </html>

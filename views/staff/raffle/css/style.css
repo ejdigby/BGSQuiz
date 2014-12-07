@@ -31,11 +31,7 @@ h2 {
     text-align:center;
     display:inline;
 }
-/*#room {
-    margin-left:auto;
-    margin-right:auto;
-    width:350px;
-}*/
+
 select {
     width: 180px;
     height: 55px;
