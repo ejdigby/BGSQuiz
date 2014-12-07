@@ -4,7 +4,6 @@
     <title>Bourne Grammar School Quiz</title>
     <link href='css/style.css' rel='stylesheet' type='text/css'>
     <script src="components/jquery/dist/jquery.min.js"></script>
-    <script src="js/settings.js"></script>
     <script src="components/webcomponentsjs/webcomponents.js"></script>
     <link rel="import"  href="components/paper-toggle-button/paper-toggle-button.html">
     <link rel="import" href="components/paper-radio-button/paper-radio-button.html">
@@ -81,13 +80,19 @@
 	
 	var radioButtons = document.querySelector('paper-radio-group');
 
-	radioButtons.addEventListener("core-select", function() {
-		var room = radioButtons.selected
-                console.log(room)
-	})
-
   	$('.saveButton').click(function() {
-     		$('#lightbox').fadeOut();
+     		var room = radioButtons.selected;
+		if (room == 0) {
+          		room = "Drama Studio"
+        	}
+        	else if (room == 1) {
+                	room = "Main Hall"
+        	}
+        	else if (room == 2) {
+                	room = "Sports Hall"
+        	}
+		console.log('You are in the ' + room);
+		$('#lightbox').fadeOut();
   	})
 
         behnscore = parseInt("{{Behn}}");
