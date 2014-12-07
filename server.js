@@ -12,7 +12,7 @@ var privatetoken = config.token;
 
 var teamlist = [];
 var rafflewinner = "";
-
+var list = [];
 // Define Scores
 var Rorschach = 0;
 var Behn = 0;
@@ -51,6 +51,8 @@ module.exports = {
 	} 
   });	
 },
+
+
 
  raffle: function(room){
     db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
@@ -115,8 +117,6 @@ module.exports = {
     }
 
 }
-
-
 }
 
 
@@ -129,8 +129,9 @@ var hbs = exphbs.create({
         Tinbergen: function () { return Tinbergen; },
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
-	Raffle:function() { return rafflewinner }
-    }
+	Raffle:function() { return rafflewinner },
+	list:function() { return list }
+   }
 });
 
 
@@ -171,6 +172,13 @@ io.sockets.on('connection', function (socket) {
 	console.log("NEW STAFF USER");
 });
     
+socket.on('list', function (){
+    var list;
+    db.collection("Teams").find().toArray(function(err, doc){
+	socket.emit("Listarray", {'doc' : doc});
+    });
+
+});
 
     var checkscore = function(num){
 

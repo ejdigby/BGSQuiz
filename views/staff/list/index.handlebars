@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Points Dashboard</title>
+
+	<script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
+	<script src="../../socket.io/socket.io.js"></script>	    
+
+
+</head>
+<body id="body">
+</body>
+	<script>
+	  var array = [];
+	  io = io.connect()
+	  io.emit("list")
+	  io.on("Listarray", function(data){
+	  array = data.doc
+	  page = "";
+	  for (x=0; x < array.length; x++){
+		page += "<li> Name: " + array[x].teamname + ",  Score: " + array[x].score + ", House: " + array[x].house + " </li>";
+}
+
+	  document.getElementById('body').innerHTML = page;
+});
+	</script>
+
+</html>

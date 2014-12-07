@@ -28,7 +28,12 @@ app.get('/staff', function(req, res){
 	return;
     }
 });
-
+app.get('/list', function(req, res){
+    console.log("Request for /list")
+    res.render('staff/list/index', {
+	showTitle: true,
+    });
+});
     app.get('/raffle', function(req, res){
     console.log("Request for /raffle");
     res.render('staff/raffle/index', {
