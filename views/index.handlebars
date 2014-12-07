@@ -73,7 +73,7 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
-	var toggles = document.querySelector(paper-toggle-button);
+	var toggles = document.querySelector('paper-toggle-button');
 	var behnToggle = document.getElementsByClassName('behnToggle');
 	var meitnerToggle = document.getElementsByClassName('meitnerToggle');
 	var rorschachToggle = document.getElementsByClassName('rorschachToggle');
@@ -87,7 +87,7 @@
 	})
 
   	$('.saveButton').click(function() {
-     			$('#lightbox').fadeOut();
+     		$('#lightbox').fadeOut();
   	})
 
         behnscore = parseInt("{{Behn}}");
