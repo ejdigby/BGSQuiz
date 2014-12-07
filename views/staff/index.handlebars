@@ -7,6 +7,21 @@
 	<script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
 	<script src="../socket.io/socket.io.js"></script>	    
 	<script>
+	  var changecolour = function(house){
+	      if (house == "Behn") {
+	         $('body').css("background-color", "#9C27BO");
+	      } else if (house == "Meitner") {
+	         $('body').css("background-color", "#EF6C00");
+	      } else if (house == "Rorschach"){
+      	         $('body').css("background-color", "#4CAF50");
+	      } else if (house == "Tinbergen"){
+	         console.log("House is Tinbergn");
+	         $('body').css("background-color", "#1565C0");
+	      } else {
+	         $('body').css("background-color", "white");
+	      }
+	  }
+
           io = io.connect()
 	  io.emit("StaffConnection");
 	  $(document).ready(function(){
@@ -45,6 +60,7 @@ io.on('TeamAutoComplete', function (data){
 	  console.log("room is :" + data.room);
 	  console.log("teamname is:" + data.teamname);
    document.getElementById("house").innerHTML  = "<option value='" + data.house + "'>" + data.house + "</option>";
+	  changecolour(data.house);
    document.getElementById("room").innerHTML  = "<option value='" + data.room + "'>" + data.room + "</option>";
 
 });
