@@ -83,23 +83,85 @@
 	var HousesOn = [];
 
 	behnToggle.click(function() {
-	      console.log('Turn on Behn');
-	      HousesOn.push("Behn");
+	      if (HousesOn[0] == "Behn"){
+	        console.log("Removing Behn")
+	        HousesOn.splice(0,1)
+	        console.log(HousesOn)
+	        return;
+	      } 
+	      if (HousesOn[1] == "Behn"){
+	         console.log("Removing Behn")
+	         HousesOn.splice(1,1)
+	        console.log(HousesOn)
+	         return;
+	      }
+	      if (HousesOn[0] != "Behn" && HousesOn[1] != "Behn"){
+	         console.log('Turn on Behn');
+	         HousesOn.push("Behn");
+	        console.log(HousesOn)
+	      }
 	})
 
 	meitnerToggle.click(function() {
-              console.log('Turn on Meitner');
-	      HousesOn.push("Meitner");
+	      if (HousesOn[0] == "Meitner"){
+	        console.log("Removing Meitner")
+	        HousesOn.splice(0,1)
+	        console.log(HousesOn)
+	        return;
+	      } 
+	      if (HousesOn[1] == "Meitner"){
+	         console.log("Removing Meitner")
+	         HousesOn.splice(1,1)
+	        console.log(HousesOn)	      
+	         return;
+	      }
+	      if (HousesOn[0] != "Meitner" && HousesOn[1] != "Meitner"){
+	         console.log('Turn on Behn');
+	         HousesOn.push("Meitner");
+                 console.log(HousesOn)
+	      }
+
         })
 
 	rorschachToggle.click(function() {
-              console.log('Turn on Rorschach');
-	      HousesOn.push("Rorschach");	     
+      if (HousesOn[0] == "Rorschach"){
+	        console.log("Removing Rorschach")
+	        HousesOn.splice(0,1)
+	        console.log(HousesOn)
+	        return;
+	      } 
+	      if (HousesOn[1] == "Rorschach"){
+	         console.log("Removing Rorschach")
+	         HousesOn.splice(1,1)
+	        console.log(HousesOn)	      
+	         return;
+	      }
+	      if (HousesOn[0] != "Rorschach" && HousesOn[1] != "Rorschach"){
+	         console.log('Turn on Behn');
+	         HousesOn.push("Meitner");
+                 console.log(HousesOn)
+	      }
         })
 
 	tinbergenToggle.click(function() {
-              console.log('Turn on Tinbergen');
-	      HousesOn.push("Tinbergen");
+      if (HousesOn[0] == "Tinbergen"){
+	        console.log("Removing Tinbergen")
+	        HousesOn.splice(0,1)
+	        console.log(HousesOn)
+	        return;
+	      } 
+	      if (HousesOn[1] == "Tinbergen"){
+	         console.log("Removing Tinbergen")
+	         HousesOn.splice(1,1)
+	        console.log(HousesOn)	      
+	         return;
+	      }
+	      if (HousesOn[0] != "Tinbergen" && HousesOn[1] != "Tinbergen"){
+	         console.log('Turn on Behn');
+	         HousesOn.push("Tinbergen");
+                 console.log(HousesOn)
+	      }
+
         })
 
   	$('.saveButton').click(function() {
