@@ -18,24 +18,24 @@
          io.emit('ready')
     </script>
 </head>
-<body>
+<body unresolved>
 	<div id="lightbox">
 		<div id="settings">
-			<h1>Configuration</h1>
-			<h2>Which houses would you like to see totals for?</h2>
-			<ul id="houseToggles">
-				<li><h3>Behn: </h3><paper-toggle-button class="behnToggle"></paper-toggle-button></li>
-				<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle"></paper-toggle-button></li>
-				<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
-				<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
-			</ul>
-			<h2>Which room are you in?</h2>
-			<paper-radio-group>
-				<paper-radio-button class="roomRadio" label="Drama Studio"></paper-radio-button>
-				<paper-radio-button class="roomRadio" label="Main Hall"></paper-radio-button>
-				<paper-radio-button class="roomRadio" label="Sports Hall"></paper-radio-button>
-			</paper-radio-group>
-			<paper-button class="saveButton" raised>Save Settings</paper-button>
+		<h1>Configuration</h1>
+		<h2>Which houses would you like to see totals for?</h2>
+		<ul id="houseToggles">
+			<li><h3>Behn: </h3><paper-toggle-button class="behnToggle"></paper-toggle-button></li>
+			<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle"></paper-toggle-button></li>
+			<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
+			<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
+		</ul>
+		<h2>Which room are you in?</h2>
+		<paper-radio-group>
+			<paper-radio-button class="roomRadio" label="Drama Studio"></paper-radio-button>
+			<paper-radio-button class="roomRadio" label="Main Hall"></paper-radio-button>
+			<paper-radio-button class="roomRadio" label="Sports Hall"></paper-radio-button>
+		</paper-radio-group>
+		<paper-button class="saveButton" raised>Save Settings</paper-button>
 		</div>
 	</div>
 	<div id="leaderboard">
@@ -73,6 +73,19 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
+	var toggles = $('paper-toggle-button')
+	var behnToggle = $('.behnToggle')
+	var meitnerToggle = $('.meitnerToggle')
+	var rorschachToggle = $('.rorschachToggle')
+	var tinbergenToggle = $('.tinbergenToggle')
+	
+	var radioButtons = $('.roomRadio')	
+
+	radioButtons.on("core-select", function() {
+		var room = radioButtons.selected
+                console.log(room)
+	})
+
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
         rorschachscore = parseInt("{{Rorschach}}");
