@@ -43,25 +43,25 @@
 		  </ul>
   </div>
 	<div id="scores">
-		<div class="behn">
+		<div class="behn" id="Behn">
 		    <div class="score-container">
             <img src="images/behn.png">
             <h2 class="BehnScore"></h2>
 		    </div>
     </div>
-     		<div class="meitner">
+     		<div class="meitner" id="Meitner">
 		    <div class="score-container">
             <img src="images/meitner.png">
             <h2 class="MeitnerScore"><h2>
         </div>
 		</div>
-    <div class="rorschach">
+    <div class="rorschach" id="Rorschach">
         <div class="score-container">
           	<img src="images/rorschach.png">
            	<h2 class="RorschachScore"><h2>
 		    </div>
     </div>
-    <div class="tinbergen">
+    <div class="tinbergen" id="Tinbergen">
         <div class="score-container">
 			      <img src="images/tinbergen.png">
             <h2 class="TinbergenScore"><h2>
@@ -79,21 +79,27 @@
 	var tinbergenToggle = $('.tinbergenToggle')
 	var radioButtons = document.querySelector('paper-radio-group')
 	var numberOfToggles = 0;
-	
+
+	var HousesOn = [];
+
 	behnToggle.click(function() {
-		console.log('Turn on Behn');
+	      console.log('Turn on Behn');
+	      HousesOn.push("Behn");
 	})
 
 	meitnerToggle.click(function() {
-                console.log('Turn on Meitner');
+              console.log('Turn on Meitner');
+	      HousesOn.push("Meitner");
         })
 
 	rorschachToggle.click(function() {
-                console.log('Turn on Rorschach');
+              console.log('Turn on Rorschach');
+	      HousesOn.push("Rorschach");	     
         })
 
 	tinbergenToggle.click(function() {
-                console.log('Turn on Tinbergen');
+              console.log('Turn on Tinbergen');
+	      HousesOn.push("Tinbergen");
         })
 
   	$('.saveButton').click(function() {
@@ -108,6 +114,12 @@
                 	room = "Sports Hall"
         	}
 		console.log('You are in the ' + room);
+	        console.log("Houses On are : " + HousesOn);
+	        for (i=0; i < HousesOn.length; i++){
+			console.log(HousesOn[i]);
+			document.getElementById(HousesOn[i]).style.visibility='visible';
+		}
+
 		$('#lightbox').fadeOut();
   	})
 
