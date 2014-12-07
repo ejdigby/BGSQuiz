@@ -80,7 +80,7 @@
 	var radioButtons = document.querySelector('paper-radio-group');
 	
 	toggles.addEventListener("core-select", function() {
-		if (toggles.count >= 2){
+		if (toggles.selected >= 2){
                         toggles.disabled = true;
                 }
 	})
