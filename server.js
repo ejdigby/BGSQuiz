@@ -145,12 +145,33 @@ app.use(express.static('views'));
 server.listen(port);
 console.log("Listening at port %s", port)
 
+io.sockets.on('StaffConnection', function(socket){
+    console.log("NEW STAFF USER");
+    
+    socket.on("Hello", function (){
+	console.log("Hello");
+	});
+});
 io.sockets.on('connection', function (socket) {
     console.log("NEW USER")
     socket.on('disconnect', function () {
 	console.log("USER DISCONECTED")
     });
-   
+    socket.on('TeamSelected', function (data){
+	console.log(data.teamname);
+	db.collection('Teams').find({teamname : data.teamname}).toArray(function(Err, doc){
+	    if (doc.length != 0){
+		console.log("Teams Auto Comeplete");
+
+		socket.emit("TeamAutoComplete", {'house' : doc[0].house, 'room' : doc[0].room, 'teamname':doc[0].teamname});
+	    }
+	    });
+    });
+    socket.on('StaffConnection', function(){
+	console.log("NEW STAFF USER");
+});
+    
+
     var checkscore = function(num){
 
 	var leaderboard = [];

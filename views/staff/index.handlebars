@@ -5,12 +5,10 @@
 	<title>Points Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
-	<script src="socket.io/socket.io.js"></script>	    
-	<script src="client.js"></script>
+	<script src="../socket.io/socket.io.js"></script>	    
 	<script>
           io = io.connect()
-          io.emit('ready')
-
+	  io.emit("StaffConnection");
 	  $(document).ready(function(){
 	     $("#submit").click(function(){
 	          var _csrf= "{{Token}}";
@@ -32,12 +30,31 @@
            });
           });
       });
+
+      var emitteam = function(){
+	  teamname = $("#teamname").val();
+	  console.log(teamname);
+	  io.emit("Hello");
+	  io.emit('TeamSelected', {'teamname' : teamname});
+
+}
+io.on('TeamAutoComplete', function (data){
+	  var house = data.house;
+	  console.log(house);
+	  console.log("house is :" + data.house);
+	  console.log("room is :" + data.room);
+	  console.log("teamname is:" + data.teamname);
+   document.getElementById("house").innerHTML  = "<option value='" + data.house + "'>" + data.house + "</option>";
+   document.getElementById("room").innerHTML  = "<option value='" + data.room + "'>" + data.room + "</option>";
+
+});
+
 </script>
 </head>
 <body>
 <div id="container">
       <input type="hidden" name="_csrf"  value="{{Token}}"/>
-      <select id="teamname" name="teamname">
+      <select onchange="emitteam()" id="teamname" name="teamname">
         <option>Team Name</option>
 	<option value="add">+</option>
       </select>
@@ -71,16 +88,18 @@
   </div>
 </body>
 <script>
+
+
 	string = "{{Team}}"
 	var array = string.split(',');
 	var letter = "";
 	letter += "<option>Team Name</option>"
 	for (i=0; i < array.length; i++){
-	    console.log(array[i]);
             letter += "<option value='" + array[i] + "'>" + array[i] + "</option>";
         }
 	letter += "<option value='add'>+</option>";
 	document.getElementById("teamname").innerHTML = letter;
 </script>
+	<script src="client.js"></script>
 
 </html>
