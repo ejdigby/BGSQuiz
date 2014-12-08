@@ -23,10 +23,10 @@
 		<h1>Configuration</h1>
 		<h2>Which houses would you like to see totals for?</h2>
 		<ul id="houseToggles">
-			<li><h3>Behn: </h3><paper-toggle-button class="behnToggle"></paper-toggle-button></li>
-			<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle"></paper-toggle-button></li>
-			<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle"></paper-toggle-button></li>
-			<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle"></paper-toggle-button></li>
+			<li><h3>Behn: </h3><paper-toggle-button class="behnToggle houseToggle"></paper-toggle-button></li>
+			<li><h3>Meitner: </h3><paper-toggle-button class="meitnerToggle houseToggle"></paper-toggle-button></li>
+			<li><h3>Rorschach:</h3><paper-toggle-button class="rorschachToggle houseToggle"></paper-toggle-button></li>
+			<li><h3>Tinbergen: </h3><paper-toggle-button class="tinbergenToggle houseToggle"></paper-toggle-button></li>
 		</ul>
 		<h2>Which room are you in?</h2>
 		<paper-radio-group>
@@ -75,6 +75,12 @@
 		var radioButtons = document.querySelector('paper-radio-group')
 		var leaderboardRoom
 
+		$('.houseToggle').on("change", function() {
+			if (($('.houseToggle').attr('aria-pressed') == "true").length >= 2) {
+                                $('.houseToggle').attr('disabled') == "true"
+			}
+		})
+
   		$('.saveButton').click(function() {
 			var room = radioButtons.selected;
 			if (room == 0) {
@@ -90,7 +96,7 @@
                         	leaderboardRoom = room
         		}
 			console.log('You are in the ' + room);
-
+			
 			if ($('.behnToggle').attr('aria-pressed') == "true") {
 				console.log('Behn is toggled')
 				$('.behn').css('display','inline-block')
@@ -107,7 +113,7 @@
                         	console.log('Tinbergen is toggled')
 				$('.tinbergen').css('display','inline-block')
                 	}
-		
+
 			$('#main').fadeIn()
 			$('#lightbox').fadeOut()
   		})
