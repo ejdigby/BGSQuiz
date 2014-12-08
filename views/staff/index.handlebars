@@ -32,6 +32,24 @@
 	          var house = $("#house").val();
 	          var round = $("#round").val();
 	          var room =  $("#room").val();
+console.log(score)
+	  var newscore = parseInt(score);
+	 if (newscore >= 0 && score <= 15){
+                       console.log("It is under 15")
+                 } else {
+                         error = "Number is greater than 15"
+                              alert (error)
+                              return
+                 } 
+                 
+                 if (house == ""){
+                        error = "Please Select a house"
+                        alert(error)
+                        return
+                 }
+
+
+
 
 	    $.post("http://quiz.ejdigby.com/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
 	      console.log("DATA IS: "+data)
