@@ -75,7 +75,8 @@
 	</div>
 	<script>
 		var radioButtons = document.querySelector('paper-radio-group')
-		var leaderboardRoom
+		var LBRoom
+		var LBHouses = []
 
 		$('.houseToggle').on("change", function() {
 			// runs code every time Toggle is turned on or off
@@ -86,33 +87,37 @@
 			var room = radioButtons.selected;
 			if (room == 0) {
           			room = "Drama Studio"
-                        	leaderboardRoom = room
+                        	LBRoom = room
                 	}
         		else if (room == 1) {
                 		room = "Main Hall"
-                        	leaderboardRoom = room
+                        	LBRoom = room
         		}
         		else if (room == 2) {
                 		room = "Sports Hall"
-                        	leaderboardRoom = room
+                                LBRoom = room
         		}
 			console.log('You are in the ' + room);
 			
 			if ($('.behnToggle').attr('aria-pressed') == "true") {
 				console.log('Behn is toggled')
 				$('.behn').css('display','inline-block')
+		                LBHouses.push("Behn")
 			}
 			if ($('.meitnerToggle').attr('aria-pressed') == "true") {
                         	console.log('Meitner is toggled')
-				$('.meitner').css('display','inline-block')
+		                $('.meitner').css('display','inline-block')
+		                LBHouses.push("Meitner")
                 	}
 			if ($('.rorschachToggle').attr('aria-pressed') == "true") {
                         	console.log('Rorschach is toggled')
 				$('.rorschach').css('display','inline-block')
+		                LBHouses.push("Rorschach")
                 	}
 			if ($('.tinbergenToggle').attr('aria-pressed') == "true") {
                         	console.log('Tinbergen is toggled')
 				$('.tinbergen').css('display','inline-block')
+		                LBHouses.push("Tinbergen")
                 	}
 
 			$('#main').fadeIn()
@@ -163,9 +168,9 @@
 		var placenumber = 0;
 	
 		for (i=0; i < leaderboard.length; i++){
-	    		if (leaderboard[i].room == leaderboardRoom){
+	    		if (leaderboard[i].room == LBRoom && leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 	         		placenumber += 1; 
-		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + ": " + leaderboard[i].score + "</h3></li>";
+		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].score + "</h3></li>";
 			}
 		}
 		
