@@ -72,86 +72,36 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
-	var toggles = document.querySelector('paper-toggle-button')
 	var behnToggle = $('.behnToggle')
 	var meitnerToggle = $('.meitnerToggle')
 	var rorschachToggle = $('.rorschachToggle')
 	var tinbergenToggle = $('.tinbergenToggle')
 	var radioButtons = document.querySelector('paper-radio-group')
-	var numberOfToggles = 0;
-	var leaderboardroom;
-	var HousesOn = [];
-var addhouse = function(house){
-	      if (HousesOn[0] == house){
-	        console.log("Removing " + house)
-	        HousesOn.splice(0,1)
-	        console.log(HousesOn)
-	        return;
-	      } 
-	      if (HousesOn[1] == house){
-	         console.log("Removing " + house)
-	         HousesOn.splice(1,1)
-	        console.log(HousesOn)	      
-	         return;
-	      }
-	      if (HousesOn[0] != house && HousesOn[1] != house  && HousesOn.length < 2){
-	         console.log("Turn on " + house);
-	         HousesOn.push(house);
-                 console.log(HousesOn)
-                 return;
-	      }
-              if (HousesOn[0] != house && HousesOn[1] != house && HousesOn.length >= 2){
-                 console.log("To many houses removing first one");
-                 HousesOn.splice(0,1)
-                 console.log(HousesOn)
-                 console.log("Adding " + house)
-                 HousesOn.push(house);
-                 console.log(HousesOn)
-                 return;
-              }
-}
-	behnToggle.click(function() {
-          addhouse("Behn");
-})
-
-	meitnerToggle.click(function() {
-          addhouse("Meitner");
-        })
-
-	rorschachToggle.click(function() {
-          addhouse("Rorschach");
-        })
-
-	tinbergenToggle.click(function() {
-          addhouse("Tinbergen");
-        })
+	var leaderboardRoom
 
   	$('.saveButton').click(function() {
 		var room = radioButtons.selected;
 		if (room == 0) {
           		room = "Drama Studio"
-                        leaderboardroom = room;
+                        leaderboardRoom = room
                 }
         	else if (room == 1) {
                 	room = "Main Hall"
-                        leaderboardroom = room;
+                        leaderboardRoom = room
         	}
         	else if (room == 2) {
                 	room = "Sports Hall"
-                        leaderboardroom = room;
+                        leaderboardRoom = room
         	}
 		console.log('You are in the ' + room);
-	        console.log("Houses On are : " + HousesOn);
-	        for (i=0; i < HousesOn.length; i++){
-			console.log(HousesOn[i]);
-			document.getElementById(HousesOn[i]).style.visibility='visible';
-			document.getElementById(HousesOn[i]).style.display='inline-block';
-}
+
+		if ($('.behnToggle').attr('aria-pressed') == "true") {
+			console.log('Behn is toggled')
+		}
 
 		$('#lightbox').fadeOut();
   	})
 
-console.log(leaderboardroom)
         behnscore = parseInt("{{Behn}}");
         meitnerscore = parseInt("{{Meitner}}");
         rorschachscore = parseInt("{{Rorschach}}");
@@ -187,16 +137,16 @@ console.log(leaderboardroom)
                     $(".TinbergenScore").innerHTML = "";
                     $('.TinbergenScore').text(Score);
                 }
-         });
+        })
 
 	io.on('LeaderboardUpdate',function(data) {
 	     leaderboard = data.LeaderBoard;
 
 	var letter = "";
-	    var placenumber = 0;
+	var placenumber = 0;
 	
 	for (i=0; i < leaderboard.length; i++){
-	    if (leaderboard[i].room == leaderboardroom){
+	    if (leaderboard[i].room == leaderboardRoom){
 	         placenumber += 1; 
 		 letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + ": " + leaderboard[i].score + "</h3></li>";
 }
