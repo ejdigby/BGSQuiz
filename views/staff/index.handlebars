@@ -48,7 +48,11 @@ console.log(score)
                         return
                  }
 
-
+		if (teamname == ""){
+	                error = "Please select a team name"
+		        alert(error)
+		        return
+                }
 
 
 	    $.post("http://quiz.ejdigby.com/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
