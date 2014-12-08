@@ -170,7 +170,6 @@ paper-radio-button.roomRadio::shadow #onRadio {
     width: 50%;
     display: none;
     text-align: center;
-    visibility: hidden;
 }
 
 .behn {
