@@ -79,11 +79,7 @@
 		var LBHouses = []
 
 		$('.houseToggle').on("change", function() {
-			console.log('Toggles changed')
-			if (($('.houseToggle').attr('aria-pressed') == "true").length >= 2) {
-				console.log('More than 2 pressed')
-                                $(('.houseToggle').attr('aria-pressed' == "false")).attr('disabled') == "true"
-			}
+			// runs code every time Toggle is turned on or off	
 		})
 
   		$('.saveButton').click(function() {
