@@ -72,7 +72,7 @@ io.on('TeamAutoComplete', function (data){
       		<input type="hidden" name="_csrf"  value="{{Token}}"/>
       		<select required onchange="emitteam()" id="teamname" name="teamname">
         		<option>Team Name</option>
-			<option value="add">+</option>
+			<option id="add" value="add">+</option>
       		</select>
       		<span> scored </span>
       		<input required type="text" id="score" name="score" maxlength="2" placeholder="8">

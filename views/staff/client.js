@@ -27,10 +27,10 @@ $(document).ready(function() {
 
   $('#score').on("keypress", (function(chr) {
 	if (chr >= 0 && chr <= 15) {
-		return chr
+		console.log('number is in range')
 	}
 	else {
-		return false
+		console.log('number is not range')
 	}
   }))  
 });
