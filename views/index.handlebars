@@ -38,133 +38,132 @@
 		</div>
 	</div>
 	<div id="leaderboard">
-      <ul id="teams">
-          <!-- dynamically load teams here -->
-		  </ul>
-  </div>
+      		<ul id="teams">
+          		<!-- dynamically load teams here -->
+		 </ul>
+  	</div>
 	<div id="scores">
 		<div class="behn" id="Behn">
-		    <div class="score-container">
-            <img src="images/behn.png">
-            <h2 class="BehnScore"></h2>
-		    </div>
-    </div>
+			<div class="score-container">
+            			<img src="images/behn.png">
+            			<h2 class="BehnScore"></h2>
+		  	</div>
+    		</div>
      		<div class="meitner" id="Meitner">
-		    <div class="score-container">
-            <img src="images/meitner.png">
-            <h2 class="MeitnerScore"><h2>
-        </div>
+		    	<div class="score-container">
+            			<img src="images/meitner.png">
+            			<h2 class="MeitnerScore"><h2>
+        		</div>
 		</div>
-    <div class="rorschach" id="Rorschach">
-        <div class="score-container">
-          	<img src="images/rorschach.png">
-           	<h2 class="RorschachScore"><h2>
-		    </div>
-    </div>
-    <div class="tinbergen" id="Tinbergen">
-        <div class="score-container">
-			      <img src="images/tinbergen.png">
-            <h2 class="TinbergenScore"><h2>
-        </div>
+    		<div class="rorschach" id="Rorschach">
+        		<div class="score-container">
+          			<img src="images/rorschach.png">
+           			<h2 class="RorschachScore"><h2>
+		    	</div>
+    		</div>
+    		<div class="tinbergen" id="Tinbergen">
+        		<div class="score-container">
+			      	<img src="images/tinbergen.png">
+            			<h2 class="TinbergenScore"><h2>
+        		</div>
 		</div>
-    </div>
+    	  </div>
 	  <div id="video">
-          <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
-    </div>
-<script>
-	var radioButtons = document.querySelector('paper-radio-group')
-	var leaderboardRoom
+          	<iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
+    	</div>
+	<script>
+		var radioButtons = document.querySelector('paper-radio-group')
+		var leaderboardRoom
 
-  	$('.saveButton').click(function() {
-		var room = radioButtons.selected;
-		if (room == 0) {
-          		room = "Drama Studio"
-                        leaderboardRoom = room
-                }
-        	else if (room == 1) {
-                	room = "Main Hall"
-                        leaderboardRoom = room
-        	}
-        	else if (room == 2) {
-                	room = "Sports Hall"
-                        leaderboardRoom = room
-        	}
-		console.log('You are in the ' + room);
+  		$('.saveButton').click(function() {
+			var room = radioButtons.selected;
+			if (room == 0) {
+          			room = "Drama Studio"
+                        	leaderboardRoom = room
+                	}
+        		else if (room == 1) {
+                		room = "Main Hall"
+                        	leaderboardRoom = room
+        		}
+        		else if (room == 2) {
+                		room = "Sports Hall"
+                        	leaderboardRoom = room
+        		}
+			console.log('You are in the ' + room);
 
-		if ($('.behnToggle').attr('aria-pressed') == "true") {
-			console.log('Behn is toggled')
-			$('.behn').css('display','inline-block')
-		}
-		if ($('.meitnerToggle').attr('aria-pressed') == "true") {
-                        console.log('Meitner is toggled')
-			$('.meitner').css('display','inline-block')
-                }
-		if ($('.rorschachToggle').attr('aria-pressed') == "true") {
-                        console.log('Rorschach is toggled')
-			$('.rorschach').css('display','inline-block')
-                }
-		if ($('.tinbergenToggle').attr('aria-pressed') == "true") {
-                        console.log('Tinbergen is toggled')
-			$('.tinbergen').css('display','inline-block')
-                }
+			if ($('.behnToggle').attr('aria-pressed') == "true") {
+				console.log('Behn is toggled')
+				$('.behn').css('display','inline-block')
+			}
+			if ($('.meitnerToggle').attr('aria-pressed') == "true") {
+                        	console.log('Meitner is toggled')
+				$('.meitner').css('display','inline-block')
+                	}
+			if ($('.rorschachToggle').attr('aria-pressed') == "true") {
+                        	console.log('Rorschach is toggled')
+				$('.rorschach').css('display','inline-block')
+                	}
+			if ($('.tinbergenToggle').attr('aria-pressed') == "true") {
+                        	console.log('Tinbergen is toggled')
+				$('.tinbergen').css('display','inline-block')
+                	}
 		
-		$('#main').fadeIn()
-		$('#lightbox').fadeOut()
-  	})
+			$('#main').fadeIn()
+			$('#lightbox').fadeOut()
+  		})
 
-        behnscore = parseInt("{{Behn}}")
-        meitnerscore = parseInt("{{Meitner}}")
-        rorschachscore = parseInt("{{Rorschach}}")
-        tinbergenscore  = parseInt("{{Tinbergen}}")
+        	behnscore = parseInt("{{Behn}}")
+        	meitnerscore = parseInt("{{Meitner}}")
+        	rorschachscore = parseInt("{{Rorschach}}")
+        	tinbergenscore  = parseInt("{{Tinbergen}}")
 
-        $('.BehnScore').text(behnscore)
-        $('.MeitnerScore').text(meitnerscore)
-        $('.RorschachScore').text(rorschachscore)
-        $('.TinbergenScore').text(tinbergenscore)
+        	$('.BehnScore').text(behnscore)
+        	$('.MeitnerScore').text(meitnerscore)
+        	$('.RorschachScore').text(rorschachscore)
+        	$('.TinbergenScore').text(tinbergenscore)
 
-        io = io.connect()
+        	io = io.connect()
+        	io.emit('connection')
 
-        io.emit('connection')
+        	io.on('ScoreUpdate',function(data) {
+        		// do something with data
+               		console.log("Score Updated!")
+	       		var House = data.House;
+               		var Score = data.Score;
+                	console.log(House);
+	        	console.log(Score);
+                	if (House == "Behn") {
+                    		$(".BehnScore").innerHTML = "";
+                    		$('.BehnScore').text(Score);
+                	}
+			else if (House == "Rorschach") {
+                    		$(".RorschachScore").innerHTML = ""
+                    		$('.RorschachScore').text(Score)
+                	}
+			else if (House == "Meitner") {
+                    		$(".MeitnerScore").innerHTML = ""
+                    		$('.MeitnerScore').text(Score)
+                	} else if (House == "Tinbergen") {
+                    		$(".TinbergenScore").innerHTML = ""
+                    		$('.TinbergenScore').text(Score)
+                	}
+        	})
 
+		io.on('LeaderboardUpdate',function(data) {
+	     		leaderboard = data.LeaderBoard;
 
-        io.on('ScoreUpdate',function(data) {
-        	// do something with data
-               console.log("Score Updated!")
-	       var House = data.House;
-               var Score = data.Score;
-                console.log(House);
-	        console.log(Score);
-                if (House == "Behn") {
-                    $(".BehnScore").innerHTML = "";
-                    $('.BehnScore').text(Score);
-                } else if (House == "Rorschach") {
-                    $(".RorschachScore").innerHTML = "";
-                    $('.RorschachScore').text(Score);
-                } else if (House == "Meitner") {
-                    $(".MeitnerScore").innerHTML = "";
-                    $('.MeitnerScore').text(Score);
-                } else {
-                    $(".TinbergenScore").innerHTML = "";
-                    $('.TinbergenScore').text(Score);
-                }
-        })
-
-	io.on('LeaderboardUpdate',function(data) {
-	     leaderboard = data.LeaderBoard;
-
-	var letter = "";
-	var placenumber = 0;
+		var letter = "";
+		var placenumber = 0;
 	
-	for (i=0; i < leaderboard.length; i++){
-	    if (leaderboard[i].room == leaderboardRoom){
-	         placenumber += 1; 
-		 letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + ": " + leaderboard[i].score + "</h3></li>";
-}
-	}
-	document.getElementById("teams").innerHTML = letter;
+		for (i=0; i < leaderboard.length; i++){
+	    		if (leaderboard[i].room == leaderboardRoom){
+	         		placenumber += 1; 
+		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + ": " + leaderboard[i].score + "</h3></li>";
+			}
+		}
+		
+		document.getElementById("teams").innerHTML = letter;
 
-	});
-
-
-</script>
+		});
+	</script>
 </html>
