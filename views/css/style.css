@@ -131,6 +131,10 @@ paper-radio-button.roomRadio::shadow #onRadio {
     margin-top: 10px;
 }
 
+#main {
+    display: none;
+}
+
 #scores {
     width: 75%;
     height: 10%;
