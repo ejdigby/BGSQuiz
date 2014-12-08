@@ -14,20 +14,30 @@ Our school house system is as follows:
   ├── .gitignore
   ├── README.md
   ├── server.js
+  ├── routes.js
+  ├── bower.json
   ├── package.json
   └── views
 	├── index.handlebars
 	├── css
 	|    └── style.css
-	└── images
+	├── images
 	|    ├── behn.png	
 	|    ├── meitner.png
    	|    ├── rorschach.png
 	|    └── tinbergen.png
-	└── staff
+	├── staff
+	|    ├── index.handlebars
+	|    ├── style.css
+	|    ├── client.js
+	|    ├── raffle
+	|    |   ├── index.handlebars
+	|    |   └── style.css
+	|    ├── list
+        |    |   └── index.handlebars
+	└── login
 	     ├── index.handlebars
-	     ├── style.css
-	     └── client.js
+             └── style.css
 
-1 directory, 3 sub-directories,  13 files
+1 directory, 6 sub-directories,  20 files
 ```
