@@ -133,6 +133,7 @@ paper-radio-button.roomRadio::shadow #onRadio {
 
 #main {
     display: none;
+    height: 100%;
 }
 
 #scores {
