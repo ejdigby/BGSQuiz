@@ -72,10 +72,6 @@
           <iframe src="http://www.youtube-nocookie.com/embed/lU69KPAiybo?rel=0&amp;controls=0&amp;showinfo=0" frameborder="0"></iframe>
     </div>
 <script>
-	var behnToggle = $('.behnToggle')
-	var meitnerToggle = $('.meitnerToggle')
-	var rorschachToggle = $('.rorschachToggle')
-	var tinbergenToggle = $('.tinbergenToggle')
 	var radioButtons = document.querySelector('paper-radio-group')
 	var leaderboardRoom
 
@@ -97,24 +93,29 @@
 
 		if ($('.behnToggle').attr('aria-pressed') == "true") {
 			console.log('Behn is toggled')
+			$('.behn').css('display','inline-block')
 		}
 		if ($('.meitnerToggle').attr('aria-pressed') == "true") {
                         console.log('Meitner is toggled')
+			$('.behn').css('display','inline-block')
                 }
 		if ($('.rorschachToggle').attr('aria-pressed') == "true") {
                         console.log('Rorschach is toggled')
+			$('.behn').css('display','inline-block')
                 }
 		if ($('.tinbergenToggle').attr('aria-pressed') == "true") {
                         console.log('Tinbergen is toggled')
+			$('.behn').css('display','inline-block')
                 }
-
-		$('#lightbox').fadeOut();
+		
+		$('#main').fadeIn()
+		$('#lightbox').fadeOut()
   	})
 
-        behnscore = parseInt("{{Behn}}");
-        meitnerscore = parseInt("{{Meitner}}");
-        rorschachscore = parseInt("{{Rorschach}}");
-        tinbergenscore  = parseInt("{{Tinbergen}}");
+        behnscore = parseInt("{{Behn}}")
+        meitnerscore = parseInt("{{Meitner}}")
+        rorschachscore = parseInt("{{Rorschach}}")
+        tinbergenscore  = parseInt("{{Tinbergen}}")
 
         $('.BehnScore').text(behnscore)
         $('.MeitnerScore').text(meitnerscore)
