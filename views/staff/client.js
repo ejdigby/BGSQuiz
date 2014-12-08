@@ -26,7 +26,7 @@ $(document).ready(function() {
   })
 
   $('#score').on("keypress", (function() {
-	if (this.val  >= 0 && this.val <= 15) {
+	if (this.value  >= 0 && this.value <= 15) {
 		console.log('number is in range')
 	}
 	else {
