@@ -77,15 +77,15 @@
 		var radioButtons = document.querySelector('paper-radio-group')
 		var LBRoom
 		var LBHouses = []
-		var i
-
+		var toggles = 0
+		
 		$('.houseToggle').on("change", function() {		
 			// if there are two toggles switched on then disable all the toggles that are off
 			if ($('.houseToggle').attr('aria-pressed') == "true") {
-				i++
+				toggles++
 			}
 			if (i >= 2) {
-                                console.log(i + ' toggles enabled')
+                                console.log(toggles + ' toggles enabled')
                         } 
 		})
 
