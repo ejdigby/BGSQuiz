@@ -21,9 +21,17 @@ $(document).ready(function() {
   $('#teamname').change(function() {
   if ($(this).val() == "add") {
      var newTeam = prompt('What is the name of the team that you would like to add?')
-     $('#teamname').append('<option selected>' + newTeam + '</option>').insertBefore();
+     $('#teamname').append('<option selected>' + newTeam + '</option>').insertBefore($('#add'));
   }
   })
 
+  $('#score').on("keypress", (function(chr) {
+	if (chr >= 0 && chr <= 15) {
+		return chr
+	}
+	else {
+		return false
+	}
+  })
    
 });
