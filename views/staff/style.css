@@ -55,7 +55,7 @@ button {
       	margin: 5px;
 }
 
-#errorBox {
+#statusBox {
    	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
