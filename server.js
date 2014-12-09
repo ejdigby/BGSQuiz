@@ -13,6 +13,12 @@ var privatetoken = config.token;
 var teamlist = [];
 var rafflewinner = "";
 var list = [];
+var roomround={
+    "Main_Hall":[1],
+    "Sports_Hall":[2],
+    "Drama_Studio":[3]
+};
+console.log(roomround.Main_Hall[0])
 // Define Scores
 var Rorschach = 0;
 var Behn = 0;
@@ -184,12 +190,12 @@ socket.on('list', function (){
 
 	var leaderboard = [];
 	var leaderboardscores = [];
-	db.collection('Teams').find().sort({ score : -1}).toArray(function(err, doc){
+	db.collection('Teams').find().toArray(function(err, doc){
 	    leaderboard = [];
 	    for (x = 0; x < doc.length; x++){
 		leaderboard.push(doc[x]);
 	    }
-	    io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores});
+	    io.sockets.emit('LeaderboardUpdate', {'LeaderBoard' :leaderboard, 'LeaderBoardScores' : leaderboardscores, 'roomround' : roomround});
 	});
 	var scorescollection = db.collection('Scores');
 	var teamscollection = db.collection('Teams')

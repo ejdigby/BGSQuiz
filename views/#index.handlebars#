@@ -176,6 +176,7 @@
 	      if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 
 	      if (LBRoom == "Main Hall"){
+	       
 	         console.log("Room Round is: " + data.roomround.Main_Hall[0])
 	         round = data.roomround.Main_Hall[0]
 }	      else if (LBRoom == "Drama Studio"){
