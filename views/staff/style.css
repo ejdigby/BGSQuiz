@@ -54,7 +54,16 @@ button {
       	padding: 5px 20px;
       	margin: 5px;
 }
-#error{
-    padding-top:20px;
-    font-size:16px;
+
+#errorBox {
+   	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	display: inline-block;
+	padding: 20px;
+	background-color: rgba(255,255,255,.8);
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	z-index: 10000;
 }
