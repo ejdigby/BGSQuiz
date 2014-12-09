@@ -79,7 +79,7 @@
 		
 		$('.houseToggle').on("change", function() {		
 			// if there are two toggles switched on then disable all the toggles that are off
-			if ($('.houseToggle').attr("aria-pressed" == true)) {
+			if ($('.houseToggle').attr("aria-pressed") == "true") {
 				console.log(this.attr("class"))
 			}
 		})
