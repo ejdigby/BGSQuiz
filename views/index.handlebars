@@ -83,9 +83,10 @@
 			if ($('.houseToggle').attr('aria-pressed') == "true") {
                                 toggles++
                         }
-			if ($('.houseToggle').attr('aria-pressed') == "false") {
+			else if ($('.houseToggle').attr('aria-pressed') == "false") {
 				toggles--
 			}
+
 			if (toggles >= 2) {
                                 console.log(toggles + ' toggles enabled')
                         } 
