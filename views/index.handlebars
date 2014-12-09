@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Bourne Grammar School Quiz</title>
@@ -83,12 +82,12 @@
 			// if there are two toggles switched on then disable all the toggles that are off
 			if ($('.houseToggle').attr('aria-pressed') == "true") {
 				toggles++
-			}
+		        }
 			if (i >= 2) {
                                 console.log(toggles + ' toggles enabled')
                         } 
 		})
-
+		
   		$('.saveButton').click(function() {
 			var room = radioButtons.selected;
 			if (room == 0) {
@@ -172,14 +171,16 @@
 
 		var letter = "";
 		var placenumber = 0;
-	
+
 		for (i=0; i < leaderboard.length; i++){
-	    		if (leaderboard[i].room == LBRoom && leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
+			      
+              if (leaderboard[i].room == LBRoom){
+	      if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 	         		placenumber += 1; 
 		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].score + "</h3></li>";
 			}
-		}
 		
+}		}
 		document.getElementById("teams").innerHTML = letter;
 
 		});
