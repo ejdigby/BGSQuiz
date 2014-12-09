@@ -41,3 +41,5 @@ Our school house system is as follows:
 
 1 directory, 6 sub-directories,  20 files
 ```
+###DB
+For bgsquiz we have use a mongo db show below:
