@@ -82,9 +82,12 @@
 		$('.houseToggle').on("change", function() {		
 			// if there are two toggles switched on then disable all the toggles that are off
 			if ($('.houseToggle').attr('aria-pressed') == "true") {
-				toggles++
+                                toggles++
+                        }
+			if ($('.houseToggle').attr('aria-pressed') == "false") {
+				toggles--
 			}
-			if (i >= 2) {
+			if (toggles >= 2) {
                                 console.log(toggles + ' toggles enabled')
                         } 
 		})
