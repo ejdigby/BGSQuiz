@@ -43,3 +43,18 @@ Our school house system is as follows:
 ```
 ###DB
 For bgsquiz we have use a mongo db show below:
+```
+└── Scores
+    ├── name
+    └── score
+└── Teams
+     ├── teamname
+     ├── house
+     ├── room
+     ├── r1
+     ├── r2
+     ├── r3
+     ├── r4
+     ├── r5
+     └── r6
+```
