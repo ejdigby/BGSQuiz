@@ -25,10 +25,6 @@ var Behn = 0;
 var Meitner = 0;
 var Tinbergen = 0;
 
-var grabteams = function(){
-    console.log("hello!");
-}
-
 var url = 'mongodb://localhost:27017/bgsquiz';
 MongoClient.connect(url, function (err, db){
 if (err)throw err;
@@ -214,11 +210,13 @@ socket.on('list', function (){
 		    housescore = dbscore;
 		}
 	    } 			
-	    teamscollection.find({"house":housename}, { house: 1,  score: 1, _id: 0}).toArray(function(err, doc){
+	    teamscollection.find({"house":housename}, {}).toArray(function(err, doc){
 		var newhousescore = 0;
 		if (doc.length != 0){          
 		    for (x = 0; x < doc.length; x++){
-			newhousescore = newhousescore + doc[x].score;
+			var newscore = 0
+
+			 newhousescore = newhousescore + doc[x].r1 + doc[x].r2 + doc[x].r3 + doc[x].r4 + doc[x].r5 + doc[x].r6;
 		    }
 		    if (newhousescore == housescore){
 			return

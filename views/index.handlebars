@@ -165,35 +165,57 @@
 		io.on('LeaderboardUpdate',function(data) {
 	     		leaderboard = data.LeaderBoard;
 
-		var letter = "";
-		var placenumber = 0;
-		var locallb = [];
-		var round = 1;
-		for (i=0; i < leaderboard.length; i++){
+		   var letter = "";
+		   var placenumber = 0;
+		   var locallb = [];
+		   var round = 1;
 
+		   for (i=0; i < leaderboard.length; i++){
+		       if (leaderboard[i].room == LBRoom){
+		           if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
+				 if (LBRoom == "Main Hall"){
+				       console.log("Room Round is: " + data.roomround.Main_Hall[0])
+    				       round = data.roomround.Main_Hall[0]
+				 } else if (LBRoom == "Drama Studio"){
+				       console.log("Room Round is: " + data.roomround.Drama_Studio[0])
+				       round = data.roomround.Drama_Studio[0]
+				 } else if (LBRoom == "Sports Hall"){
+ 				       console.log("Room Round is: " + data.roomround.Sports_Hall[0])
+				       round = data.roomround.Sports_Hall[0]
+				 }
+				 if (round == 1){
+				       locallb.push(leaderboard[i])
+//				       placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r1 + "</h3></li>";
+				 } else if (round == 2){
+				       locallb.push(leaderboard[i])
+//			               placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r2 + "</h3></li>";
+				 } else if (round == 3){
+				       locallb.push(leaderboard[i])
+//			               placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r3 + "</h3></li>";
+				 } else if (round == 4){
+				       locallb.push(leaderboard[i])
+//			               placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r4 + "</h3></li>";
+				 } else if (round == 5){
+				       locallb.push(leaderboard[i])
+//			               placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r5 + "</h3></li>";
+				 } else if (round == 6){
+				       locallb.push(leaderboard[i])
+//			               placenumber += 1; 
+//	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r6 + "</h3></li>";
+				 }			      
+			}
+                    }
+                }		
 
-              if (leaderboard[i].room == LBRoom){
-	      if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
-
-	      if (LBRoom == "Main Hall"){
-	         console.log("Room Round is: " + data.roomround.Main_Hall[0])
-	         round = data.roomround.Main_Hall[0]
-}	      else if (LBRoom == "Drama Studio"){
-	         console.log("Room Round is: " + data.roomround.Drama_Studio[0])
-	         round = data.roomround.Drama_Studio[0]
-              } else if (LBRoom == "Sports Hall"){
-		 console.log("Room ROund is: " + data.roomround.Sports_Hall[0])
-		 round = data.roomround.Sports_Hall[0]
-}
-
-
-		
-}		}}
-		document.getElementById("teams").innerHTML = letter;
-//	         		placenumber += 1; 
-//		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].score + "</h3></li>";
-
-		});
+				 console.log(locallb)
+				 document.getElementById("teams").innerHTML = letter;
+	
+	});
 	</script>
 </html>
 
