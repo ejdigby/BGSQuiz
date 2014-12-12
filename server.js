@@ -81,7 +81,7 @@ module.exports = {
 	            db.collection('Teams',{safe:true}, function(err, collection) {    
 		        collection.insert({
 		            "teamname" : teamname,
-			    ("r" + round) : score, 
+			    "r1" : score, 
 			    "house" : house, 
 			    "room" : room
 			}, function(err, doc) {
