@@ -13,7 +13,7 @@ app.get('/staff', function(req, res){
    console.log("Request for /staff");
    if (!req.query.token){
        console.log("Request for /staff rejected")
-       res.redirect("http://quiz.ejdigby.com/login")
+       res.redirect("/login")
        return;
    }
    if (req.query.token == config.logintoken){
@@ -24,7 +24,7 @@ app.get('/staff', function(req, res){
        });
     } else {
 	console.log("Request for /staff rejected")
-	res.redirect("http://quiz.ejdigby.com/login")
+	res.redirect("/login")
 	return;
     }
 });
@@ -71,11 +71,11 @@ app.post('/login', function(req, res){
 	console.log("Token Is Correct!")
 	if (password == config.password){
 	    console.log("Password is correct!");
-	    res.redirect("http://quiz.ejdigby.com/staff?token=" + config.logintoken);
+	    res.redirect("/staff?token=" + config.logintoken);
 	    return;
 	} else {
 	    console.log("Password is wrong!");
-	    res.redirect("http://quiz.ejdigby.com/login");
+	    res.redirect("/login");
 	}
 } else {
     console.log("Token is wrong");
