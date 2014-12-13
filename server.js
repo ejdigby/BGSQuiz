@@ -41,10 +41,40 @@ db.collection('Scores').update(
 	}
     }
 );
-
+var checkround = function(currentround){
+    if (currentround == 6){
+	return 1;
+    } else{
+	return (currentround + 1);
+    }
+}
 module.exports = {
     
-
+changeround: function(csrf, room, res){
+if(csrf == privatetoken){
+	if (room == "Main_Hall"){
+	    console.log("Room Is Main Hall")
+	    roomround.Main_Hall[0] = checkround(roomround.Main_Hall[0])
+	    console.log(roomround.Main_Hall[0])
+	    res.send("yes")
+	} else if (room == "Sports_Hall"){
+	    console.log("Room Is Sports Hall")
+	    roomround.Sports_Hall[0] = checkround(roomround.Sports_Hall[0])
+	    console.log(roomround.Sports_Hall[0]);
+	    res.send("yes")
+	} else if (room == "Drama_Studio"){
+	    console.log("Room Is Drama Studio")
+	    roomround.Drama_Studio[0] = checkround(roomround.Drama_Studio[0])
+	    console.log(roomround.Drama_Studio[0]);
+	    res.send("yes")
+	} else {
+	    res.send("no")
+        }
+    } else {
+	console.log("Token Is Inccorect")
+	res.redirect("http://google.com");
+    }
+},
  grabteams: function(){
   db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
       teamlist = [];
@@ -79,11 +109,17 @@ module.exports = {
 	    collection.find({"teamname" : teamname}).toArray(function(err, doc){
 		if (doc.length == 0){
 	            db.collection('Teams',{safe:true}, function(err, collection) {    
-		        collection.insert({
-		            "teamname" : teamname,
-			    "r1" : score, 
-			    "house" : house, 
-			    "room" : room
+		        if (round == "r1"){
+			    collection.insert({
+				"teamname" : teamname,
+				"house" : house, 
+				"room" : room,
+				"r1" : score, 
+				"r2" : 0,
+				"r3" : 0,
+				"r4" : 0,
+				"r5" : 0,
+				"r6" : 0
 			}, function(err, doc) {
 			    if(err){
 				console.log("Error on document insert"); 
@@ -93,24 +129,176 @@ module.exports = {
 				res.end("yes");
 			    }
 			});
+			} else if (round == "r2"){
+			    collection.insert({
+				"teamname" : teamname,
+				"house" : house, 
+				"room" : room,
+                                "r1" : 0,
+                                "r2" : score,
+                                "r3" : 0,
+                                "r4" : 0,
+                                "r5" : 0,
+                                "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		      } else if (round == "r3"){
+			  collection.insert({
+		              "teamname" : teamname,
+			      "house" : house, 
+			      "room" : room,
+                              "r1" : 0,
+                              "r2" : 0,
+                              "r3" : score,
+                              "r4" : 0,
+                              "r5" : 0,
+                              "r6" : 0
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+                      } else if (round == "r4"){
+			  collection.insert({
+		              "teamname" : teamname,
+			      "house" : house, 
+			      "room" : room,
+			      "r1" : 0,
+                              "r2" : 0,
+                              "r3" : 0,
+                              "r4" : 4,
+                              "r5" : 0,
+                              "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		     } else if (round == "r5"){
+			 collection.insert({
+		             "teamname" : teamname,
+			     "house" : house, 
+			     "room" : room,
+                             "r1" : 0,
+                             "r2" : 0,
+                             "r3" : 0,
+                             "r4" : 0,
+                             "r5" : score,
+                             "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+                     } else if (round == "r6"){
+			 collection.insert({
+		             "teamname" : teamname,
+			     "house" : house, 
+			     "room" : room,
+			     "r1" : 0,
+                             "r2" : 0,
+                             "r3" : 0,
+                             "r4" : 0,
+                             "r5" : 0,
+                             "r6" : score
+			     
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		     }
 		    });
 		} else {
-	            var dbscore = parseInt(doc[0].score);
-	            var newscore = dbscore + score;
 		    var userupdated = "null";
 
-	            collection.update({"teamname" : teamname, "house" : house, "room" : room}
-				      ,{$set:{"score" : newscore}},
-				      function(err, updated) {
-					  if( err || !updated ) {
-					      console.log("User not updated");
-					      res.end("no");
-					  }else{
-					      console.log("User updated");
-					      userupdated = true;
-					      res.end("yes");
-					  }
-				      });
+		    if (round == "r1"){
+			var dbscore = parseInt(doc[0].r1);
+			var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r1" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				}); 
+		    } else if (round == "r2"){
+	            var dbscore = parseInt(doc[0].r2);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r2" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r3"){
+	            var dbscore = parseInt(doc[0].r3);
+	            var newscore = dbscore + score;
+
+
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r3" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r4"){
+	            var dbscore = parseInt(doc[0].r4);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r4": newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r5"){
+	            var dbscore = parseInt(doc[0].r4);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r5" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r6"){
+	            var dbscore = parseInt(doc[0].r6);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r6" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});
+		    }
+		    
+
+
+
 		}		
 	    });
     }else {
@@ -258,7 +446,7 @@ socket.on('list', function (){
 	    i = 0;
 	} 
 	checkscore(i);
-    },100); 
+    },500); 
 });
 
 var routes = require('./routes.js')(app, hbs);

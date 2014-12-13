@@ -34,7 +34,7 @@ app.get('/list', function(req, res){
 	showTitle: true,
     });
 });
-    app.get('/raffle', function(req, res){
+app.get('/raffle', function(req, res){
     console.log("Request for /raffle");
     res.render('staff/raffle/index', {
         showTitle: true,
@@ -45,6 +45,16 @@ app.post('/raffle', function(req, res){
     rafflewinner = "";
     serverfile.raffle(req.body.room)
     res.redirect('/raffle')
+});
+app.get('/round', function(req, res){
+    console.log("Request for /round")
+    res.render('staff/round/index', {
+	showTitle: true,
+    });
+});
+app.post('/round', function(req, res){
+    console.log("Post request for /round");
+    serverfile.changeround(req.body._csrf, req.body.room, res)
 });
 
 app.get('/login', function(req, res){
@@ -57,7 +67,6 @@ app.post('/login', function(req, res){
     console.log("Post request for /login");
     var password = req.body.password
     var csrf = req.body._csrf;
-    console.log(csrf);
     if (csrf == config.token){
 	console.log("Token Is Correct!")
 	if (password == config.password){

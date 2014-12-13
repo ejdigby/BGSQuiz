@@ -1,0 +1,38 @@
+<html>
+  <head>
+      <title>Change Round</title>
+      <link rel="stylesheet" type="text/css" href="staff/style.css">
+      <script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
+      <script>
+	  $(document).ready(function(){
+	     $("#submit").click(function(){
+	       var room = $("#room").val();
+	       console.log(room)
+	       var _csrf = $("#_csrf").val();
+	  	    $.post("http://quiz.ejdigby.com/round",{_csrf: _csrf, room:room}, function(data){
+                          if(data === 'yes'){
+                              alert("Round Changed!");
+                          } else {
+                              alert("Round Not Changed!");
+                          }
+                    });
+           });
+      });
+
+      </script>
+  </head>
+  <body>
+    <div id="container">
+
+	<input type="hidden" id="_csrf" name="_csrf" value="{{Token}}" />
+	<span>In the </span>
+	<select required name="room" id="room">
+	  <option value="Main_Hall">Main Hall</option>
+	  <option value="Sports_Hall">Sports Hall</option>
+	  <option value="Drama_Studio">Drama Studio</option>
+        </select>
+	<span> Change to the next round</span>
+	<button id="submit">Submit</button>
+   </div>
+  </body>
+</html>
