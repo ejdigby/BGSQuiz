@@ -11,124 +11,135 @@ body {
 
 a {
     text-decoration: none;
-    }
-
-#lightbox {
-    background-color: rgba(3, 3, 3, 0.8);
-    position: fixed;
-    z-index: 10000;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    text-align: center; 
 }
 
-#settings {
-    background-color: #ffffff;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    display: inline-block;
-    padding: 20px;
+html /deep/ paper-action-dialog {
+    margin: 0px;
 }
 
-#settings h1 {
+html /deep/ paper-action-dialog::shadow #scroller {
+    padding: 0px;
+}
+
+html /deep/ paper-action-dialog::shadow #actions {
+    padding: 0px;
+}
+
+html /deep/ paper-action-dialog core-toolbar {
+    background-color: #F44336;
+    font-family: 'RobotoDraft';
+    color: #ffffff;
+}
+
+html /deep/ paper-action-dialog #settingsContent {
+    padding: 12px 24px;
+}
+
+html /deep/ paper-action-dialog  h1 {
     text-align: left;
     font-family: 'RobotoDraft';
-    margin-top: 10px;
+    font-size: 18pt;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-#settings h2 {
+html /deep/ paper-action-dialog h2 {
     text-align: left;
     font-family: 'RobotoDraft';
     font-size: 14pt;
     margin-top: 10px;
+    margin-bottom: 0px;
 }
 
-#houseToggles li {
+html /deep/ #houseToggles {
+    padding: 0;
+}
+
+html /deep/ #houseToggles li {
     list-style: none;
     text-align: left;
     display: flex;
     margin-top: 10px;
 }
 
-#houseToggles li h3 {
+html /deep/ #houseToggles li h3 {
     font-family: 'RobotoDraft';
     font-weight: 400;
+    margin: 0;
 }
 
-paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
+html /deep/ paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
     color: #9C27B0;
 }
 
-paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #onRadio {
+html /deep/ paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #onRadio {
     background-color: #9C27B0;
 }
 
-paper-toggle-button.behnToggle::shadow #toggleBar[checked] {
+html /deep/ paper-toggle-button.behnToggle::shadow #toggleBar[checked] {
     background-color: #9C27B0;
 }
 
-paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #ink[checked] {
+html /deep/ paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #ink[checked] {
     color: #EF6C00;
 }
 
-paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #onRadio {
+html /deep/ paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #onRadio {
     background-color: #EF6C00;
 }
 
-paper-toggle-button.meitnerToggle::shadow #toggleBar[checked] {
+html /deep/ paper-toggle-button.meitnerToggle::shadow #toggleBar[checked] {
     background-color: #EF6C00;
 }
 
-paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #ink[checked] {
+html /deep/ paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #ink[checked] {
     color: #4CAF50;
 }
 
-paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #onRadio {
+html /deep/ paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #onRadio {
     background-color: #4CAF50;
 }
 
-paper-toggle-button.rorschachToggle::shadow #toggleBar[checked] {
+html /deep/ paper-toggle-button.rorschachToggle::shadow #toggleBar[checked] {
     background-color: #4CAF50;
 }
 
-paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #ink[checked] {
+html /deep/ paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #ink[checked] {
     color: #1565C0;
 }
 
-paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #onRadio {
+html /deep/ paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #onRadio {
     background-color: #1565C0;
 }
 
-paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
+html /deep/ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
     background-color: #1565C0;
 }
 
-paper-toggle-button {
+html /deep/ paper-toggle-button {
     display: inline;
     margin: 0px 20px;
 }
 
-paper-radio-button.roomRadio::shadow #ink[checked] {
+html /deep/ paper-radio-button.roomRadio::shadow #ink[checked] {
     color: #F33446;
 }
 
-paper-radio-button.roomRadio::shadow #onRadio {
+html /deep/ paper-radio-button.roomRadio::shadow #onRadio {
     background-color: #F33446;
 }
 
-.roomRadio {
+html /deep/ .roomRadio {
     font-family: 'RobotoDraft';
 }
 
-.saveButton {
+html /deep/ .saveButton {
     font-family: 'RobotoDraft';
     background-color: #F44336;
     color: #ffffff;
     display: block;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #main {

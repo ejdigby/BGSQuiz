@@ -8,7 +8,9 @@
     <link rel="import" href="components/paper-radio-button/paper-radio-button.html">
     <link rel="import" href="components/paper-radio-group/paper-radio-group.html">
     <link rel="import" href="components/paper-button/paper-button.html">
+    <link rel="import" href="components/paper-dialog/paper-action-dialog.html">
     <link rel="import" href="components/core-splitter/core-splitter.html">
+    <link rel="import" href="components/core-toolbar/core-toolbar.html">
     <link rel="import" href="components/font-roboto/roboto.html">
     <script src="socket.io/socket.io.js"></script>
     <script>
@@ -17,9 +19,11 @@
     </script>
 </head>
 <body unresolved>
-	<div id="lightbox">
-		<div id="settings">
-		<h1>Configuration</h1>
+	<paper-action-dialog opened>
+		<core-toolbar>
+			<div>Configuration</div>
+		</core-toolbar>
+		<div id="settingsContent">
 		<h2>Which houses would you like to see totals for?</h2>
 		<ul id="houseToggles">
 			<li><h3>Behn: </h3><paper-toggle-button class="behnToggle houseToggle"></paper-toggle-button></li>
@@ -33,9 +37,9 @@
 			<paper-radio-button class="roomRadio" label="Main Hall"></paper-radio-button>
 			<paper-radio-button class="roomRadio" label="Sports Hall"></paper-radio-button>
 		</paper-radio-group>
-		<paper-button class="saveButton" raised>Save Settings</paper-button>
+		<paper-button class="saveButton" raised dismissive>Save Settings</paper-button>
 		</div>
-	</div>
+	</paper-action-dialog>
 	<div id="main">
 		<div id="leaderboard">
       			<ul id="teams">
@@ -79,9 +83,6 @@
 		
 		$('.houseToggle').on("change", function() {		
 			// if there are two toggles switched on then disable all the toggles that are off
-			if ($('.houseToggle').attr("aria-pressed") == "true") {
-				console.log(this.attr("class"))
-			}
 		})
 		
   		$('.saveButton').click(function() {
@@ -100,29 +101,28 @@
         		}
 			console.log('You are in the ' + room);
 			
-			if ($('.behnToggle').attr('aria-pressed') == "true") {
+			if ($('html /deep/ .behnToggle').attr('aria-pressed') == "true") {
 				console.log('Behn is toggled')
 				$('.behn').css('display','inline-block')
 		                LBHouses.push("Behn")
 			}
-			if ($('.meitnerToggle').attr('aria-pressed') == "true") {
+			if ($('html /deep/ .meitnerToggle').attr('aria-pressed') == "true") {
                         	console.log('Meitner is toggled')
 		                $('.meitner').css('display','inline-block')
 		                LBHouses.push("Meitner")
                 	}
-			if ($('.rorschachToggle').attr('aria-pressed') == "true") {
+			if ($('html /deep/ .rorschachToggle').attr('aria-pressed') == "true") {
                         	console.log('Rorschach is toggled')
 				$('.rorschach').css('display','inline-block')
 		                LBHouses.push("Rorschach")
                 	}
-			if ($('.tinbergenToggle').attr('aria-pressed') == "true") {
+			if ($('html /deep/ .tinbergenToggle').attr('aria-pressed') == "true") {
                         	console.log('Tinbergen is toggled')
 				$('.tinbergen').css('display','inline-block')
 		                LBHouses.push("Tinbergen")
                 	}
 
 			$('#main').fadeIn()
-			$('#lightbox').fadeOut()
   		})
 
         	behnscore = parseInt("{{Behn}}")
@@ -173,7 +173,7 @@
               if (leaderboard[i].room == LBRoom){
 	      if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 	         		placenumber += 1; 
-		 		letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].score + "</h3></li>";
+		 		letter += '<li><h1>' + placenumber + '. </h1><h2>' + leaderboard[i].teamname + '</h2><h2 class="' + leaderboard[i].house  + 'Team">' + leaderboard[i].house + '</><h1 class="leaderboardScore">'  + leaderboard[i].score + '</></li>';
 			}
 		
 }		}
