@@ -1,7 +1,7 @@
 BGSQuiz
 =======
 
-Application for managing the points at the annual Bourne Grammar School House Quiz competition. Built by [Edward Digby](http://twitter.com/ejdigby) and Designed by [James Brooks](http://twitter.com/jamesbrks).
+Application for managing the points at the annual Bourne Grammar School House Quiz competition. Built by [Edward Digby](http://twitter.com/ejdigby) and [James Brooks](http://twitter.com/jamesbrks).
 
 Our school house system is as follows:
  - Behn
