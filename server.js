@@ -206,22 +206,69 @@ module.exports = {
 		     }
 		    });
 		} else {
-	            var dbscore = parseInt(doc[0].score);
-	            var newscore = dbscore + score;
 		    var userupdated = "null";
 
-	            collection.update({"teamname" : teamname, "house" : house, "room" : room}
-				      ,{$set:{round : newscore}},
-				      function(err, updated) {
-					  if( err || !updated ) {
-					      console.log("User not updated");
-					      res.end("no");
-					  }else{
-					      console.log("User updated");
-					      userupdated = true;
-					      res.end("yes");
-					  }
-				      });
+		    if (round == "r1"){
+			var dbscore = parseInt(doc[0].r1);
+			var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r1" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				}); 
+		    } else if (round == "r2"){
+	            var dbscore = parseInt(doc[0].r2);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r2" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r3"){
+	            var dbscore = parseInt(doc[0].r3);
+	            var newscore = dbscore + score;
+
+
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r3" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r4"){
+	            var dbscore = parseInt(doc[0].r4);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r4": newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r5"){
+	            var dbscore = parseInt(doc[0].r4);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r5" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});			
+		    } else if (round == "r6"){
+	            var dbscore = parseInt(doc[0].r6);
+	            var newscore = dbscore + score;
+			collection.update({"teamname" : teamname, "house" : house, "room" : room}
+			        ,{$set:{"r6" : newscore}},
+				function(err, updated) {
+				    if( err || !updated ) res.end("no");
+				    else res.end("yes");
+				});
+		    }
+		    
+
+
+
 		}		
 	    });
     }else {
