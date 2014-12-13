@@ -79,11 +79,17 @@ module.exports = {
 	    collection.find({"teamname" : teamname}).toArray(function(err, doc){
 		if (doc.length == 0){
 	            db.collection('Teams',{safe:true}, function(err, collection) {    
-		        collection.insert({
-		            "teamname" : teamname,
-			    "r1" : score, 
-			    "house" : house, 
-			    "room" : room
+		        if (round == "r1"){
+			    collection.insert({
+				"teamname" : teamname,
+				"house" : house, 
+				"room" : room,
+				"r1" : score, 
+				"r2" : 0,
+				"r3" : 0,
+				"r4" : 0,
+				"r5" : 0,
+				"r6" : 0
 			}, function(err, doc) {
 			    if(err){
 				console.log("Error on document insert"); 
@@ -93,6 +99,111 @@ module.exports = {
 				res.end("yes");
 			    }
 			});
+			} else if (round == "r2"){
+			    collection.insert({
+				"teamname" : teamname,
+				"house" : house, 
+				"room" : room,
+                                "r1" : 0,
+                                "r2" : score,
+                                "r3" : 0,
+                                "r4" : 0,
+                                "r5" : 0,
+                                "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		      } else if (round == "r3"){
+			  collection.insert({
+		              "teamname" : teamname,
+			      "house" : house, 
+			      "room" : room,
+                              "r1" : 0,
+                              "r2" : 0,
+                              "r3" : score,
+                              "r4" : 0,
+                              "r5" : 0,
+                              "r6" : 0
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+                      } else if (round == "r4"){
+			  collection.insert({
+		              "teamname" : teamname,
+			      "house" : house, 
+			      "room" : room,
+			      "r1" : 0,
+                              "r2" : 0,
+                              "r3" : 0,
+                              "r4" : 4,
+                              "r5" : 0,
+                              "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		     } else if (round == "r5"){
+			 collection.insert({
+		             "teamname" : teamname,
+			     "house" : house, 
+			     "room" : room,
+                             "r1" : 0,
+                             "r2" : 0,
+                             "r3" : 0,
+                             "r4" : 0,
+                             "r5" : score,
+                             "r6" : 0
+
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+                     } else if (round == "r6"){
+			 collection.insert({
+		             "teamname" : teamname,
+			     "house" : house, 
+			     "room" : room,
+			     "r1" : 0,
+                             "r2" : 0,
+                             "r3" : 0,
+                             "r4" : 0,
+                             "r5" : 0,
+                             "r6" : score
+			     
+			}, function(err, doc) {
+			    if(err){
+				console.log("Error on document insert"); 
+				res.end("no");
+			    } else{
+				console.log("Document saved succesfuly"); 
+				res.end("yes");
+			    }
+			});
+		     }
 		    });
 		} else {
 	            var dbscore = parseInt(doc[0].score);
@@ -100,7 +211,7 @@ module.exports = {
 		    var userupdated = "null";
 
 	            collection.update({"teamname" : teamname, "house" : house, "room" : room}
-				      ,{$set:{"score" : newscore}},
+				      ,{$set:{round : newscore}},
 				      function(err, updated) {
 					  if( err || !updated ) {
 					      console.log("User not updated");
