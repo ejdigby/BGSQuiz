@@ -41,10 +41,40 @@ db.collection('Scores').update(
 	}
     }
 );
-
+var checkround = function(currentround){
+    if (currentround == 6){
+	return 1;
+    } else{
+	return (currentround + 1);
+    }
+}
 module.exports = {
     
-
+changeround: function(csrf, room, res){
+if(csrf == privatetoken){
+	if (room == "Main_Hall"){
+	    console.log("Room Is Main Hall")
+	    roomround.Main_Hall[0] = checkround(roomround.Main_Hall[0])
+	    console.log(roomround.Main_Hall[0])
+	    res.send("yes")
+	} else if (room == "Sports_Hall"){
+	    console.log("Room Is Sports Hall")
+	    roomround.Sports_Hall[0] = checkround(roomround.Sports_Hall[0])
+	    console.log(roomround.Sports_Hall[0]);
+	    res.send("yes")
+	} else if (room == "Drama_Studio"){
+	    console.log("Room Is Drama Studio")
+	    roomround.Drama_Studio[0] = checkround(roomround.Drama_Studio[0])
+	    console.log(roomround.Drama_Studio[0]);
+	    res.send("yes")
+	} else {
+	    res.send("no")
+        }
+    } else {
+	console.log("Token Is Inccorect")
+	res.redirect("http://google.com");
+    }
+},
  grabteams: function(){
   db.collection('Teams').find({}, {teamname: 1, _id: 0}).toArray(function(err, doc){
       teamlist = [];
