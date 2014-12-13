@@ -199,22 +199,16 @@ function dynamicSort(property) {
 				 }
 				 if (round == 1){
 				       locallb.push(leaderboard[i])
-				       placenumber += 1; 
 	 			 } else if (round == 2){
 				       locallb.push(leaderboard[i])
-			               placenumber += 1; 
 				 } else if (round == 3){
 				       locallb.push(leaderboard[i])
-			               placenumber += 1; 
 				 } else if (round == 4){
 				       locallb.push(leaderboard[i])
-			               placenumber += 1; 
 				 } else if (round == 5){
 				       locallb.push(leaderboard[i])
-			               placenumber += 1; 
 				 } else if (round == 6){
 				       locallb.push(leaderboard[i])
-			               placenumber += 1; 
 				 }			      
 			}
                     }
@@ -224,10 +218,49 @@ function dynamicSort(property) {
 
 //locallb.sort(locallb[i].r1);
 console.log(locallb)
-locallb.sort(dynamicSort("-r1"));
-for (x=0; x < locallb.length; x++){
-    letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r1 + "</h3></li>";
-}			
+
+
+				 if (round == 1){
+				     locallb.sort(dynamicSort("-r1"));
+        			     for (x=0; x < locallb.length; x++){
+				         placenumber += 1
+				         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r1 + "</h3></li>";
+			             }
+	 			 } else if (round == 2){
+    			             placenumber += 1
+                                     locallb.sort(dynamicSort("-r2"));
+                                     for (x=0; x < locallb.length; x++){
+                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r2 + "</h3></li>";
+                                     }
+				 } else if (round == 3){
+                                     placenumber += 1
+			             locallb.sort(dynamicSort("-r3"));
+                                     for (x=0; x < locallb.length; x++){
+                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r3 + "</h3></li>";
+                                     }
+
+				 } else if (round == 4){
+				     placenumber += 1
+                                     locallb.sort(dynamicSort("-r4"));
+                                     for (x=0; x < locallb.length; x++){
+                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r4 + "</h3></li>";
+                                     }
+
+				 } else if (round == 5){
+                                     placenumber += 1
+                                     locallb.sort(dynamicSort("-r5"));
+                                     for (x=0; x < locallb.length; x++){
+                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r5 + "</h3></li>";
+                                     }
+
+				 } else if (round == 6){
+				     placenumber += 1
+                                     locallb.sort(dynamicSort("-r6"));
+                                     for (x=0; x < locallb.length; x++){
+                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r6 + "</h3></li>";
+                                     }
+
+				 }			      
 
 				 console.log("Local After sort" + locallb)
 				 console.log(locallb)
