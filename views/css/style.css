@@ -143,7 +143,8 @@ html /deep/ .saveButton {
 }
 
 #main {
-    display: none;
+    display: block;
+    visibility: hidden;
     height: 100%;
 }
 
@@ -238,9 +239,5 @@ html /deep/ .saveButton {
     position: absolute;
     right: 0;
     bottom: 0;
-}
-
-#video iframe {
-    width: 100%;
-    height: 100%;
+    display: block;
 }
