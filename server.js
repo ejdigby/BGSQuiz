@@ -258,7 +258,7 @@ socket.on('list', function (){
 	    i = 0;
 	} 
 	checkscore(i);
-    },100); 
+    },500); 
 });
 
 var routes = require('./routes.js')(app, hbs);

@@ -16,6 +16,20 @@
     <script>
          io = io.connect()
          io.emit('ready')
+function dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
+}
+
+
+
     </script>
 </head>
 <body unresolved>
@@ -186,33 +200,35 @@
 				 if (round == 1){
 				       locallb.push(leaderboard[i])
 				       placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r1 + "</h3></li>";
-				 } else if (round == 2){
+	 			 } else if (round == 2){
 				       locallb.push(leaderboard[i])
 			               placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r2 + "</h3></li>";
 				 } else if (round == 3){
 				       locallb.push(leaderboard[i])
 			               placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r3 + "</h3></li>";
 				 } else if (round == 4){
-		       locallb.push(leaderboard[i])
+				       locallb.push(leaderboard[i])
 			               placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r4 + "</h3></li>";
 				 } else if (round == 5){
 				       locallb.push(leaderboard[i])
 			               placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r5 + "</h3></li>";
 				 } else if (round == 6){
 				       locallb.push(leaderboard[i])
 			               placenumber += 1; 
-	 			       letter += "<li><h3>" + placenumber + ". " + leaderboard[i].teamname + "(" + leaderboard[i].house + "): " + leaderboard[i].r6 + "</h3></li>";
 				 }			      
 			}
                     }
                 }		
+
+
+
 //locallb.sort(locallb[i].r1);
-locallb.sort(function(a, b){return a-b});
+console.log(locallb)
+locallb.sort(dynamicSort("-r1"));
+for (x=0; x < locallb.length; x++){
+    letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r1 + "</h3></li>";
+}			
+
 				 console.log("Local After sort" + locallb)
 				 console.log(locallb)
 				 document.getElementById("teams").innerHTML = letter;
