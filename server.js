@@ -90,7 +90,7 @@ if(csrf == privatetoken){
  raffle: function(room){
     db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
 	if (doc.length == 0){
-	    rafflewinner = "There Are No Teams In The " + room;
+	    rafflewinner = "There are no teams in the " + room;
 	 } else {
 	     var rafflelist = [];
 	     var raffleroomlist = [];
