@@ -219,29 +219,51 @@ html /deep/ .saveButton {
     overflow-y: auto;
 }
 
-#teams li h2 {
+#teams li p {
     font-family: 'RobotoDraft';
+}
+
+#teams li .place {
+    font-size: 32pt;
+    font-weight: 600;
     display: inline;
+    margin-left: 10px;
+}
+
+#teams li .teamInfo {
+    margin-left: 10px;
+    display: inline-block
+}
+
+#teams li .leaderboardScore {
+    font-size: 32pt;
+    display: inline;
+    float: right;
+    margin-right: 10px;
+}
+
+#teams li .team {
+    font-weight: 400;
 }
 
 #teams li .BehnLabel {
     color: #9C27B0;
-    display: block;
+    font-size: 12pt;
 }
 
 #teams li .MeitnerLabel {
     color: #EF6C00;
-    display: block;
+    font-size: 12pt;
 }
 
 #teams li .RorschachLabel {
     color: #4CAF50;
-    display: block;
+    font-size: 12pt;
 }
 
 #teams li .TinbergenLabel {
     color: #1565C0;
-    display: block;
+    font-size: 12pt;
 }
 
 #teams li:nth-child(2n){
