@@ -23,14 +23,5 @@ $(document).ready(function() {
      var newTeam = prompt('What is the name of the team that you would like to add?')
      $('#teamname').append('<option selected>' + newTeam + '</option>').insertBefore($('#add'));
   }
-  })
-
-  $('#score').on("keypress", (function() {
-	if (this.value  >= 0 && this.value <= 15) {
-		console.log('number is in range')
-	}
-	else {
-		console.log('number is not range')
-	}
-  }))  
+  }) 
 });
