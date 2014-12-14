@@ -12,6 +12,7 @@ var privatetoken = config.token;
 
 var teamlist = [];
 var rafflewinner = "";
+var raffleroom = "";
 var list = [];
 var roomround={
     "Main_Hall":[1],
@@ -92,11 +93,15 @@ if(csrf == privatetoken){
 	    rafflewinner = "There Are No Teams In The " + room;
 	 } else {
 	     var rafflelist = [];
+	     var raffleroomlist = [];
 	     for (x = 0; x < doc.length; x++){
 		 rafflelist.push(doc[x].teamname);
+		 raffleroomlist.push(doc[x].room);
 	     }
 	     var number = Math.floor((Math.random() * rafflelist.length) + 1)
 	     rafflewinner = rafflelist[number];
+	     raffleroom = room
+	     console.log(raffleroom)
 	 }
   });	
 
@@ -320,6 +325,7 @@ var hbs = exphbs.create({
 	Team: function() { return teamlist },
 	Token: function() { return privatetoken },
 	Raffle:function() { return rafflewinner },
+	RaffleRoom:function() { return raffleroom },
 	list:function() { return list }
    }
 });

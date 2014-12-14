@@ -56,7 +56,6 @@ app.get('/raffle', function(req, res){
 });
 app.post('/raffle', function(req, res){
     console.log("Post request for /raffle");
-    rafflewinner = "";
     serverfile.raffle(req.body.room)
     res.redirect('/raffle')
 });

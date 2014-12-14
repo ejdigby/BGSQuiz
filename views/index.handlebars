@@ -185,13 +185,14 @@
 	     		leaderboard = data.LeaderBoard;
 
 		   var letter = "";
-		   var placenumber = 0;
+ 		   var placenumber = 0;
 		   var locallb = [];
 		   var round = 1;
 
 		   for (i=0; i < leaderboard.length; i++){
 		       if (leaderboard[i].room == LBRoom){
-		           if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
+		          for (x=0; x < LBHouses.length; x++){
+		           if (leaderboard[i].house == LBHouses[x]){
 				 if (LBRoom == "Main Hall"){
     				       round = data.roomround.Main_Hall[0]
 				 } else if (LBRoom == "Drama Studio"){
@@ -213,6 +214,7 @@
 				       locallb.push(leaderboard[i])
 				 }			      
 			}
+		      }
                     }
                 }		
 		if (round == 1){
