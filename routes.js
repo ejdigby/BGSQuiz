@@ -16,7 +16,7 @@ app.get('/staff', function(req, res){
        res.redirect("/login")
        return;
    }
-   if (req.query.token == config.logintoken){
+   if (req.query.token == config.logintoken || req.query.token == config.adminlogintoken){
        serverfile.grabteams();
        console.log("Request for /staff accepted");
        res.render('staff/index', {
@@ -29,10 +29,24 @@ app.get('/staff', function(req, res){
     }
 });
 app.get('/list', function(req, res){
-    console.log("Request for /list")
-    res.render('staff/list/index', {
-	showTitle: true,
-    });
+
+     if (!req.query.token){
+       console.log("Request for /staff rejected")
+       res.redirect("/login")
+       return;
+   }
+   if (req.query.token == config.adminlogintoken){
+       console.log("Request for /list")
+       res.render('staff/list/index', {
+	   showTitle: true,
+       });
+
+    } else {
+        console.log("Request for /list rejected")
+        res.redirect("/login")
+        return;
+    }
+
 });
 app.get('/raffle', function(req, res){
     console.log("Request for /raffle");
@@ -73,7 +87,11 @@ app.post('/login', function(req, res){
 	    console.log("Password is correct!");
 	    res.redirect("/staff?token=" + config.logintoken);
 	    return;
-	} else {
+	}else if (password == config.adminpassword){
+	    console.log("Developer Password Used!")
+	    res.redirect("/staff?token=" + config.adminlogintoken);
+            return;
+	}else {
 	    console.log("Password is wrong!");
 	    res.redirect("/login");
 	}

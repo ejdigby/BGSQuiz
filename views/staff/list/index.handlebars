@@ -20,7 +20,15 @@
 	  array = data.doc
 	  page = "";
 	  for (x=0; x < array.length; x++){
-		page += "<li> Name: " + array[x].teamname + ",  Score: " + array[x].score + ", House: " + array[x].house + " </li>";
+		page += "<li> Name: " + array[x].teamname + 
+			", House: " + array[x].house +
+			" , Round 1: " + array[x].r1 +
+			" , Round 2: " + array[x].r2 +
+			" , Round 3: " + array[x].r3 +
+			" , Round 4: " + array[x].r4 +
+			" , Round 5: " + array[x].r5 +
+			" , Round 6: " + array[x].r6 +
+			"</li>";
 }
 
 	  document.getElementById('body').innerHTML = page;
