@@ -155,12 +155,8 @@ function dynamicSort(property) {
         	io.emit('connection')
 
         	io.on('ScoreUpdate',function(data) {
-        		// do something with data
-               		console.log("Score Updated!")
 	       		var House = data.House;
                		var Score = data.Score;
-                	console.log(House);
-	        	console.log(Score);
                 	if (House == "Behn") {
                     		$(".BehnScore").innerHTML = "";
                     		$('.BehnScore').text(Score);
@@ -190,13 +186,10 @@ function dynamicSort(property) {
 		       if (leaderboard[i].room == LBRoom){
 		           if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 				 if (LBRoom == "Main Hall"){
-				       console.log("Room Round is: " + data.roomround.Main_Hall[0])
     				       round = data.roomround.Main_Hall[0]
 				 } else if (LBRoom == "Drama Studio"){
-				       console.log("Room Round is: " + data.roomround.Drama_Studio[0])
 				       round = data.roomround.Drama_Studio[0]
 				 } else if (LBRoom == "Sports Hall"){
- 				       console.log("Room Round is: " + data.roomround.Sports_Hall[0])
 				       round = data.roomround.Sports_Hall[0]
 				 }
 				 if (round == 1){
@@ -215,13 +208,6 @@ function dynamicSort(property) {
 			}
                     }
                 }		
-
-
-
-//locallb.sort(locallb[i].r1);
-console.log(locallb)
-
-
 				 if (round == 1){
 				     locallb.sort(dynamicSort("-r1"));
         			     for (x=0; x < locallb.length; x++){
@@ -263,11 +249,7 @@ console.log(locallb)
                                      }
 
 				 }			      
-
-				 console.log("Local After sort" + locallb)
-				 console.log(locallb)
 				 document.getElementById("teams").innerHTML = letter;
-	
 	});
 	</script>
 </html>
