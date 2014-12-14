@@ -218,11 +218,24 @@ html /deep/ .saveButton {
     overflow-y: auto;
 }
 
-#teams li h3 {
-    padding: 10px;
-    font-size: 18pt;
+#teams li h2 {
     font-family: 'RobotoDraft';
-    font-weight: 100;
+}
+
+#teams li .BehnLabel {
+	color: #9C27B0;
+}
+
+#teams li .MeitnerLabel {
+        color: #EF6C00;
+}
+
+#teams li .RorschachLabel {
+        color: #4CAF50;
+}
+
+#teams li .TinbergenLabel {
+        color: #1565C0;
 }
 
 #teams li:nth-child(2n){

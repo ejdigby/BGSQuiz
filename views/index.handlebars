@@ -15,22 +15,20 @@
     <link rel="import" href="components/font-roboto/roboto.html">
     <script src="socket.io/socket.io.js"></script>
     <script>
-         io = io.connect()
-         io.emit('ready')
-function dynamicSort(property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
-    return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
-    }
-}
+        io = io.connect()
+        io.emit('ready')
 
-
-
+	function dynamicSort(property) {
+    		var sortOrder = 1;
+    		if(property[0] === "-") {
+        		sortOrder = -1;
+        		property = property.substr(1);
+    		}
+    		return function (a,b) {
+        		var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+       			return result * sortOrder;
+    		}
+	}
     </script>
 </head>
 <body unresolved>
@@ -155,12 +153,8 @@ function dynamicSort(property) {
         	io.emit('connection')
 
         	io.on('ScoreUpdate',function(data) {
-        		// do something with data
-               		console.log("Score Updated!")
 	       		var House = data.House;
                		var Score = data.Score;
-                	console.log(House);
-	        	console.log(Score);
                 	if (House == "Behn") {
                     		$(".BehnScore").innerHTML = "";
                     		$('.BehnScore').text(Score);
@@ -190,13 +184,10 @@ function dynamicSort(property) {
 		       if (leaderboard[i].room == LBRoom){
 		           if (leaderboard[i].house == LBHouses[0] || leaderboard[i].house == LBHouses[1]){
 				 if (LBRoom == "Main Hall"){
-				       console.log("Room Round is: " + data.roomround.Main_Hall[0])
     				       round = data.roomround.Main_Hall[0]
 				 } else if (LBRoom == "Drama Studio"){
-				       console.log("Room Round is: " + data.roomround.Drama_Studio[0])
 				       round = data.roomround.Drama_Studio[0]
 				 } else if (LBRoom == "Sports Hall"){
- 				       console.log("Room Round is: " + data.roomround.Sports_Hall[0])
 				       round = data.roomround.Sports_Hall[0]
 				 }
 				 if (round == 1){
@@ -215,59 +206,45 @@ function dynamicSort(property) {
 			}
                     }
                 }		
+		 if (round == 1){
+			locallb.sort(dynamicSort("-r1"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label">' + locallb[x].house + '</h2><h2>' + locallb[x].r1 + '</h2></li>'
+			}
+	 	 } else if (round == 2){
+    			placenumber += 1
+                        locallb.sort(dynamicSort("-r2"));
+                        for (x=0; x < locallb.length; x++){
+                        	letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label">' + locallb[x].house + '</h2><h2>' + locallb[x].r2 + '</h2></li>'
+                        }
+		} else if (round == 3){
+                       	placenumber += 1
+		        locallb.sort(dynamicSort("-r3"));
+                        for (x=0; x < locallb.length; x++){
+                              	letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label">' + locallb[x].house + '</h2><h2>' + locallb[x].r3 + '</h2></li>'
+                        }
+		 } else if (round == 4){
+			placenumber += 1
+                        locallb.sort(dynamicSort("-r4"));
+                        for (x=0; x < locallb.length; x++){
+                        	letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label">' + locallb[x].house + '</h2><h2>' + locallb[x].r4 + '</h2></li>'
+                        }
+		} else if (round == 5){
+                        placenumber += 1
+                        locallb.sort(dynamicSort("-r5"));
+                        for (x=0; x < locallb.length; x++){
+                        	letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label">' + locallb[x].house + '</h2><h2>' + locallb[x].r5 + '</h2></li>'
+                        }
+		} else if (round == 6){
+			placenumber += 1
+                        locallb.sort(dynamicSort("-r6"));
+                        for (x=0; x < locallb.length; x++){
+                        	letter += '<li><h2>' + placenumber + '.</h2><h2 class="team">' + locallb[x].teamname + '</h2><h2 class="' + locallb[x].house + 'Label>"' + locallb[x].house + '</h2><h2>' + locallb[x].r6 + '</h2></li>'
+                        }
+		}			      
 
-
-
-//locallb.sort(locallb[i].r1);
-console.log(locallb)
-
-
-				 if (round == 1){
-				     locallb.sort(dynamicSort("-r1"));
-        			     for (x=0; x < locallb.length; x++){
-				         placenumber += 1
-				         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r1 + "</h3></li>";
-			             }
-	 			 } else if (round == 2){
-    			             placenumber += 1
-                                     locallb.sort(dynamicSort("-r2"));
-                                     for (x=0; x < locallb.length; x++){
-                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r2 + "</h3></li>";
-                                     }
-				 } else if (round == 3){
-                                     placenumber += 1
-			             locallb.sort(dynamicSort("-r3"));
-                                     for (x=0; x < locallb.length; x++){
-                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r3 + "</h3></li>";
-                                     }
-
-				 } else if (round == 4){
-				     placenumber += 1
-                                     locallb.sort(dynamicSort("-r4"));
-                                     for (x=0; x < locallb.length; x++){
-                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r4 + "</h3></li>";
-                                     }
-
-				 } else if (round == 5){
-                                     placenumber += 1
-                                     locallb.sort(dynamicSort("-r5"));
-                                     for (x=0; x < locallb.length; x++){
-                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r5 + "</h3></li>";
-                                     }
-
-				 } else if (round == 6){
-				     placenumber += 1
-                                     locallb.sort(dynamicSort("-r6"));
-                                     for (x=0; x < locallb.length; x++){
-                                         letter += "<li><h3>" + placenumber + ". " + locallb[x].teamname + "(" + locallb[x].house + "): " + locallb[x].r6 + "</h3></li>";
-                                     }
-
-				 }			      
-
-				 console.log("Local After sort" + locallb)
-				 console.log(locallb)
-				 document.getElementById("teams").innerHTML = letter;
-	
+		document.getElementById("teams").innerHTML = letter;
 	});
 	</script>
 </html>
