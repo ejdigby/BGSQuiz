@@ -2,56 +2,23 @@
 <html>
 <head>
   <title>Team Raffle!</title>
-  <link rel="stylesheet" type="text/css" href="staff/raffle/css/style.css">
-  <script src="http://quiz.ejdigby.com/components/jquery/dist/jquery.min.js"></script>
-  <script>
-    function SelectRoom(){
-    console.log("At Select Room")
-    x = document.getElementsByClassName("roomselect");
-    x.selectedIndex.text = "{{RaffleRoom}}";
-}
-</script>
+  <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="staff/raffle/style.css">
 </head>
-<body onload="SelectRoom()">
-  <div id="cont">
-    <form method="post" action="/raffle">
+<body>
+  <div id="container">
+    <form id="" method="post" action="/raffle">
       <h1>Raffle</h1>
-      <div id="room" style="margin-left:auto; margin-right:auto; width:270px;">
-	<h2>Room: </h2>
-	<select id="room" class="roomselect" name="room" selectedIndex="{{RaffleRoom}}">
-	  <option id="mh">Main Hall</option>
-	  <option id="sh">Sports Hall</option>
-	  <option id="ds">Drama Studio</option>
-	</select><br>
-      </div>
-      <div id="subdiv" style="margin-left: auto;margin-right: auto;width: 90px;margin-top: 20px;">
-	<input id="submit" type="submit" value="Draw!" />
-      </div>
-      <br>
-    </form>
-    <div id="winner" style="width: 260px; margin-left: auto; margin-right: auto;">
-      <h2>Winner: <span class="winningTeam">{{Raffle}}</span></h2>
-    </div>   
-  </div>
-
-<script>
-room = "{{RaffleRoom}}"
-if (room == "Main Hall"){
-    console.log("Room Is Main Hall")
-    document.getElementById("room").selectedIndex = room;
-}else if (room == "Sports Hall"){
-    console.log("ROom Is sports Hall")
-    document.getElementById("room").selectedIndex = room;
-} else if (room == "Drama Studio"){
-
-    document.getElementsByClassName("roomselect").selectedIndex = "Drama Studio";
-document.getElementsByClassName('roomselect').value = 'Drama Studio';
-    console.log("Room Is Dramastudio");
-} else {
-console.log("No Room Selected")
-}
-
-
-</script>
+      <select id="room" name="room">
+	<option>Main Hall</option>
+	<option>Sports Hall</option>
+	<option>Drama Studio</option>
+	</select>
+      <input id="submit" type="submit" value="Draw!" />
+      </form>
+    <div id="winner">
+      <h2>{{Raffle}}</h2>
+      </div>   
+    </div>
 </body>
 </html>
