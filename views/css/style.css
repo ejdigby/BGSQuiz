@@ -153,6 +153,7 @@ html /deep/ .saveButton {
     height: 10%;
     font-size: 0;
     float: right;
+    display: flex;
   }
 
 .score-container {
@@ -184,9 +185,9 @@ html /deep/ .saveButton {
 
 .behn, .meitner, .rorschach, .tinbergen  {
     height: 100%;
-    width: 50%;
     display: none;
     text-align: center;
+    flex: 1;
 }
 
 .behn {
@@ -220,22 +221,27 @@ html /deep/ .saveButton {
 
 #teams li h2 {
     font-family: 'RobotoDraft';
+    display: inline;
 }
 
 #teams li .BehnLabel {
-	color: #9C27B0;
+    color: #9C27B0;
+    display: block;
 }
 
 #teams li .MeitnerLabel {
-        color: #EF6C00;
+    color: #EF6C00;
+    display: block;
 }
 
 #teams li .RorschachLabel {
-        color: #4CAF50;
+    color: #4CAF50;
+    display: block;
 }
 
 #teams li .TinbergenLabel {
-        color: #1565C0;
+    color: #1565C0;
+    display: block;
 }
 
 #teams li:nth-child(2n){
