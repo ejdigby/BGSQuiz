@@ -13,29 +13,29 @@ a {
     text-decoration: none;
 }
 
-html /deep/ paper-action-dialog {
+html /deep/ paper-dialog {
     margin: 0px;
 }
 
-html /deep/ paper-action-dialog::shadow #scroller {
+html /deep/ paper-dialog::shadow #scroller {
     padding: 0px;
 }
 
-html /deep/ paper-action-dialog::shadow #actions {
+html /deep/ paper-dialog::shadow #actions {
     padding: 0px;
 }
 
-html /deep/ paper-action-dialog core-toolbar {
+html /deep/ paper-dialog core-toolbar {
     background-color: #F44336;
     font-family: 'RobotoDraft';
     color: #ffffff;
 }
 
-html /deep/ paper-action-dialog #settingsContent {
+html /deep/ paper-dialog #settingsContent {
     padding: 12px 24px;
 }
 
-html /deep/ paper-action-dialog  h1 {
+html /deep/ paper-dialog  h1 {
     text-align: left;
     font-family: 'RobotoDraft';
     font-size: 18pt;
@@ -43,7 +43,7 @@ html /deep/ paper-action-dialog  h1 {
     margin-bottom: 10px;
 }
 
-html /deep/ paper-action-dialog h2 {
+html /deep/ paper-dialog h2 {
     text-align: left;
     font-family: 'RobotoDraft';
     font-size: 14pt;

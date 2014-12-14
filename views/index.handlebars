@@ -8,7 +8,7 @@
     <link rel="import" href="components/paper-radio-button/paper-radio-button.html">
     <link rel="import" href="components/paper-radio-group/paper-radio-group.html">
     <link rel="import" href="components/paper-button/paper-button.html">
-    <link rel="import" href="components/paper-dialog/paper-action-dialog.html">
+    <link rel="import" href="components/paper-dialog/paper-dialog.html">
     <link rel="import" href="components/google-youtube/google-youtube.html">
     <link rel="import" href="components/core-splitter/core-splitter.html">
     <link rel="import" href="components/core-toolbar/core-toolbar.html">
@@ -32,7 +32,7 @@
     </script>
 </head>
 <body unresolved>
-	<paper-action-dialog opened>
+	<paper-dialog opened class="settingsDialog">
 		<core-toolbar>
 			<div>Configuration</div>
 		</core-toolbar>
@@ -50,9 +50,9 @@
 			<paper-radio-button class="roomRadio" label="Main Hall"></paper-radio-button>
 			<paper-radio-button class="roomRadio" label="Sports Hall"></paper-radio-button>
 		</paper-radio-group>
-		<paper-button class="saveButton" raised dismissive>Save Settings</paper-button>
+		<paper-button class="saveButton" raised>Save Settings</paper-button>
 		</div>
-	</paper-action-dialog>
+	</paper-dialog>
 	<div id="main">
 		<div id="leaderboard">
       			<ul id="teams">
@@ -113,7 +113,6 @@
                 		room = "Sports Hall"
                                 LBRoom = room
         		}
-			console.log('You are in the ' + room);
 			
 			if ($('html /deep/ .behnToggle').attr('aria-pressed') == "true") {
 				console.log('Behn is toggled')
@@ -136,8 +135,18 @@
 		                LBHouses.push("Tinbergen")
                 	}
 
-			$('#main').css("visibility", "visible").hide().fadeIn()
-  		})
+			if ($('html /deep/ .behnToggle').attr('aria-pressed') == "false" && $('html /deep/ .meitnerToggle').attr('aria-pressed') == "false" && $('html /deep/ .rorschachToggle').attr('aria-pressed') == "false" && $('html /deep/ .tinbergenToggle').attr('aria-pressed') == "false") {
+				alert("You have not selected any houses!")
+			}
+			else if (room == null) {
+				alert("You have not selected a room!")
+			}
+			else {
+				$('#main').css("visibility", "visible").hide().fadeIn()
+				$('html /deep/ .settingsDialog').css("display", "none")
+				console.log('You are in the ' + room);
+			}
+		})
 
         	behnscore = parseInt("{{Behn}}")
         	meitnerscore = parseInt("{{Meitner}}")
