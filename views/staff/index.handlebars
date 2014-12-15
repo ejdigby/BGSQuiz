@@ -137,7 +137,7 @@ io.on('TeamAutoComplete', function (data){
             		letter += "<option value='" + array[i] + "'>" + array[i] + "</option>";
         	}
 
-		letter += "<option value='add'>+</option>";
+		letter += "<option id='add' value='add'>+</option>";
 		document.getElementById("teamname").innerHTML = letter;
 	</script>
 	<script src="client.js"></script>

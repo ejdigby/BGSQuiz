@@ -21,13 +21,14 @@ $(document).ready(function() {
   $('#teamname').change(function() {
   if ($(this).val() == "add") {
      var newTeam = prompt('What is the name of the team that you would like to add?')
-     $('#teamname').append('<option selected>' + newTeam + '</option>').insertBefore($('#add'));
+     $('#add').before('<option selected>' + newTeam + '</option>')
+
      document.getElementById("house").innerHTML = '<option value="">their house</option>'
         		+ '<option value="Behn">Behn</option>'
         		+ '<option value="Meitner">Meitner</option>'
         		+ '<option value="Rorschach">Rorschach</option>'
                         + '<option value="Tinbergen">Tinbergen</option>';
-      document.getElementById("room").innerHTML =  '<option>Main Hall</option>'
+     document.getElementById("room").innerHTML =  '<option>Main Hall</option>'
         		+ ' <option>Sports Hall</option>'
 			+ '<option>Drama Studio</option>';
 
