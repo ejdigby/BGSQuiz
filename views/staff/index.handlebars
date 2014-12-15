@@ -59,11 +59,6 @@ console.log(score)
 			alert(error)
 			return
 		}
-		if (teamname.length > 25){
-	                error = "Please enter a shorter team name"
-	                alert(error)
-	                return
-	    }
 				       
 	    $.post("/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
 	      console.log("DATA IS: "+data)

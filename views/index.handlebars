@@ -223,38 +223,79 @@
 			locallb.sort(dynamicSort("-r1"));
         	 	for (x=0; x < locallb.length; x++){
 				placenumber += 1
-				letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r1 + '</p></li>'
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+					}
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r1 + '</p></li>'
 			}
-	 	 } else if (round == 2){
-    			placenumber += 1
-                        locallb.sort(dynamicSort("-r2"));
-                        for (x=0; x < locallb.length; x++){
-                        	letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r2 + '</p></li>'
-                        }
-		} else if (round == 3){
-                       	placenumber += 1
-		        locallb.sort(dynamicSort("-r3"));
-                        for (x=0; x < locallb.length; x++){
-                              	letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r3 + '</p></li>'
-                        }
-		 } else if (round == 4){
-			placenumber += 1
-                        locallb.sort(dynamicSort("-r4"));
-                        for (x=0; x < locallb.length; x++){
-                        	letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r4 + '</p></li>'
-                        }
+	        } else if (round == 2){
+			locallb.sort(dynamicSort("-r2"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+			        }
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r2 + '</p></li>'
+			}
+
+          	} else if (round == 3){
+			locallb.sort(dynamicSort("-r3"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+			        }
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r3 + '</p></li>'
+			}
+
+		} else if (round == 4){
+			locallb.sort(dynamicSort("-r4"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+			        }
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r4 + '</p></li>'
+			}
+
 		} else if (round == 5){
-                        placenumber += 1
-                        locallb.sort(dynamicSort("-r5"));
-                        for (x=0; x < locallb.length; x++){
-                        	letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r5 + '</p></li>'
-                        }
+			locallb.sort(dynamicSort("-r5"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+			        }
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r5 + '</p></li>'
+			}
+
 		} else if (round == 6){
-			placenumber += 1
-                        locallb.sort(dynamicSort("-r6"));
-                        for (x=0; x < locallb.length; x++){
-				letter += '<li><p class="place">' + placenumber + '.</p><div class="teamInfo"><p class="team">' + locallb[x].teamname + '</p><p class="' + locallb[x].house + 'Label>"' + locallb[x].house + '</p></div><p class="score">' + locallb[x].r6 + '</p></li>'
-                        }
+			locallb.sort(dynamicSort("-r6"));
+        	 	for (x=0; x < locallb.length; x++){
+				placenumber += 1
+				var teamname = locallb[x].teamname
+				if (teamname.length >= 25){ 
+					var remainder = 25 - teamname.length
+					teamname = teamname.slice(0, remainder);
+					teamname += "..."
+				}
+				      letter += '<li><p class="place">' + placenumber + '</p><div class="teamInfo"><p class="team">' + teamname + '</p><p class="' + locallb[x].house + 'Label">' + locallb[x].house + '</p></div><p class="leaderboardScore">' + locallb[x].r6 + '</p></li>'
+			}
+
 		}			      
 
 		document.getElementById("teams").innerHTML = letter;
