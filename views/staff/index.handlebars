@@ -54,8 +54,13 @@ console.log(score)
 		        alert(error)
 		        return
                 }
+	        if (teamname == "null"){
+		        error = "Please enter a valid team name"
+			alert(error)
+			return
+		}
 
-
+				       
 	    $.post("/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
 	      console.log("DATA IS: "+data)
               if(data === 'yes'){
