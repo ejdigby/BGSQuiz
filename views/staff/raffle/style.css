@@ -12,28 +12,32 @@ body {
     top: 50%;
     position: relative;
     transform: translateY(-50%);
+    text-align: center;
 }
 
-#container h1 {
+#raffleForm h1 {
     font-family: sans-serif;
     margin-bottom: 20px;
     font-size: 22pt;
     text-align: center;
 }
 
-#container h2 {
+#winner h2 {
     font-family: sans-serif;
-    margin-bottom: 20px;
     font-size: 18pt;
-    text-align:center;
+    text-align: center;
     display: inline;
+}
+
+#raffleForm {
+    display: inline-block;
+    margin-bottom: 20px;
 }
 
 select {
     width: 180px;
     height: 55px;
     padding: 10px;
-    font-size:16pt;
     outline: none;
 }
 
