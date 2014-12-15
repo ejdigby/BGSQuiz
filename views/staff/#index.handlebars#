@@ -1,0 +1,144 @@
+<html>
+<head>
+	<meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+	<title>Points Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="../components/jquery/dist/jquery.min.js"></script>
+	<script src="../socket.io/socket.io.js"></script>	    
+	<script>
+	  var changecolour = function(house){
+	      if (house == "Behn") {
+	         $('body').css("background-color", "#9C27B0");
+	      } else if (house == "Meitner") {
+	         $('body').css("background-color", "#EF6C00");
+	      } else if (house == "Rorschach"){
+      	         $('body').css("background-color", "#4CAF50");
+	      } else if (house == "Tinbergen"){
+	         console.log("House is Tinbergen");
+	         $('body').css("background-color", "#1565C0");
+	      } else {
+	         $('body').css("background-color", "white");
+	      }
+	  }
+
+          io = io.connect()
+	  io.emit("StaffConnection");
+	  $(document).ready(function(){
+	     $("#submit").click(function(){
+	          var _csrf= "{{Token}}";
+           	  var teamname = $("#teamname").val();
+	          var score = $("#score").val();
+	          var house = $("#house").val();
+	          var round = $("#round").val();
+	          var room =  $("#room").val();
+console.log(score)
+	  var newscore = parseInt(score);
+	 if (newscore >= 0 && score <= 15){
+                       console.log("It is under 15")
+                 } else {
+                         error = "Number is greater than 15"
+                              alert (error)
+                              return
+                 } 
+                 
+                 if (house == ""){
+                        error = "Please Select a house"
+                        alert(error)
+                        return
+                 }
+
+		if (teamname == ""){
+	                error = "Please select a team name"
+		        alert(error)
+		        return
+                }
+
+
+	    $.post("/staff",{_csrf: _csrf,teamname:teamname,score:score,house:house,round:round,room:room}, function(data){
+	      console.log("DATA IS: "+data)
+              if(data === 'yes'){
+                alert("Data Added!");
+                document.getElementById("error").innerHTML = "Score sucessfully added";
+              } else {
+                alert("I'm Sorry There Was An Error Processing Your Request");
+                document.getElementById("error").innerHTML = "I'm Sorry There Was An Error Processing Your Request";
+              }
+           });
+          });
+      });
+
+      var emitteam = function(){
+	  teamname = $("#teamname").val();
+	  console.log(teamname);
+	  io.emit("Hello");
+	  io.emit('TeamSelected', {'teamname' : teamname});
+
+}
+io.on('TeamAutoComplete', function (data){
+	  var house = data.house;
+	  console.log(house);
+	  console.log("house is :" + data.house);
+	  console.log("room is :" + data.room);
+	  console.log("teamname is:" + data.teamname);
+   document.getElementById("house").innerHTML  = "<option value='" + data.house + "'>" + data.house + "</option>";
+	  changecolour(data.house);
+   document.getElementById("room").innerHTML  = "<option value='" + data.room + "'>" + data.room + "</option>";
+
+});
+
+</script>
+</head>
+<body>
+	<div id="container">
+      		<input type="hidden" name="_csrf"  value="{{Token}}"/>
+      		<select required onchange="emitteam()" id="teamname" name="teamname">
+        		<option>Team Name</option>
+			<option id="add" value="add">+</option>
+      		</select>
+      		<span> scored </span>
+      		<input required type="text" id="score" name="score" maxlength="2" placeholder="8">
+      		<span> points for </span>
+      		<select id="house" name="house">
+        		<option value="">their house</option>
+        		<option value="Behn">Behn</option>
+        		<option value="Meitner">Meitner</option>
+        		<option value="Rorschach">Rorschach</option>
+        		<option value="Tinbergen">Tinbergen</option>
+      		</select>
+      		<span> in round </span>
+      		<select required id="round" name="round">
+        		<option value="r1">1</option>
+        		<option value="r2">2</option>
+        		<option value="r3">3</option>
+        		<option value="r4">4</option>
+        		<option value="r5">5</option>
+        		<option value="r6">6</option>
+      		</select>
+      		<span> in the </span>
+      		<select required id="room" name="room">
+        		<option>Main Hall</option>
+        		<option>Sports Hall</option>
+			<option>Drama Studio</option>
+      		</select>
+      		<button id="submit">Submit</button>
+  	</div>
+<!--  	<div id="statusBox">
+      		<p id="error"></p>
+  	</div>
+--></body>
+	<script>
+		string = "{{Team}}"
+		var array = string.split(',');
+		var letter = "";
+		letter += "<option>Team Name</option>"
+		for (i=0; i < array.length; i++){
+            		letter += "<option value='" + array[i] + "'>" + array[i] + "</option>";
+        	}
+
+		letter += "<option value='add'>+</option>";
+		document.getElementById("teamname").innerHTML = letter;
+	</script>
+	<script src="client.js"></script>
+</html>

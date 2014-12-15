@@ -418,13 +418,13 @@ socket.on('list', function (){
 			io.sockets.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore, "NumOfTeams" : doc.length});
 			
 			if (housename == 'Rorschach'){
-			    Rorschach = newhousescore;
+			    Rorschach = Math.round(newhousescore / doc.length);
 			}else if (housename == 'Meitner'){
-			    Meitner = newhousescore;
+			    Meitner = Math.round(newhousescore / doc.length);
 			} else if (housename == 'Behn'){
-			    Behn = newhousescore;
+			    Behn = Math.round(newhousescore / doc.length);
 			} else if (housename == 'Tinbergen'){
-			    Tinbergen = newhousescore;
+			    Tinbergen = Math.round(newhousescore / doc.length);
 			}
 
 			scorescollection.findAndModify(
