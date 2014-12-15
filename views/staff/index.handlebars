@@ -36,21 +36,21 @@
 console.log(score)
 	  var newscore = parseInt(score);
 	 if (newscore >= 0 && score <= 15){
-                       console.log("It is under 15")
+                       console.log("In range")
                  } else {
-                         error = "Number is greater than 15"
+                         error = "Invalid score"
                               alert (error)
                               return
                  } 
                  
                  if (house == ""){
-                        error = "Please Select a house"
+                        error = "Please select a house"
                         alert(error)
                         return
                  }
 
-		if (teamname == ""){
-	                error = "Please select a team name"
+		if (teamname == "" || teamname == "null" ){
+	                error = "Please enter a team name"
 		        alert(error)
 		        return
                 }
@@ -66,8 +66,7 @@ console.log(score)
                 alert("Data Added!");
                 document.getElementById("error").innerHTML = "Score sucessfully added";
               } else {
-                alert("I'm Sorry There Was An Error Processing Your Request");
-                document.getElementById("error").innerHTML = "I'm Sorry There Was An Error Processing Your Request";
+                alert("There was an error adding that score. Sorry!");
               }
            });
           });
