@@ -219,27 +219,31 @@ html /deep/ .saveButton {
     overflow-y: auto;
 }
 
+#teams li {
+    list-style: none;
+}
+
 #teams li p {
     font-family: 'RobotoDraft';
 }
 
 #teams li .place {
-    font-size: 32pt;
-    font-weight: 600;
     display: inline;
-    margin-left: 10px;
+    margin: 10px;
+    float: left;
+    font-size: 24pt;
 }
 
 #teams li .teamInfo {
-    margin-left: 10px;
+    margin: 10px;
     display: inline-block
 }
 
 #teams li .leaderboardScore {
-    font-size: 32pt;
     display: inline;
     float: right;
-    margin-right: 10px;
+    margin: 10px;
+    font-size: 24pt;
 }
 
 #teams li .team {
