@@ -415,8 +415,7 @@ socket.on('list', function (){
 		    if (newhousescore == housescore){
 			return
 		    } else{
-			
-			io.sockets.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore});
+			io.sockets.emit('ScoreUpdate', {'House' : housename, 'Score' : newhousescore, "NumOfTeams" : doc.length});
 			
 			if (housename == 'Rorschach'){
 			    Rorschach = newhousescore;
