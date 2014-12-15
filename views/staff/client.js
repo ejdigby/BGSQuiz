@@ -22,6 +22,15 @@ $(document).ready(function() {
   if ($(this).val() == "add") {
      var newTeam = prompt('What is the name of the team that you would like to add?')
      $('#teamname').append('<option selected>' + newTeam + '</option>').insertBefore($('#add'));
-  }
+     document.getElementById("house").innerHTML = '<option value="">their house</option>'
+        		+ '<option value="Behn">Behn</option>'
+        		+ '<option value="Meitner">Meitner</option>'
+        		+ '<option value="Rorschach">Rorschach</option>'
+                        + '<option value="Tinbergen">Tinbergen</option>';
+      document.getElementById("room").innerHTML =  '<option>Main Hall</option>'
+        		+ ' <option>Sports Hall</option>'
+			+ '<option>Drama Studio</option>';
+
+}
   }) 
 });
