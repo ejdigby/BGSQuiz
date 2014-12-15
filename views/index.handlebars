@@ -165,7 +165,9 @@
         	io.on('ScoreUpdate',function(data) {
 	       		var House = data.House;
                		var Score = data.Score;
-                	if (House == "Behn") {
+		        var numofteams = data.NumOfTeams
+		        Score = Math.round(Score / numofteams)
+		if (House == "Behn") {
                     		$(".BehnScore").innerHTML = "";
                     		$('.BehnScore').text(Score);
                 	}
