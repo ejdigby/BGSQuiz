@@ -34,7 +34,7 @@ app.get('/list', function(req, res){
        res.redirect("/login?from=/list")
        return;
    }
-   if (req.query.token == config.adminlogintoken){
+   if (req.query.token == config.logintoken){
        console.log("Request for /list")
        res.render('staff/list/index', {
 	   showTitle: true,
@@ -58,36 +58,12 @@ app.post('/raffle', function(req, res){
     serverfile.raffle(req.body.room)
     res.redirect('/raffle')
 });
-app.get('/round', function(req, res){
-    if (!req.query.token){
-       console.log("Request for /round rejected")
-       res.redirect("/login?from=/round")
-       return;
-   }
-   if (req.query.token == config.logintoken){
-       console.log("Request for /round")
-       res.render('staff/round/index', {
-	   showTitle: true,
-       });
-    } else {
-        console.log("Request for /round rejected")
-        res.redirect("/login?from=/round")
-        return;
-    }
-
-
-});
-app.post('/round', function(req, res){
-    console.log("Post request for /round");
-    serverfile.changeround(req.body._csrf, req.body.room, res)
-});
-
 app.get('/login', function(req, res){
     console.log("Request for /login");
         console.log("FROM :" + req.query.from)
     if (req.query.from){
 	from = req.query.from
-    }
+ }
     res.render('login/index', {
 	showTitle: true,
     });
@@ -96,31 +72,13 @@ app.post('/login', function(req, res){
     console.log("Post request for /login");
     var password = req.body.password
     var csrf = req.body._csrf;
-   console.log(from)
+
     if (csrf == config.token){
 	console.log("Token Is Correct!")
 	if (password == config.password){
 	    console.log("Password is correct!");
-	    if (from){
-		console.log("FROM IS DEFINED");
-		console.log(from + "?token=" + config.logintoken);
-		res.redirect(from + "?token=" + config.logintoken);
-		return;
-	    } else {
-		res.redirect("/staff?token=" + config.logintoken);
-		return;
-	    }
-	}else if (password == config.adminpassword){
-	    console.log("Developer Password Used!")
-	    if (from){
-		console.log("FROM IS DEFINED");
-		console.log(from + "?token=" + config.adminlogintoken);
-		res.redirect(from + "?token=" + config.adminlogintoken);
-		return;
-	    } else {
-		res.redirect("/staff?token=" + config.adminlogintoken);
-		return;
-	    }
+            res.redirect("/staff?token=" + config.logintoken);
+	    return;
 	}else {
 	    console.log("Password is wrong!");
 	    res.redirect("/login");
