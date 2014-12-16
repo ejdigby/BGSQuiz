@@ -28,6 +28,10 @@ body {
       	background-color: white;
 }
 
+#teamname {
+	width: 20%;
+}
+
 select {
       	background: none;
       	border: none;
