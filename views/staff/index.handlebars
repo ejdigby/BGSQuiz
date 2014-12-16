@@ -89,7 +89,8 @@ io.on('TeamAutoComplete', function (data){
    document.getElementById("room").innerHTML  = "<option value='" + data.room + "'>" + data.room + "</option>";
 
     } else { 
-	        document.getElementById("house").innerHTML = '<option value="">their house</option>'
+	       changecolour("null")
+		document.getElementById("house").innerHTML = '<option value="">their house</option>'
         		+ '<option value="Behn">Behn</option>'
         		+ '<option value="Meitner">Meitner</option>'
         		+ '<option value="Rorschach">Rorschach</option>'
