@@ -85,7 +85,9 @@ module.exports = {
 		 rafflelist.push(doc[x].teamname);
 		 raffleroomlist.push(doc[x].room);
 	     }
-	     var number = Math.floor((Math.random() * rafflelist.length) + 1)
+	    console.log(rafflelist)
+	     var number = Math.floor((Math.random() * rafflelist.length))
+	     console.log(number)
 	     rafflewinner = rafflelist[number];
 	     raffleroom = " - " + room 
 	     console.log(raffleroom)
