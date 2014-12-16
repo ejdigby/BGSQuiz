@@ -193,7 +193,9 @@
         	})
 		$('paper-tab').on("click",  function() { 
 		        console.log("Tabs Clicked")
-		        console.log("Change " + LBRoom + " to round: " + $(this).attr("value"))
+		        newround = $(this).attr("value")
+		        console.log("Change " + LBRoom + " to round: " + newround)
+		        io.emit('RoundChange', {'room' : LBRoom, 'round' : newround});
 });
 		io.on('LeaderboardUpdate',function(data) {
 	     		leaderboard = data.LeaderBoard;
