@@ -215,7 +215,7 @@ html /deep/ .saveButton {
 }
 
 #teams {
-    height: 90%;
+    height: 92%;
     overflow-y: auto;
 }
 
@@ -279,7 +279,7 @@ html /deep/ .saveButton {
 }
 
 paper-tabs {
-    height: 50px;
+    height: 8%;
     font-family: 'RobotoDraft';
     background-color: white;
     font-size: 3vh
