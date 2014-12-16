@@ -80,15 +80,22 @@ console.log(score)
 
 }
 io.on('TeamAutoComplete', function (data){
+     if (data.datafound == true) {
 	  var house = data.house;
-	  console.log(house);
-	  console.log("house is :" + data.house);
-	  console.log("room is :" + data.room);
-	  console.log("teamname is:" + data.teamname);
    document.getElementById("house").innerHTML  = "<option value='" + data.house + "'>" + data.house + "</option>";
 	  changecolour(data.house);
    document.getElementById("room").innerHTML  = "<option value='" + data.room + "'>" + data.room + "</option>";
 
+    } else { 
+	        document.getElementById("house").innerHTML = '<option value="">their house</option>'
+        		+ '<option value="Behn">Behn</option>'
+        		+ '<option value="Meitner">Meitner</option>'
+        		+ '<option value="Rorschach">Rorschach</option>'
+                        + '<option value="Tinbergen">Tinbergen</option>';
+     document.getElementById("room").innerHTML =  '<option>Main Hall</option>'
+        		+ ' <option>Sports Hall</option>'
+			+ '<option>Drama Studio</option>';
+}
 });
 
 </script>

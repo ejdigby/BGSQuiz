@@ -352,8 +352,10 @@ io.sockets.on('connection', function (socket) {
 	db.collection('Teams').find({teamname : data.teamname}).toArray(function(Err, doc){
 	    if (doc.length != 0){
 		console.log("Teams autocomplete");
-		socket.emit("TeamAutoComplete", {'house' : doc[0].house, 'room' : doc[0].room, 'teamname':doc[0].teamname});
-	    }
+		socket.emit("TeamAutoComplete", {'datafound' : true, 'house' : doc[0].house, 'room' : doc[0].room, 'teamname':doc[0].teamname});
+	    } else{
+		socket.emit("TeamAutoComplete", {'datafound' : false})
+}
 	    });
     });
     socket.on('StaffConnection', function(){
