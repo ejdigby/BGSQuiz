@@ -60,12 +60,12 @@
           			<!-- dynamically load teams here -->
 		 	</ul>
 			<paper-tabs>
-				<paper-tab>1</paper-tab>
-				<paper-tab>2</paper-tab>
-				<paper-tab>3</paper-tab>
-				<paper-tab>4</paper-tab>
-                                <paper-tab>5</paper-tab>
-                                <paper-tab>6</paper-tab>
+				<paper-tab value="1">1</paper-tab>
+				<paper-tab value="2">2</paper-tab>
+				<paper-tab value="3">3</paper-tab>
+				<paper-tab value="4">4</paper-tab>
+                                <paper-tab value="5">5</paper-tab>
+                                <paper-tab value="6">6</paper-tab>
 			</paper-tabs>
   		</div>
 		<div id="scores">
@@ -191,7 +191,10 @@
                     		$('.TinbergenScore').text(Score)
                 	}
         	})
-
+		$('paper-tab').on("click",  function() { 
+		        console.log("Tabs Clicked")
+		        console.log("Change " + LBRoom + " to round: " + $(this).attr("value"))
+});
 		io.on('LeaderboardUpdate',function(data) {
 	     		leaderboard = data.LeaderBoard;
 
