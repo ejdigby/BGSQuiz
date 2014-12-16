@@ -236,7 +236,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r1" : newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				}); 
 		    } else if (round == "r2"){
@@ -245,7 +245,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r2" : newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				});			
 		    } else if (round == "r3"){
@@ -256,7 +256,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r3" : newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				});			
 		    } else if (round == "r4"){
@@ -265,7 +265,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r4": newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				});			
 		    } else if (round == "r5"){
@@ -274,7 +274,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r5" : newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				});			
 		    } else if (round == "r6"){
@@ -283,7 +283,7 @@ module.exports = {
 			collection.update({"teamname" : teamname, "house" : house, "room" : room}
 			        ,{$set:{"r6" : newscore}},
 				function(err, updated) {
-				    if( err || !updated ) res.end("no");
+				    if( err || !updated ) res.end("no-exists");
 				    else res.end("yes");
 				});
 		    }

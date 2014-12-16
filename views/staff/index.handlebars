@@ -65,7 +65,9 @@ console.log(score)
               if(data === 'yes'){
                 alert("Data Added!");
                 document.getElementById("error").innerHTML = "Score sucessfully added";
-              } else {
+              }else if (data == "no-exists"){
+		alert("A team with that name already exists!")
+              }else {
                 alert("There was an error adding that score. Sorry!");
               }
            });
