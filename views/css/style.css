@@ -280,7 +280,18 @@ html /deep/ .saveButton {
 
 paper-tabs {
     height: 10%;
-    font-family: 'RobotoDraft'
+    font-family: 'RobotoDraft';
+    background-color: white;
+    font-size: 3vh
+}
+
+paper-tabs::shadow #selectionBar {
+  background-color: #F44336;
+  height: 5px;
+}
+
+paper-tabs paper-tab::shadow #ink {
+    color: #F44336;
 }
 
 #video {
