@@ -4,15 +4,16 @@
   <title>Team Raffle!</title>
   <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
   <link rel="stylesheet" type="text/css" href="/staff/raffle/style.css">
+  <script src="../components/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
   <div id="container">
     <form id="raffleForm" method="post" action="/raffle">
       <h1>Raffle</h1>
       <select id="room" name="room">
-	<option>Main Hall</option>
-	<option>Sports Hall</option>
-	<option>Drama Studio</option>
+	<option value="Main Hall">Main Hall</option>
+	<option value="Sports Hall">Sports Hall</option>
+	<option value="Drama Studio">Drama Studio</option>
 	</select>
       <input id="submit" type="submit" value="Draw!" />
       </form>
@@ -20,5 +21,10 @@
       <h2>{{Raffle}} {{RaffleRoom}}</h2>
       </div>   
     </div>
+<script>
+  $("select option[value='{{RaffleRoom}}']").attr("selected","selected");
+
+</script>
+
 </body>
 </html>
