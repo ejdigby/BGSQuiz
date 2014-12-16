@@ -90,7 +90,7 @@ if(csrf == privatetoken){
  raffle: function(room){
     db.collection('Teams').find({"room" : room}, {teamname: 1, _id: 0}).toArray(function(err, doc){
 	if (doc.length == 0){
-	    rafflewinner = "There are no teams in the " + room;
+	    rafflewinner = "There are no teams in the " + room  + "!";
 	 } else {
 	     var rafflelist = [];
 	     var raffleroomlist = [];
@@ -100,7 +100,7 @@ if(csrf == privatetoken){
 	     }
 	     var number = Math.floor((Math.random() * rafflelist.length) + 1)
 	     rafflewinner = rafflelist[number];
-	     raffleroom = room
+	     raffleroom = " - " + room 
 	     console.log(raffleroom)
 	 }
   });	
@@ -307,7 +307,7 @@ if(csrf == privatetoken){
 		}		
 	    });
     }else {
-	console.log("Token Is Wrong")
+	console.log("Token is wrong")
 	res.redirect("http://google.com");
     }
 
@@ -358,8 +358,7 @@ io.sockets.on('connection', function (socket) {
 	console.log(data.teamname);
 	db.collection('Teams').find({teamname : data.teamname}).toArray(function(Err, doc){
 	    if (doc.length != 0){
-		console.log("Teams Auto Comeplete");
-
+		console.log("Teams autocomplete");
 		socket.emit("TeamAutoComplete", {'house' : doc[0].house, 'room' : doc[0].room, 'teamname':doc[0].teamname});
 	    }
 	    });
