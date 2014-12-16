@@ -29,6 +29,7 @@
     "paper-radio-button": "Polymer/paper-radio-button#~0.5.1",
     "paper-radio-group": "Polymer/paper-radio-group#~0.5.1",
     "google-youtube": "GoogleWebComponents/google-youtube#~1.0.1",
-    "core-toolbar": "Polymer/core-toolbar#~0.5.2"
+    "core-toolbar": "Polymer/core-toolbar#~0.5.2",
+    "paper-tabs": "Polymer/paper-tabs#~0.5.2"
   }
 }
