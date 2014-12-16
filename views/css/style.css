@@ -279,7 +279,7 @@ html /deep/ .saveButton {
 }
 
 paper-tabs {
-    height: 10%;
+    height: 50px;
     font-family: 'RobotoDraft';
     background-color: white;
     font-size: 3vh
