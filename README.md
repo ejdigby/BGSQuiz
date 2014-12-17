@@ -58,3 +58,64 @@ For bgsquiz we have use a mongo db show below:
      ├── r5
      └── r6
 ```
+
+###Setup
+####Node
+#####Installing Node 
+Installation Guide Can Be Found Here: https://github.com/joyent/node/wiki/installation
+
+#####Installing Node From A Package Manager - I Reccomend 
+https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
+
+####Installing Node Depedecies
+#####PM2
+pm2: ```[sudo] npm install pm2 -g ```
+#####Bower
+bower: ```[sudo] npm install bower -g ```
+
+
+####Mongo
+Installation Guide Can Be Found Here: http://docs.mongodb.org/manual/installation/
+
+###Installing Modules
+##### NPM
+``` [sudo] npm install ```
+
+##### Bower
+``` bower install ```
+
+###Setting Up pm2
+PM2 is what is used to run the app on the server
+
+####To Start The Server
+``` pm2 start server.js --name "BGSQuiz" ```
+
+####To See Running Apps
+``` pm2 list ```
+
+###Setting Up Nginx
+
+####Edit sites-avaliable file
+Add this to your server blocks file:
+
+    	       server{
+	                listen 80;
+
+			server_name <<Replace With You Domain>>;
+
+	                location /{
+			      root /path/to/app/;
+         	              index index.htm index.html;
+			      proxy_set_header X-Real-IP $remote_addr;
+			      proxy_set_header Host      $http_host;
+			      proxy_pass       http://127.0.0.1:1884;
+	                }
+	             }
+
+Replace ther server_name with your domain name and replace root to the path of your app.
+
+
+####Restart nginx
+```sudo service nginx restart ```
+
+That's It; Your Set Up!
