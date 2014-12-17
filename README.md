@@ -9,7 +9,7 @@ Our school house system is as follows:
  - Rorschach
  - Tinbergen
  
-### Structure
+## Structure
 ```	
   ├── .gitignore
   ├── README.md
@@ -41,7 +41,7 @@ Our school house system is as follows:
 
 1 directory, 6 sub-directories,  20 files
 ```
-###DB
+##DB
 For bgsquiz we have use a mongo db show below:
 ```
 └── Scores
@@ -59,29 +59,29 @@ For bgsquiz we have use a mongo db show below:
      └── r6
 ```
 
-###Setup
-####Node
-#####Installing Node 
+##Setup
+###Node
+####Installing Node 
 Installation Guide Can Be Found Here: https://github.com/joyent/node/wiki/installation
 
-#####Installing Node From A Package Manager - I Reccomend 
+####Installing Node From A Package Manager - I Recomend This Method
 https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager
 
-####Installing Node Depedecies
-#####PM2
+###Installing Node Depedecies
+####PM2
 pm2: ```[sudo] npm install pm2 -g ```
-#####Bower
+####Bower
 bower: ```[sudo] npm install bower -g ```
 
 
-####Mongo
+###Mongo
 Installation Guide Can Be Found Here: http://docs.mongodb.org/manual/installation/
 
 ###Installing Modules
-##### NPM
+#### NPM
 ``` [sudo] npm install ```
 
-##### Bower
+#### Bower
 ``` bower install ```
 
 ###Setting Up pm2
@@ -112,10 +112,10 @@ Add this to your server blocks file:
 	                }
 	             }
 
-Replace ther server_name with your domain name and replace root to the path of your app.
+Replace ther ```server_name``` with your domain name and replace ```root``` to the path of your app.
 
 
 ####Restart nginx
 ```sudo service nginx restart ```
 
-That's It; Your Set Up!
+That's It - Your Set Up!
