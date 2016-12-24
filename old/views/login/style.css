@@ -1,0 +1,57 @@
+html,
+body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#login {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    width: 500px;
+    margin: 0 auto;
+    display: block;
+    float: none;
+}
+
+#login h1 {
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    font-size: 22pt;
+    text-align: center;
+}
+
+#passwordBox {
+    width: 400px;
+    height: 55px;
+    padding: 10px;
+    font-size: 24pt;
+    outline: none;
+}
+
+#enterButton {
+    background-color: #F44336; 
+    width: 100px;
+    height: 55px;
+    opacity: 0.7;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    position: relative;
+    float: right;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+    transition: opacity .25s;
+    -moz-transition: opacity .25s;
+    -webkit-transition: opacity .25s;
+}
+
+#enterButton:hover {
+    cursor: pointer;
+    opacity: 1;
+}

@@ -1,0 +1,70 @@
+html,
+body {
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+#raffleForm h1 {
+    font-family: sans-serif;
+    margin-bottom: 20px;
+    font-size: 22pt;
+    text-align: center;
+}
+
+#winner h2 {
+    font-family: sans-serif;
+    font-size: 18pt;
+    text-align: center;
+    display: inline;
+}
+
+#raffleForm {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+select {
+    width: 180px;
+    height: 55px;
+    padding: 10px;
+    outline: none;
+}
+
+#submit {
+    background-color: #F44336; 
+    width: 100px;
+    height: 55px;
+    opacity: 0.7;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    position: relative;
+    float: none;
+    text-align: center;
+    outline: none;
+    border: none;
+    font-family: sans-serif;
+    transition: opacity .25s;
+    -moz-transition: opacity .25s;
+    -webkit-transition: opacity .25s;
+}
+
+#submit:hover {
+    cursor: pointer;
+    opacity: 1;
+}
+
+#winner {
+   text-align: center;
+}

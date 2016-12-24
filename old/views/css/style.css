@@ -1,0 +1,304 @@
+html,
+body {
+    height: 100%;
+    overflow: hidden;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    }
+
+a {
+    text-decoration: none;
+}
+
+html /deep/ paper-dialog {
+    margin: 0px;
+}
+
+html /deep/ paper-dialog::shadow #scroller {
+    padding: 0px;
+}
+
+html /deep/ paper-dialog::shadow #actions {
+    padding: 0px;
+}
+
+html /deep/ paper-dialog core-toolbar {
+    background-color: #F44336;
+    font-family: 'RobotoDraft';
+    color: #ffffff;
+}
+
+html /deep/ paper-dialog #settingsContent {
+    padding: 12px 24px;
+}
+
+html /deep/ paper-dialog  h1 {
+    text-align: left;
+    font-family: 'RobotoDraft';
+    font-size: 18pt;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+html /deep/ paper-dialog h2 {
+    text-align: left;
+    font-family: 'RobotoDraft';
+    font-size: 14pt;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+html /deep/ #houseToggles {
+    padding: 0;
+}
+
+html /deep/ #houseToggles li {
+    list-style: none;
+    text-align: left;
+    display: flex;
+    margin-top: 10px;
+}
+
+html /deep/ #houseToggles li h3 {
+    font-family: 'RobotoDraft';
+    font-weight: 400;
+    margin: 0;
+}
+
+html /deep/ paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #9C27B0;
+}
+
+html /deep/ paper-toggle-button.behnToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #9C27B0;
+}
+
+html /deep/ paper-toggle-button.behnToggle::shadow #toggleBar[checked] {
+    background-color: #9C27B0;
+}
+
+html /deep/ paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #EF6C00;
+}
+
+html /deep/ paper-toggle-button.meitnerToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #EF6C00;
+}
+
+html /deep/ paper-toggle-button.meitnerToggle::shadow #toggleBar[checked] {
+    background-color: #EF6C00;
+}
+
+html /deep/ paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #4CAF50;
+}
+
+html /deep/ paper-toggle-button.rorschachToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #4CAF50;
+}
+
+html /deep/ paper-toggle-button.rorschachToggle::shadow #toggleBar[checked] {
+    background-color: #4CAF50;
+}
+
+html /deep/ paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #ink[checked] {
+    color: #1565C0;
+}
+
+html /deep/ paper-toggle-button.tinbergenToggle::shadow paper-radio-button::shadow #onRadio {
+    background-color: #1565C0;
+}
+
+html /deep/ paper-toggle-button.tinbergenToggle::shadow #toggleBar[checked] {
+    background-color: #1565C0;
+}
+
+html /deep/ paper-toggle-button {
+    display: inline;
+    margin: 0px 20px;
+}
+
+html /deep/ paper-radio-button.roomRadio::shadow #ink[checked] {
+    color: #F33446;
+}
+
+html /deep/ paper-radio-button.roomRadio::shadow #onRadio {
+    background-color: #F33446;
+}
+
+html /deep/ .roomRadio {
+    font-family: 'RobotoDraft';
+}
+
+html /deep/ .saveButton {
+    font-family: 'RobotoDraft';
+    background-color: #F44336;
+    color: #ffffff;
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#main {
+    display: block;
+    visibility: hidden;
+    height: 100%;
+}
+
+#scores {
+    width: 75%;
+    height: 10%;
+    font-size: 0;
+    float: right;
+    display: flex;
+  }
+
+.score-container {
+    text-align: center;
+    height: 100%;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+.score-container img {
+    height: 80%;
+    display: inline;
+    float: left;
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+.behn h2, .meitner h2, .rorschach h2, .tinbergen h2 {
+    font-size: 6vh;
+    margin-left: 10px;
+    top: 50%;
+    position: relative;
+    transform: translateY(-50%);
+    float: right;
+    font-family: 'RobotoDraft'; 
+    font-weight: 100;
+}
+
+.behn, .meitner, .rorschach, .tinbergen  {
+    height: 100%;
+    display: none;
+    text-align: center;
+    flex: 1;
+}
+
+.behn {
+    background-color: #9C27B0;
+}
+
+.meitner {
+    background-color: #EF6C00;
+}
+
+.rorschach {
+    background-color: #4CAF50;
+}
+
+.tinbergen {
+    background-color: #1565C0;
+}
+
+#leaderboard {
+    width: 25%;
+    height: 100%;
+    background: #efefef;
+    position: absolute;
+    left: 0;
+}
+
+#teams {
+    height: 92%;
+    overflow-y: auto;
+}
+
+#teams li {
+    list-style: none;
+}
+
+#teams li p {
+    font-family: 'RobotoDraft';
+}
+
+#teams li .place {
+    display: inline;
+    margin: 10px;
+    float: left;
+    font-size: 24pt;
+}
+
+#teams li .teamInfo {
+    margin: 10px;
+    display: inline-block
+}
+
+#teams li .leaderboardScore {
+    display: inline;
+    float: right;
+    margin: 10px;
+    font-size: 24pt;
+}
+
+#teams li .team {
+    font-weight: 400;
+}
+
+#teams li .BehnLabel {
+    color: #9C27B0;
+    font-size: 12pt;
+}
+
+#teams li .MeitnerLabel {
+    color: #EF6C00;
+    font-size: 12pt;
+}
+
+#teams li .RorschachLabel {
+    color: #4CAF50;
+    font-size: 12pt;
+}
+
+#teams li .TinbergenLabel {
+    color: #1565C0;
+    font-size: 12pt;
+}
+
+#teams li:nth-child(2n){
+    background-color: #efefef;
+}
+
+#teams li:nth-child(2n){
+    background-color: #ffffff;
+}
+
+paper-tabs {
+    height: 8%;
+    font-family: 'RobotoDraft';
+    background-color: white;
+    font-size: 3vh
+}
+
+paper-tabs::shadow #selectionBar {
+  background-color: #F44336;
+  height: 5px;
+}
+
+paper-tabs paper-tab::shadow #ink {
+    color: #F44336;
+}
+
+#video {
+    width: 75%;
+    height: 90%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: block;
+}
