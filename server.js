@@ -12,7 +12,6 @@ var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var format = require('util').format;
 
-
 //Files
 var roundfile = require('./lib/rounds.js')
 var setscorefile = require('./lib/setscores.js');

@@ -29,7 +29,7 @@ body {
 }
 
 #teamname {
-	width: 20%;
+	max-width: 20%;
 }
 
 select {
